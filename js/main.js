@@ -1,5 +1,5 @@
 // ============================================================
-// TORIAS GLAM HAVEN – MAIN JAVASCRIPT
+// TORIAS GLAM HAVEN HAVEN – MAIN JAVASCRIPT
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -278,3 +278,4 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+

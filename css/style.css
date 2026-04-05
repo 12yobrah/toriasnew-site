@@ -1,12 +1,12 @@
 /* ============================================================
-   TORIAS GLAM HAVEN – GLOBAL DESIGN SYSTEM (Feminine Luxe Theme)
+   TORIAS GLAM HAVEN HAVEN – GLOBAL DESIGN SYSTEM (Feminine Luxe Theme)
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap');
 
 /* ── CSS CUSTOM PROPERTIES ───────────────────────────────────── */
 :root {
-  /* TORIAS GLAM Palette Colors */
+  /* TORIAS GLAM HAVEN Palette Colors */
   --clr-white:     #FFFAEF;   /* Main Background - Cream */
   --clr-black:     #111111;   
   --clr-dark:      #E8D9C4;   /* Secondary Surface - Sand/Beige */
@@ -19,13 +19,13 @@
   --clr-nude:           #f7f1e8;
   --clr-champagne:      #fdfbf9;
 
-  /* Accent Colors (TORIAS GLAM) */
+  /* Accent Colors (TORIAS GLAM HAVEN) */
   --clr-gold:           #6F1A07;   /* Burnt Red - Main Brand Accent */
   --clr-gold-light:     #8a2109;   /* Lighter Red */
   --clr-gold-pale:      #f9e1dc;   /* Very Light Red base */
   --clr-jewelry-gold:    #c5a059;   /* Keep for Jewelry context, not UI */
 
-  /* Text Colors (TORIAS GLAM Contrast) */
+  /* Text Colors (TORIAS GLAM HAVEN Contrast) */
   --clr-text:           #550816;   /* Deep Maroon - Headings */
   --clr-text-body:      #4d1e1e;   /* Dark Brown-Red - Body */
   --clr-text-muted:     #7a5c5c;   /* Faded Brown-Red - Muted */
@@ -1502,4 +1502,5 @@ section.hero .animate-fade,
   border: 1px solid rgba(255,255,255,0.1);
   text-transform: uppercase;
 }
+
 
