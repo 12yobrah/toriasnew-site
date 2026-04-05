@@ -1482,3 +1482,23 @@ section.hero .animate-fade,
   margin-top: 5px;
   display: block;
 }
+
+/* ── TESTIMONIAL AVATARS (INITIALS) ────────────────────────── */
+.testimonial-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--gradient-gold);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+  border: 1px solid rgba(255,255,255,0.1);
+  text-transform: uppercase;
+}
