@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const filtered = Object.values(products).filter(p => 
+    const filtered = Object.values(productsData).filter(p => 
       p.name.toLowerCase().includes(query) || 
       p.category.toLowerCase().includes(query) ||
       p.desc.toLowerCase().includes(query)
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function openModal(productId) {
-    const p = products[productId];
+    const p = productsData[productId];
     if (!p || !modal) return;
     document.getElementById('modal-name').textContent = p.name;
     document.getElementById('modal-category').textContent = p.category;
