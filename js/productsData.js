@@ -1,5 +1,5 @@
 // ============================================================
-// ZARELA BOUTIQUE – MASTER PRODUCT DATABASE
+// TORIAS GLAM – MASTER PRODUCT DATABASE
 // ============================================================
 // To add a new product: 
 // 1. Copy an existing block below (including the { and } braces).
@@ -122,3 +122,4 @@ const productsData = {
 
 // Export to global scope
 window.productsData = productsData;
+
