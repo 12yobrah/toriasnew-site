@@ -188,34 +188,49 @@
               Payment Method
             </h2>
             <div class="payment-method-list">
-              <div class="payment-method selected" id="pm-card">
+              <div class="payment-method selected" id="pm-mpesa">
                 <div class="payment-method-header">
                   <div class="pm-radio active"></div>
+                  <span class="pm-name">M-Pesa (STK Push)</span>
+                  <div class="pm-icons">
+                    <span style="background:#46b04a;color:white;padding:2px 6px;border-radius:4px;font-weight:800;font-size:0.6rem">M-PESA</span>
+                  </div>
+                </div>
+                <div class="mpesa-fields" style="margin-top:var(--sp-md)">
+                   <div id="stk-idle">
+                      <label class="form-label" for="mpesa-phone">Safaricom Number *</label>
+                      <input type="tel" id="mpesa-phone" class="form-control" placeholder="07XX XXX XXX" />
+                      <p style="font-size:var(--fs-xs);color:rgba(255,255,255,0.5);margin-top:8px">You will receive a popup on your phone to enter your PIN.</p>
+                   </div>
+                   <div id="stk-processing" style="display:none;padding:10px 0;text-align:center">
+                      <p style="font-size:var(--fs-sm);color:var(--clr-gold)">Waiting for PIN entry...</p>
+                   </div>
+                </div>
+              </div>
+
+              <div class="payment-method" id="pm-card">
+                <div class="payment-method-header">
+                  <div class="pm-radio"></div>
                   <span class="pm-name">Credit / Debit Card</span>
                   <div class="pm-icons">
                     <span class="pm-icon-tag">VISA</span>
                     <span class="pm-icon-tag">MC</span>
-                    <span class="pm-icon-tag">AMEX</span>
                   </div>
                 </div>
-                <div class="card-fields" style="margin-top:var(--sp-md)">
+                <div class="card-fields" style="margin-top:var(--sp-md);display:none">
                   <div class="form-group">
                     <label class="form-label" for="card-number">Card Number</label>
-                    <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19" autocomplete="cc-number" />
+                    <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19" />
                   </div>
                   <div class="form-row">
                     <div class="form-group">
-                      <label class="form-label" for="card-expiry">Expiry Date</label>
-                      <input type="text" id="card-expiry" class="form-control" placeholder="MM / YY" maxlength="7" autocomplete="cc-exp"/>
+                      <label class="form-label" for="card-expiry">Expiry</label>
+                      <input type="text" id="card-expiry" class="form-control" placeholder="MM / YY" />
                     </div>
                     <div class="form-group">
                       <label class="form-label" for="card-cvc">CVV</label>
-                      <input type="text" id="card-cvc" class="form-control" placeholder="123" maxlength="4" autocomplete="cc-csc" />
+                      <input type="text" id="card-cvc" class="form-control" placeholder="123" />
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="card-name">Name on Card</label>
-                    <input type="text" id="card-name" class="form-control" placeholder="Full name as on card" autocomplete="cc-name" />
                   </div>
                 </div>
               </div>
@@ -259,20 +274,20 @@
           <!-- Mini cart items -->
           <div style="display:flex;flex-direction:column;gap:var(--sp-sm);margin-bottom:var(--sp-md);padding-bottom:var(--sp-md);border-bottom:1px solid rgba(255,255,255,0.06)">
             <div style="display:flex;gap:var(--sp-sm);align-items:center">
-              <img src="https://images.unsplash.com/photo-1601121141461-9d6647bef0a1?w=80&q=60&auto=format&fit=crop" alt="Gold Bangle" style="width:56px;height:56px;object-fit:cover;border-radius:4px;border:1px solid rgba(201,168,76,0.2)" />
+              <img src="https://images.unsplash.com/photo-1601121141461-9d6647bef0a1?w=80&q=60&auto=format&fit=crop" alt="Gold Bangle" style="width:56px;height:56px;object-fit:cover;border-radius:4px;border:1px solid rgba(0,0,0,0.1)" />
               <div style="flex:1">
-                <p style="font-size:var(--fs-xs);color:var(--clr-white);font-weight:500">18K Gold Diamond Bangle</p>
-                <p style="font-size:var(--fs-xs);color:var(--clr-gray-600)">Qty: 1</p>
+                <p style="font-size:var(--fs-xs);color:#2d2d2d;font-weight:600">18K Gold Diamond Bangle</p>
+                <p style="font-size:var(--fs-xs);color:#666666">Quantity: 1</p>
               </div>
-              <span style="color:var(--clr-gold);font-weight:600;font-size:var(--fs-sm)">$189.00</span>
+              <span style="color:#800000;font-weight:600;font-size:var(--fs-sm)">$189.00</span>
             </div>
             <div style="display:flex;gap:var(--sp-sm);align-items:center">
-              <img src="https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=80&q=60&auto=format&fit=crop" alt="Pearl Pendant" style="width:56px;height:56px;object-fit:cover;border-radius:4px;border:1px solid rgba(201,168,76,0.2)" />
+              <img src="https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=80&q=60&auto=format&fit=crop" alt="Pearl Pendant" style="width:56px;height:56px;object-fit:cover;border-radius:4px;border:1px solid rgba(0,0,0,0.1)" />
               <div style="flex:1">
-                <p style="font-size:var(--fs-xs);color:var(--clr-white);font-weight:500">Pearl &amp; Gold Drop Pendant</p>
-                <p style="font-size:var(--fs-xs);color:var(--clr-gray-600)">Qty: 1</p>
+                <p style="font-size:var(--fs-xs);color:#2d2d2d;font-weight:600">Pearl &amp; Gold Drop Pendant</p>
+                <p style="font-size:var(--fs-xs);color:#666666">Quantity: 1</p>
               </div>
-              <span style="color:var(--clr-gold);font-weight:600;font-size:var(--fs-sm)">$215.00</span>
+              <span style="color:#800000;font-weight:600;font-size:var(--fs-sm)">$215.00</span>
             </div>
           </div>
 

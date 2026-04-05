@@ -4,7 +4,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ── PAYMENT METHOD SELECT ──────────────────────────────────
-  const paymentMethods = ['pm-card', 'pm-paypal', 'pm-bank'];
+  const paymentMethods = ['pm-mpesa', 'pm-card', 'pm-paypal', 'pm-bank'];
   const shippingMethods = ['ship-standard', 'ship-express', 'ship-overnight'];
   const shippingCosts = { 'ship-standard': 0, 'ship-express': 14.99, 'ship-overnight': 29.99 };
 
@@ -13,8 +13,23 @@ document.addEventListener('DOMContentLoaded', () => {
     el?.addEventListener('click', () => {
       paymentMethods.forEach(pid => document.getElementById(pid)?.classList.remove('selected'));
       el.classList.add('selected');
+      
       const cardFields = document.querySelector('.card-fields');
-      if (cardFields) cardFields.style.display = id === 'pm-card' ? 'flex' : 'none';
+      const mpesaFields = document.querySelector('.mpesa-fields');
+      
+      if (id === 'pm-card') {
+        if (cardFields) cardFields.style.display = 'block';
+        if (mpesaFields) mpesaFields.style.display = 'none';
+      } else if (id === 'pm-mpesa') {
+        if (cardFields) cardFields.style.display = 'none';
+        if (mpesaFields) mpesaFields.style.display = 'block';
+        // Reset M-Pesa state
+        document.getElementById('stk-idle').style.display = 'block';
+        document.getElementById('stk-processing').style.display = 'none';
+      } else {
+        if (cardFields) cardFields.style.display = 'none';
+        if (mpesaFields) mpesaFields.style.display = 'none';
+      }
     });
   });
 
@@ -27,23 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const cost = shippingCosts[id];
       if (costEl) {
         costEl.textContent = cost === 0 ? 'Free' : `$${cost.toFixed(2)}`;
-        costEl.style.color = cost === 0 ? '#3da052' : 'var(--clr-white)';
+        costEl.style.color = cost === 0 ? '#3da052' : '#2d2d2d';
       }
     });
-  });
-
-  // ── CARD NUMBER FORMATTING ─────────────────────────────────
-  const cardNumber = document.getElementById('card-number');
-  cardNumber?.addEventListener('input', e => {
-    let v = e.target.value.replace(/\D/g, '').substring(0, 16);
-    e.target.value = v.replace(/(.{4})/g, '$1 ').trim();
-  });
-
-  const cardExpiry = document.getElementById('card-expiry');
-  cardExpiry?.addEventListener('input', e => {
-    let v = e.target.value.replace(/\D/g, '').substring(0, 4);
-    if (v.length >= 2) v = v.substring(0, 2) + ' / ' + v.substring(2);
-    e.target.value = v;
   });
 
   // ── ORDER SUBMISSION ───────────────────────────────────────
@@ -55,38 +56,67 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Please accept the Terms of Service to continue.');
       return;
     }
+
+    const isMpesa = document.getElementById('pm-mpesa')?.classList.contains('selected');
     const btn = document.getElementById('place-order-btn');
+    
+    if (isMpesa) {
+      const phone = document.getElementById('mpesa-phone')?.value;
+      if (!phone || phone.length < 10) {
+        alert('Please enter a valid M-Pesa phone number.');
+        return;
+      }
+      document.getElementById('stk-idle').style.display = 'none';
+      document.getElementById('stk-processing').style.display = 'block';
+      btn.textContent = 'Awaiting PIN Entry...';
+      btn.disabled = true;
+      
+      // Simulate STK Push flow
+      setTimeout(() => {
+        completeOrder();
+      }, 5000);
+      return;
+    }
+
     btn.textContent = 'Processing…';
     btn.disabled = true;
     btn.style.opacity = '0.7';
 
     setTimeout(() => {
-      // Redirect to a success state (simulate)
+      completeOrder();
+    }, 2200);
+
+    function completeOrder() {
+      const currentMethod = document.querySelector('.payment-method.selected .pm-name')?.textContent || 'Payment';
+      const receiptHtml = isMpesa ? `
+        <div style="display:flex;justify-content:space-between;font-size:var(--fs-sm);color:#666666;padding:6px 0">
+           <span>M-Pesa Receipt:</span><strong style="color:#2d2d2d">R7${Math.floor(Math.random()*1000000)}</strong>
+        </div>
+      ` : '';
+
       document.querySelector('.container').innerHTML = `
         <div style="text-align:center;padding:var(--sp-2xl) 0;max-width:560px;margin:0 auto">
-          <div style="width:80px;height:80px;border-radius:50%;background:var(--gradient-gold);display:flex;align-items:center;justify-content:center;margin:0 auto var(--sp-lg);font-size:2rem;color:var(--clr-black)">✓</div>
-          <p style="color:var(--clr-gold);letter-spacing:0.25em;font-size:var(--fs-xs);text-transform:uppercase;margin-bottom:var(--sp-sm)">Order Confirmed</p>
-          <h1 style="font-size:clamp(2rem,4vw,3rem);margin-bottom:var(--sp-md)">Thank You For Your Order!</h1>
-          <p style="color:var(--clr-gray-400);font-size:var(--fs-md);line-height:1.8;margin-bottom:var(--sp-lg)">Your luxury jewelry is on its way. You'll receive a confirmation email shortly with your tracking details. We can't wait for you to receive your beautiful pieces!</p>
-          <div style="background:var(--clr-dark-2);border:1px solid rgba(201,168,76,0.15);border-radius:var(--radius-md);padding:var(--sp-lg);margin-bottom:var(--sp-lg);text-align:left">
-            <p style="color:var(--clr-gold);font-size:var(--fs-xs);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:var(--sp-sm)">Order Details</p>
-            <div style="display:flex;justify-content:space-between;font-size:var(--fs-sm);color:var(--clr-gray-400);padding:6px 0">
-              <span>Order Number:</span><strong style="color:var(--clr-white)">#TGH-247891</strong>
+          <div style="width:80px;height:80px;border-radius:50%;background:#800000;display:flex;align-items:center;justify-content:center;margin:0 auto var(--sp-lg);font-size:2rem;color:white">✓</div>
+          <p style="color:#800000;letter-spacing:0.25em;font-size:var(--fs-xs);text-transform:uppercase;margin-bottom:var(--sp-sm)">Order Confirmed</p>
+          <h1 style="font-size:clamp(2rem,4vw,3rem);margin-bottom:var(--sp-md);color:#1a1a1a">Thank You For Your Order!</h1>
+          <p style="color:#666666;font-size:var(--fs-md);line-height:1.8;margin-bottom:var(--sp-lg)">Your luxury jewelry is on its way. Use the order number below to track your delivery status.</p>
+          <div style="background:#fdfaf9;border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius-md);padding:var(--sp-lg);margin-bottom:var(--sp-lg);text-align:left">
+            <p style="color:#800000;font-size:var(--fs-xs);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:var(--sp-sm)">Order Details</p>
+            <div style="display:flex;justify-content:space-between;font-size:var(--fs-sm);color:#666666;padding:6px 0">
+              <span>Order Number:</span><strong style="color:#2d2d2d">#TGH-247891</strong>
             </div>
-            <div style="display:flex;justify-content:space-between;font-size:var(--fs-sm);color:var(--clr-gray-400);padding:6px 0">
-              <span>Estimated Delivery:</span><strong style="color:var(--clr-white)">Apr 8 – Apr 10, 2026</strong>
+            <div style="display:flex;justify-content:space-between;font-size:var(--fs-sm);color:#666666;padding:6px 0">
+              <span>Payment Method:</span><strong style="color:#2d2d2d">${currentMethod}</strong>
             </div>
-            <div style="display:flex;justify-content:space-between;font-size:var(--fs-sm);color:var(--clr-gray-400);padding:6px 0">
-              <span>Total Charged:</span><strong style="color:var(--clr-gold)">$436.32</strong>
-            </div>
+            ${receiptHtml}
           </div>
           <div style="display:flex;gap:var(--sp-sm);justify-content:center;flex-wrap:wrap">
-            <a href="shop.html" class="btn btn-gold">Continue Shopping</a>
-            <a href="index.html" class="btn btn-outline-gold">Back to Home</a>
+            <a href="shop.html" class="btn btn-maroon" style="background:#800000;color:white;padding:12px 24px;border-radius:30px;text-decoration:none">Continue Shopping</a>
+            <a href="index.html" class="btn btn-outline" style="border:1px solid #800000;color:#800000;padding:12px 24px;border-radius:30px;text-decoration:none">Back to Home</a>
           </div>
         </div>
       `;
-    }, 2200);
+    }
   });
 
 });

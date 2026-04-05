@@ -256,13 +256,19 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.addEventListener('click', () => {
         btn.classList.toggle('active');
         const svg = btn.querySelector('svg');
+        const wishlistBadge = document.querySelector('.wishlist-count');
+        let currentCount = parseInt(wishlistBadge?.textContent || '0');
+
         if (btn.classList.contains('active')) {
           svg.style.fill = 'var(--clr-gold)';
           svg.style.stroke = 'var(--clr-gold)';
+          currentCount++;
         } else {
           svg.style.fill = 'none';
           svg.style.stroke = 'currentColor';
+          currentCount = Math.max(0, currentCount - 1);
         }
+        if (wishlistBadge) wishlistBadge.textContent = currentCount;
       });
     });
   };

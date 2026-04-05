@@ -371,12 +371,12 @@
 /* Order Summary */
 .order-summary-box {
   background: var(--clr-dark-2);
-  border: 1px solid rgba(244,164,192,0.15);
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: var(--radius-lg);
   padding: var(--sp-lg);
   box-shadow: var(--shadow-md);
   position: sticky;
-  top: calc(var(--header-h) + var(--sp-md));
+  top: 100px;
 }
 .order-summary-title {
   font-size: var(--fs-md);
@@ -389,10 +389,18 @@
   padding-bottom: var(--sp-sm);
   border-bottom: 1px solid rgba(244,164,192,0.12);
 }
-.summary-line { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; font-size: var(--fs-sm); color: var(--clr-text-muted); }
-.summary-line strong { color: var(--clr-text); font-size: var(--fs-base); font-weight: 500;}
-.summary-total { border-top: 1px solid rgba(244,164,192,0.2); margin-top: var(--sp-sm); padding-top: var(--sp-max); }
-.summary-total-price { color: var(--clr-gold); font-size: var(--fs-xl); font-weight: 500; font-family: var(--font-serif); }
+.summary-line { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 10px 0; 
+  font-size: var(--fs-sm); 
+  color: #2d2d2d; 
+}
+.summary-line span:first-child { opacity: 0.85; font-weight: 500; }
+.summary-line strong { color: #1a1a1a; font-size: var(--fs-base); font-weight: 600;}
+.summary-total { border-top: 1px solid rgba(0,0,0,0.1); margin-top: var(--sp-md); padding-top: var(--sp-lg); }
+.summary-total-price { color: #800000; font-size: var(--fs-2xl); font-weight: 600; font-family: var(--font-serif); }
 .checkout-btn { margin-top: var(--sp-md); }
 
 /* ── CHECKOUT PAGE ──────────────────────────────────────────── */
