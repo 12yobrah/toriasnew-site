@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Torias Glam Haven – Our Story</title>
+  <meta name="description" content="Learn the story behind Torias Glam Haven – a luxury jewelry brand born from a love of elegance, confidence, and timeless beauty. Discover our mission and values." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/about.css" />
+</head>
+<body>
+
+  <div class="promo-banner" id="promo-banner">
+    <div class="promo-marquee">
+      <div class="marquee-content">
+        <span>✦ New Collection Arriving Soon ✦</span>
+        <span>Welcome to Torias Glam Haven</span>
+        <span>Call/WhatsApp: +254 701 441 556</span>
+        <span>✦ New Collection Arriving Soon ✦</span>
+        <span>Welcome to Torias Glam Haven</span>
+        <span>Call/WhatsApp: +254 701 441 556</span>
+      </div>
+    </div>
+    <button class="promo-close" id="promo-close" aria-label="Close banner">✕</button>
+  </div>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner container">
+      <a href="index.html" class="logo" aria-label="Torias Glam Haven Home">
+        <span class="logo-ornament">✦</span>
+        <div class="logo-text"><span class="logo-main">Torias</span><span class="logo-sub">Glam Haven</span></div>
+        <span class="logo-ornament">✦</span>
+      </a>
+
+      <nav class="main-nav" id="main-nav">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-dropdown">
+            <a href="shop.html" class="nav-link">Shop <span class="dropdown-arrow">▾</span></a>
+            <ul class="dropdown-menu">
+              <li><a href="shop.html?cat=bracelets">Bracelets</a></li>
+              <li><a href="shop.html?cat=necklaces">Necklaces</a></li>
+              <li><a href="shop.html?cat=earrings">Earrings</a></li>
+              <li><a href="shop.html?cat=sets">Jewelry Sets</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html" class="nav-link active">About Us</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn search-btn" id="search-btn" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+
+        <a href="#" class="icon-btn wishlist-btn" aria-label="Wishlist">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="icon-badge wishlist-count">3</span>
+        </a>
+        <a href="cart.html" class="icon-btn cart-btn" aria-label="Shopping cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="icon-badge cart-count">2</span>
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="about-hero" aria-label="About us hero">
+    <div class="about-hero-bg">
+      <img src="img/hero-pendant.jpg" alt="Jewelry being crafted" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="about-hero-content container">
+      <p class="overline animate-up">Our Story</p>
+      <h1 class="animate-up">Born From a Love of<br /><em>Elegance &amp; Self-Expression</em></h1>
+      <p class="animate-up" style="max-width:560px;color:rgba(255,255,255,0.75);font-size:var(--fs-md);line-height:1.8;">We believe that jewelry is more than an accessory – it's a reflection of who you are and who you're becoming.</p>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- BRAND STORY -->
+    <section class="about-story section" aria-label="Brand story">
+      <div class="container">
+        <div class="about-story-grid">
+          <div class="about-story-img">
+            <img src="img/collection-circle.jpg" alt="Luxury gold jewelry pieces" loading="lazy" />
+            <div class="about-img-accent"></div>
+          </div>
+          <div class="about-story-text animate-up">
+            <p class="overline">The Beginning</p>
+            <h2>How Torias Glam Haven Came to Be</h2>
+            <div class="title-divider" style="justify-content:flex-start;margin:var(--sp-sm) 0"><span>✦</span></div>
+            <p>Torias Glam Haven was founded with a single, powerful vision: to make luxury jewelry accessible to every woman who believes she deserves to sparkle. What started as a passion project — sourcing the finest gems and crafting pieces in small batches — has grown into a celebrated jewelry brand trusted by thousands of customers worldwide.</p>
+            <p style="margin-top:var(--sp-sm)">Our founder, a lifelong lover of fine jewelry, saw a gap in the market: beautiful, high-quality pieces at prices that don't require a trust fund. She built Torias Glam Haven on honesty, craftsmanship, and the belief that elegance should be for everyone.</p>
+            <div class="about-signature">
+              <p class="signature-text">— Tória, Founder &amp; Creative Director</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS STRIP -->
+    <section class="about-stats section section--blush" aria-label="Brand statistics">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item animate-up">
+            <div class="stat-number">10K+</div>
+            <div class="stat-label">Happy Customers</div>
+          </div>
+          <div class="stat-item animate-up">
+            <div class="stat-number">200+</div>
+            <div class="stat-label">Unique Designs</div>
+          </div>
+          <div class="stat-item animate-up">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Countries Served</div>
+          </div>
+          <div class="stat-item animate-up">
+            <div class="stat-number">4.9★</div>
+            <div class="stat-label">Average Rating</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION & VISION -->
+    <section class="about-mission section" aria-label="Mission and vision">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="overline">Our Purpose</p>
+          <h2 class="section-title">Mission &amp; Vision</h2>
+          <div class="title-divider"><span>✦</span></div>
+        </div>
+        <div class="mission-grid">
+          <div class="mission-card animate-up">
+            <div class="mission-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+            <h3>Our Mission</h3>
+            <p>To design and deliver exquisitely crafted jewelry that inspires confidence, celebrates individuality, and makes every woman feel like royalty — without the royal price tag. We are committed to ethical sourcing, transparent pricing, and unmatched customer service at every touchpoint.</p>
+          </div>
+          <div class="mission-card animate-up">
+            <div class="mission-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h3>Our Vision</h3>
+            <p>To become the world's most trusted destination for accessible luxury jewelry — a brand synonymous with timeless elegance, authenticity, and the empowerment of women everywhere. We envision a world where every milestone, every occasion, and every everyday moment is adorned with beauty.</p>
+          </div>
+          <div class="mission-card animate-up">
+            <div class="mission-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <h3>Our Values</h3>
+            <p>Authenticity in every gem. Excellence in every craft. Transparency in every transaction. Joy in every unboxing. We measure success not by pieces sold, but by the smiles we create — the woman who gifted herself her first luxury piece, the mother who passed it to her daughter.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CRAFTSMANSHIP -->
+    <section class="about-craft section section--blush" aria-label="Our craftsmanship">
+      <div class="container">
+        <div class="about-craft-inner">
+          <div class="about-craft-text animate-up">
+            <p class="overline">Handcrafted Excellence</p>
+            <h2>Made With Intention,<br /><em>Worn With Pride</em></h2>
+            <div class="title-divider" style="justify-content:flex-start;margin:var(--sp-sm) 0"><span>✦</span></div>
+            <p>Every Torias Glam Haven piece begins as a sketch — a vision of beauty translated into metal and gem. Our master craftspeople work with ethically sourced materials, precision tools, and an attention to detail that borders on obsession. From the first mold to the final polish, each piece passes through a rigorous quality control process before it reaches your hands.</p>
+            <p style="margin-top:var(--sp-sm)">We partner only with suppliers who share our values of sustainable, conflict-free sourcing. Because true luxury begins with integrity.</p>
+            <div class="craft-pillars">
+              <div class="craft-pillar">
+                <span class="pillar-num">01</span>
+                <div>
+                  <strong>Ethical Sourcing</strong>
+                  <p>All gems are conflict-free and certified</p>
+                </div>
+              </div>
+              <div class="craft-pillar">
+                <span class="pillar-num">02</span>
+                <div>
+                  <strong>Hand Finishing</strong>
+                  <p>Each piece is hand-polished to perfection</p>
+                </div>
+              </div>
+              <div class="craft-pillar">
+                <span class="pillar-num">03</span>
+                <div>
+                  <strong>Quality Certified</strong>
+                  <p>Rigorous QC before every shipment</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="about-craft-images">
+            <img src="img/bracelet-luxe.jpg" alt="Luxury jewelry craftsmanship" loading="lazy" class="craft-img-main" />
+            <img src="img/blue-pendant.jpg" alt="Gold necklace detail" loading="lazy" class="craft-img-secondary" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="about-cta section" aria-label="Shop call to action">
+      <div class="container text-center">
+        <p class="overline">Ready to Shine?</p>
+        <h2 class="section-title">Find Your<br /><em>Perfect Piece</em></h2>
+        <p style="color:var(--clr-gray-400);max-width:480px;margin:var(--sp-md) auto var(--sp-lg);font-size:var(--fs-md)">Browse our full collection of luxury bracelets, necklaces, earrings, and jewelry sets — each crafted to make you feel extraordinary.</p>
+        <div style="display:flex;justify-content:center;gap:var(--sp-sm);flex-wrap:wrap">
+          <a href="shop.html" class="btn btn-gold">Shop the Collection</a>
+          <a href="contact.html" class="btn btn-outline-gold">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="footer-logo">
+              <span class="logo-ornament">✦</span>
+              <div class="logo-text"><span class="logo-main">Torias</span><span class="logo-sub">Glam Haven</span></div>
+              <span class="logo-ornament">✦</span>
+            </a>
+            <p class="footer-tagline">Where elegance meets confidence.</p>
+            <div class="social-links">
+              <a href="#" aria-label="Instagram" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/></svg></a>
+              <a href="#" aria-label="Facebook" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-title">Navigation</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="shop.html">Shop</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-title">Customer Care</h4>
+            <ul class="footer-links">
+              <li><a href="#">Shipping Policy</a></li>
+              <li><a href="#">Returns</a></li>
+              <li><a href="#">FAQs</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 Torias Glam Haven. All rights reserved.</p>
+        <div class="payment-icons">
+          <span class="payment-icon">VISA</span>
+          <span class="payment-icon">MC</span>
+          <span class="payment-icon">PayPal</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+  <!-- SEARCH OVERLAY -->
+  <div class="search-overlay" id="search-overlay" hidden>
+    <div class="search-container container">
+      <div class="search-header">
+        <input type="text" id="search-input" placeholder="Search for jewelry..." aria-label="Search input" />
+        <button id="search-close" class="search-close-btn" aria-label="Close search">✕</button>
+      </div>
+      <div id="search-results" class="search-results-grid">
+        <!-- Results injected via main.js -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>

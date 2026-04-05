@@ -1,0 +1,12 @@
+# Project specifics
+.gemini/
+.antigravity/
+*.log
+tmp/
+
+# OS specific
+Thumbs.db
+.DS_Store
+
+# Version control
+.git/

@@ -1,0 +1,211 @@
+/* ============================================================
+   ABOUT PAGE – SPECIFIC STYLES (Feminine Luxe)
+   ============================================================ */
+
+/* ── HERO ───────────────────────────────────────────────────── */
+.about-hero {
+  position: relative;
+  height: 80vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  padding-top: var(--header-h);
+  overflow: hidden;
+  isolation: isolate;
+}
+.about-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.85) 100%);
+  z-index: 1;
+}
+.about-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--clr-black);
+}
+.about-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.9;
+}
+.about-hero-content { position: relative; z-index: 2; text-align: center; width: 100%; }
+.about-hero-content h1 { 
+  font-size: clamp(3rem, 7vw, 5.5rem); 
+  font-family: var(--font-serif); 
+  font-weight: 300; 
+  color: var(--clr-white);
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  letter-spacing: -0.02em;
+}
+
+/* ── STORY ──────────────────────────────────────────────────── */
+.about-story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2xl);
+  align-items: center;
+}
+.about-story-img { position: relative; }
+.about-story-img img {
+  border-radius: var(--radius-lg);
+  width: 100%;
+  height: 540px;
+  object-fit: cover;
+}
+.about-img-accent {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  width: 180px;
+  height: 180px;
+  border: 1px solid var(--clr-gold);
+  border-radius: var(--radius-md);
+  z-index: 0;
+  pointer-events: none;
+}
+.about-story-text h2 { margin-bottom: var(--sp-md); font-family: var(--font-serif); font-weight: 300; color: var(--clr-text); }
+.about-story-text p { color: var(--clr-text-body); line-height: 1.9; }
+.about-signature { margin-top: var(--sp-lg); padding-top: var(--sp-md); border-top: 1px solid rgba(244,164,192,0.15); }
+.signature-text { font-family: var(--font-logo); font-size: 2rem; color: var(--clr-gold); }
+
+/* ── STATS ──────────────────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-lg);
+  text-align: center;
+}
+.stat-item {
+  padding: var(--sp-lg);
+  border: 1px solid rgba(244,164,192,0.12);
+  border-radius: var(--radius-md);
+  background: var(--clr-blush-light);
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+.stat-item:hover {
+  border-color: rgba(244,164,192,0.4);
+  transform: translateY(-4px);
+  background: var(--clr-blush-light);
+}
+.stat-number {
+  font-family: var(--font-serif);
+  font-size: var(--fs-4xl);
+  color: var(--clr-gold);
+  line-height: 1;
+  margin-bottom: var(--sp-xs);
+}
+.stat-label {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── MISSION ────────────────────────────────────────────────── */
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-md);
+}
+.mission-card {
+  padding: var(--sp-xl) var(--sp-lg);
+  border: 1px solid rgba(244,164,192,0.12);
+  border-radius: var(--radius-md);
+  background: var(--clr-blush-light);
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+.mission-card:hover {
+  border-color: rgba(244,164,192,0.35);
+  transform: translateY(-4px);
+  background: var(--clr-blush-light);
+}
+.mission-icon {
+  width: 68px;
+  height: 68px;
+  border: 1px solid rgba(244,164,192,0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-gold);
+  margin: 0 auto var(--sp-md);
+  transition: var(--transition);
+  background: var(--clr-blush-light);
+}
+.mission-card:hover .mission-icon {
+  background: var(--clr-blush-light);
+  border-color: var(--clr-gold);
+}
+.mission-card h3 { margin-bottom: var(--sp-sm); font-family: var(--font-serif); font-weight: 400; color: var(--clr-text); }
+.mission-card p { color: var(--clr-text-muted); font-size: var(--fs-sm); line-height: 1.9; }
+
+/* ── CRAFTSMANSHIP ──────────────────────────────────────────── */
+.about-craft-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2xl);
+  align-items: center;
+}
+.about-craft-text h2 { margin-bottom: var(--sp-md); font-family: var(--font-serif); font-weight: 300; color: var(--clr-text); }
+.about-craft-text p { color: var(--clr-text-body); line-height: 1.9; }
+.craft-pillars { display: flex; flex-direction: column; gap: var(--sp-md); margin-top: var(--sp-lg); }
+.craft-pillar { display: flex; align-items: flex-start; gap: var(--sp-md); }
+.pillar-num {
+  font-family: var(--font-serif);
+  font-size: var(--fs-3xl);
+  color: rgba(244,164,192,0.3);
+  line-height: 1;
+  font-weight: 700;
+  min-width: 50px;
+}
+.craft-pillar strong { display: block; color: var(--clr-gold); margin-bottom: 4px; font-weight: 500; font-size: var(--fs-md); }
+.craft-pillar p { color: var(--clr-text-muted); font-size: var(--fs-sm); }
+.about-craft-images {
+  position: relative;
+  height: 540px;
+}
+.craft-img-main {
+  width: 78%;
+  height: 80%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.craft-img-secondary {
+  width: 55%;
+  height: 50%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border: 4px solid #fff;
+}
+
+/* ── ABOUT CTA ──────────────────────────────────────────────── */
+.about-cta {
+  background-image: radial-gradient(ellipse at center, rgba(244,164,192,0.08) 0%, transparent 60%);
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .about-story-grid,
+  .about-craft-inner { grid-template-columns: 1fr; }
+  .about-story-img img { height: 360px; }
+  .about-craft-images { height: 380px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .mission-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-hero { height: 55vh; }
+}

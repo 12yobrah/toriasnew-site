@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shopping Cart | Torias Glam Haven</title>
+  <meta name="description" content="Review your selected luxury jewelry items and proceed to checkout at Torias Glam Haven." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body>
+
+  <div class="promo-banner" id="promo-banner">
+    <p>✦ Free Delivery on Orders Above $150 &nbsp;|&nbsp; Use Code: <strong>GLAMFREE</strong> ✦</p>
+    <button class="promo-close" id="promo-close">✕</button>
+  </div>
+
+  <header class="site-header scrolled" id="site-header">
+    <div class="header-inner container">
+      <a href="index.html" class="logo"><span class="logo-ornament">✦</span><div class="logo-text"><span class="logo-main">Torias</span><span class="logo-sub">Glam Haven</span></div><span class="logo-ornament">✦</span></a>
+      <nav class="main-nav" id="main-nav">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-dropdown"><a href="shop.html" class="nav-link">Shop <span class="dropdown-arrow">▾</span></a><ul class="dropdown-menu"><li><a href="shop.html?cat=bracelets">Bracelets</a></li><li><a href="shop.html?cat=necklaces">Necklaces</a></li><li><a href="shop.html?cat=earrings">Earrings</a></li><li><a href="shop.html?cat=sets">Jewelry Sets</a></li></ul></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn search-btn" id="search-btn" aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+        <a href="cart.html" class="icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="icon-badge cart-count">2</span></a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="search-overlay" id="search-overlay" hidden><div class="search-inner"><input type="text" id="search-input" class="search-field" placeholder="Search for jewelry…" /><button class="search-submit"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button><button class="search-close" id="search-close">✕</button></div></div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <span class="page-header-ornament">✦ YOUR SELECTION ✦</span>
+      <h1>Shopping Cart</h1>
+    </div>
+  </div>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><span>Cart</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <main>
+    <div class="container">
+      <div class="cart-page-layout">
+
+        <!-- CART ITEMS -->
+        <div class="cart-items-section">
+          <div class="cart-table-header" aria-hidden="true">
+            <span>Product</span>
+            <span>Price</span>
+            <span>Quantity</span>
+            <span>Subtotal</span>
+            <span></span>
+          </div>
+
+          <!-- Item 1 -->
+          <div class="cart-item" id="cart-item-1">
+            <div class="cart-item-product">
+              <img src="https://images.unsplash.com/photo-1601121141461-9d6647bef0a1?w=160&q=80&auto=format&fit=crop" alt="18K Gold Diamond Bangle" class="cart-item-img" />
+              <div class="cart-item-info">
+                <h4>18K Gold Diamond Bangle</h4>
+                <p>Material: 18K Gold &nbsp;|&nbsp; Category: Bracelets</p>
+              </div>
+            </div>
+            <div class="cart-item-price">$189.00</div>
+            <div class="qty-control" style="justify-self:start">
+              <button class="qty-btn cart-qty-minus" data-item="1" aria-label="Decrease">−</button>
+              <input type="number" class="cart-qty-input" id="cart-qty-1" value="1" min="1" max="10" aria-label="Quantity" />
+              <button class="qty-btn cart-qty-plus" data-item="1" aria-label="Increase">+</button>
+            </div>
+            <div class="cart-item-subtotal" id="cart-subtotal-1">$189.00</div>
+            <button class="cart-item-remove" data-item="1" aria-label="Remove item">✕</button>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="cart-item" id="cart-item-2">
+            <div class="cart-item-product">
+              <img src="https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=160&q=80&auto=format&fit=crop" alt="Pearl Drop Pendant" class="cart-item-img" />
+              <div class="cart-item-info">
+                <h4>Pearl &amp; Gold Drop Pendant</h4>
+                <p>Material: 18K Gold &amp; Pearl &nbsp;|&nbsp; Category: Necklaces</p>
+              </div>
+            </div>
+            <div class="cart-item-price">$215.00</div>
+            <div class="qty-control" style="justify-self:start">
+              <button class="qty-btn cart-qty-minus" data-item="2" aria-label="Decrease">−</button>
+              <input type="number" class="cart-qty-input" id="cart-qty-2" value="1" min="1" max="10" aria-label="Quantity" />
+              <button class="qty-btn cart-qty-plus" data-item="2" aria-label="Increase">+</button>
+            </div>
+            <div class="cart-item-subtotal" id="cart-subtotal-2">$215.00</div>
+            <button class="cart-item-remove" data-item="2" aria-label="Remove item">✕</button>
+          </div>
+
+          <!-- Coupon -->
+          <div class="coupon-row">
+            <input type="text" class="form-control" id="coupon-code" placeholder="Enter coupon code…" aria-label="Coupon code" style="max-width:280px" />
+            <button class="btn btn-outline-gold" id="apply-coupon">Apply Coupon</button>
+            <a href="shop.html" class="btn btn-dark" style="margin-left:auto">Continue Shopping</a>
+          </div>
+        </div>
+
+        <!-- ORDER SUMMARY -->
+        <aside class="order-summary-box" aria-label="Order summary">
+          <div class="order-summary-title">Order Summary</div>
+
+          <div class="summary-line">
+            <span>Subtotal (2 items)</span>
+            <span id="summary-subtotal">$404.00</span>
+          </div>
+          <div class="summary-line" id="coupon-discount-row" style="display:none">
+            <span>Discount (GLAMFREE)</span>
+            <span style="color:var(--clr-gold)" id="summary-discount">-$0.00</span>
+          </div>
+          <div class="summary-line">
+            <span>Shipping</span>
+            <span style="color:#3da052">Free</span>
+          </div>
+          <div class="summary-line">
+            <span>Estimated Tax</span>
+            <span id="summary-tax">$32.32</span>
+          </div>
+          <div class="summary-line summary-total">
+            <strong>Total</strong>
+            <span class="summary-total-price" id="summary-total">$436.32</span>
+          </div>
+
+          <a href="checkout.html" class="btn btn-gold full-width checkout-btn" id="checkout-btn">Proceed to Checkout</a>
+
+          <div style="margin-top:var(--sp-md);text-align:center">
+            <p style="font-size:var(--fs-xs);color:var(--clr-gray-600);margin-bottom:8px">Secure checkout powered by</p>
+            <div class="payment-icons" style="justify-content:center">
+              <span class="payment-icon">VISA</span>
+              <span class="payment-icon">MC</span>
+              <span class="payment-icon">PayPal</span>
+              <span class="payment-icon">Stripe</span>
+            </div>
+          </div>
+
+          <div style="margin-top:var(--sp-md);padding-top:var(--sp-md);border-top:1px solid rgba(255,255,255,0.05)">
+            <div style="display:flex;align-items:center;gap:8px;font-size:var(--fs-xs);color:var(--clr-gray-400);margin-bottom:8px">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--clr-gold)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              SSL Encrypted – 100% Secure
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:var(--fs-xs);color:var(--clr-gray-400)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--clr-gold)" stroke-width="1.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+              30-Day Easy Returns
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-top"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="index.html" class="footer-logo"><span class="logo-ornament">✦</span><div class="logo-text"><span class="logo-main">Torias</span><span class="logo-sub">Glam Haven</span></div><span class="logo-ornament">✦</span></a><p class="footer-tagline">Where elegance meets confidence.</p></div><div class="footer-col"><h4 class="footer-col-title">Navigation</h4><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div><div class="footer-col"><h4 class="footer-col-title">Customer Care</h4><ul class="footer-links"><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">FAQs</a></li></ul></div></div></div></div>
+    <div class="footer-bottom"><div class="container"><p>© 2026 Torias Glam Haven. All rights reserved.</p><div class="payment-icons"><span class="payment-icon">VISA</span><span class="payment-icon">MC</span><span class="payment-icon">PayPal</span></div></div></div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

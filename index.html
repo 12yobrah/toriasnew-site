@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Torias Glam Haven | Timeless Luxury Jewelry</title>
+  <meta name="description" content="Discover Torias Glam Haven – a curated collection of luxury bracelets, necklaces, earrings, and jewelry sets crafted for elegance and timeless beauty." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+  <!-- PROMO BANNER -->
+  <div class="promo-banner" id="promo-banner">
+    <div class="promo-marquee">
+      <div class="marquee-content">
+        <span>✦ New Collection Arriving Soon ✦</span>
+        <span>Welcome to Torias Glam Haven</span>
+        <span>Call/WhatsApp: +254 701 441 556</span>
+        <span>✦ New Collection Arriving Soon ✦</span>
+        <span>Welcome to Torias Glam Haven</span>
+        <span>Call/WhatsApp: +254 701 441 556</span>
+      </div>
+    </div>
+    <button class="promo-close" id="promo-close" aria-label="Close banner">✕</button>
+  </div>
+
+  <!-- HEADER / NAV -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner container">
+      <a href="index.html" class="logo" aria-label="Torias Glam Haven Home">
+        <span class="logo-ornament">✦</span>
+        <div class="logo-text">
+          <span class="logo-main">Torias</span>
+          <span class="logo-sub">Glam Haven</span>
+        </div>
+        <span class="logo-ornament">✦</span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li class="nav-dropdown">
+            <a href="shop.html" class="nav-link">Shop <span class="dropdown-arrow">▾</span></a>
+            <ul class="dropdown-menu">
+              <li><a href="shop.html?cat=bracelets">Bracelets</a></li>
+              <li><a href="shop.html?cat=necklaces">Necklaces</a></li>
+              <li><a href="shop.html?cat=earrings">Earrings</a></li>
+              <li><a href="shop.html?cat=sets">Jewelry Sets</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
++        <button class="icon-btn search-btn" id="search-btn" aria-label="Search">
++          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
++        </button>
+
+        <a href="#" class="icon-btn wishlist-btn" aria-label="Wishlist">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="icon-badge wishlist-count">3</span>
+        </a>
+        <a href="cart.html" class="icon-btn cart-btn" aria-label="Shopping cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="icon-badge cart-count">2</span>
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Categorical Sub-Nav (Zahabiya inspired) -->
+    <div class="nav-category-bar">
+      <div class="container">
+        <ul class="cat-nav-list">
+          <li><a href="shop.html">All Jewelry</a></li>
+          <li><a href="shop.html?filter=new">New In</a></li>
+          <li><a href="shop.html?filter=bestsellers">Best Sellers</a></li>
+          <li><a href="shop.html?cat=earrings">Earrings</a></li>
+          <li><a href="shop.html?cat=rings">Rings</a></li>
+          <li><a href="shop.html?cat=necklaces">Necklaces</a></li>
+          <li><a href="shop.html?cat=bracelets">Bracelets</a></li>
+        </ul>
+      </div>
+    </div>
+
+
+  </header>
+
+  <main>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero" aria-label="Hero section">
+      <div class="hero-bg">
+        <img src="img/hero-pendant.jpg" alt="Luxury gold pendant jewelry" class="hero-img" />
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="container hero-container">
+        <div class="hero-content">
+          <p class="hero-subtitle animate-fade">✦ Timeless Collection 2025 ✦</p>
+          <h1 class="hero-title animate-up">Elegant Jewelry for Every Occasion</h1>
+          <p class="hero-subline animate-up">Discover timeless beauty with our collection of bracelets, necklaces, earrings, and jewelry sets</p>
+          <div class="hero-desc animate-up">At Torias Glam Haven, we offer stylish, high-quality jewelry designed to elevate your everyday look and special moments with a touch of luxury and confidence</div>
+          <div class="hero-actions animate-up">
+            <a href="shop.html" class="btn btn-gold btn-lg">Shop Now</a>
+            <a href="shop.html?filter=collection" class="btn btn-outline btn-lg">Explore Collection</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll-indicator">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- TRUST STRIP (reference-inspired: icons row below hero) -->
+    <section class="trust-strip" aria-label="Why shop with us">
+      <div class="container">
+        <div class="trust-strip-inner">
+          <div class="trust-strip-item">
+            <div class="trust-strip-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="trust-strip-text">
+              <strong>Authenticity Guaranteed</strong>
+              <span>Certified genuine jewelry</span>
+            </div>
+          </div>
+          <div class="trust-strip-divider"></div>
+          <div class="trust-strip-item">
+            <div class="trust-strip-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            </div>
+            <div class="trust-strip-text">
+              <strong>Easy Exchange</strong>
+              <span>Hassle-free 30-day returns</span>
+            </div>
+          </div>
+          <div class="trust-strip-divider"></div>
+          <div class="trust-strip-item">
+            <div class="trust-strip-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <div class="trust-strip-text">
+              <strong>Secure Delivery</strong>
+              <span>Nationwide & Global shipping</span>
+            </div>
+          </div>
+          <div class="trust-strip-divider"></div>
+          <div class="trust-strip-item">
+            <div class="trust-strip-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="trust-strip-text">
+              <strong>24/7 Support</strong>
+              <span>Always here for you</span>
+            </div>
+          </div>
+          <div class="trust-strip-divider"></div>
+          <div class="trust-strip-item">
+            <div class="trust-strip-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div class="trust-strip-text">
+              <strong>Secure Payment</strong>
+              <span>SSL encrypted checkout</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="cat-quick section-sm" aria-label="Quick category links">
+      <div class="container">
+        <div class="cat-pills-row">
+          <a href="shop.html?cat=bracelets" class="cat-pill" id="pill-bracelets">
+            <div class="cat-pill-img">
+              <img src="img/bracelet-luxe.jpg" alt="Bracelets" loading="lazy" />
+            </div>
+            <span>Bracelets</span>
+          </a>
+          <a href="shop.html?cat=necklaces" class="cat-pill" id="pill-necklaces">
+            <div class="cat-pill-img">
+              <img src="img/collection-circle.jpg" alt="Necklaces" loading="lazy" />
+            </div>
+            <span>Necklaces</span>
+          </a>
+          <a href="shop.html?cat=rings" class="cat-pill" id="pill-rings">
+            <div class="cat-pill-img">
+              <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=200&h=200&q=75&auto=format&fit=crop&crop=center" alt="Rings" loading="lazy" />
+            </div>
+            <span>Rings</span>
+          </a>
+          <a href="shop.html?cat=earrings" class="cat-pill" id="pill-earrings">
+            <div class="cat-pill-img">
+              <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=200&h=200&q=75&auto=format&fit=crop" alt="Earrings" loading="lazy" />
+            </div>
+            <span>Earrings</span>
+          </a>
+          <a href="shop.html?cat=sets" class="cat-pill" id="pill-sets">
+            <div class="cat-pill-img">
+              <img src="https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=200&h=200&q=75&auto=format&fit=crop" alt="Jewelry Sets" loading="lazy" />
+            </div>
+            <span>Sets</span>
+          </a>
+          <a href="shop.html?cat=pendants" class="cat-pill" id="pill-pendants">
+            <div class="cat-pill-img">
+              <img src="img/blue-pendant.jpg" alt="Pendants" loading="lazy" />
+            </div>
+            <span>Pendants</span>
+          </a>
+          <a href="shop.html?cat=new" class="cat-pill cat-pill--gold" id="pill-new">
+            <div class="cat-pill-img">
+              <img src="img/hero-emerald.jpg" alt="New Arrivals" loading="lazy" />
+            </div>
+            <span>New In</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORY SHOWCASE -->
+    <section class="products section" id="jewelry-list" aria-label="Featured jewelry collections">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="overline">Curated For You</p>
+          <h2 class="section-title">Shop By Category</h2>
+          <div class="title-divider"><span>✦</span></div>
+        </div>
+        <div class="categories-grid">
+          <a href="shop.html?cat=bracelets" class="category-card" id="cat-bracelets">
+            <div class="category-img-wrap">
+              <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80&auto=format&fit=crop" alt="Gold bracelets collection" loading="lazy" />
+            </div>
+            <div class="category-info">
+              <h3>Bracelets</h3>
+              <span class="category-count">24 Items</span>
+            </div>
+          </a>
+          <a href="shop.html?cat=necklaces" class="category-card category-card--large" id="cat-necklaces">
+            <div class="category-img-wrap">
+              <img src="img/collection-circle.jpg" alt="Luxury necklaces collection" loading="lazy" />
+            </div>
+            <div class="category-info">
+              <h3>Necklaces</h3>
+              <span class="category-count">31 Items</span>
+            </div>
+          </a>
+          <a href="shop.html?cat=earrings" class="category-card" id="cat-earrings">
+            <div class="category-img-wrap">
+              <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80&auto=format&fit=crop" alt="Diamond earrings collection" loading="lazy" />
+            </div>
+            <div class="category-info">
+              <h3>Earrings</h3>
+              <span class="category-count">18 Items</span>
+            </div>
+          </a>
+          <a href="shop.html?cat=sets" class="category-card" id="cat-sets">
+            <div class="category-img-wrap">
+              <img src="img/hero-emerald.jpg" alt="Jewelry sets collection" loading="lazy" />
+            </div>
+            <div class="category-info">
+              <h3>Jewelry Sets</h3>
+              <span class="category-count">12 Items</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- FEATURED PRODUCTS -->
+    <section class="featured-products section section--blush" aria-label="Featured products">
+      <div class="container">
+        <div class="section-header-zahabiya">
+          <div class="title-wrap">
+            <h2 class="animate-up">Find Your Jewelry</h2>
+            <p class="section-subtitle animate-up">From price to occasion, find the jewelry that suits you.</p>
+          </div>
+          <a href="shop.html" class="view-all-btn animate-up">View All Collections</a>
+        </div>
+        <div class="products-grid" id="featured-products-grid">
+
+          <!-- Product 1 -->
+          <!-- Product 1 -->
+          <article class="product-card" data-product-id="206">
+            <div class="product-img-wrap">
+              <img src="https://www.toriasglamhaven.co.ke/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.18.jpeg" alt="Golden Oval Pearl Set" loading="lazy" />
+              <div class="product-badges">
+                <span class="badge badge--bestseller">Bestseller</span>
+              </div>
+              <div class="product-overlay">
+                <button class="overlay-btn quick-view-btn" data-product="206" aria-label="Quick view">Quick View</button>
+                <button class="overlay-btn wishlist-toggle" data-product="206" aria-label="Add to wishlist">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <p class="product-category">Jewelry Sets</p>
+              <h3 class="product-name"><a href="product.html?id=206">Golden Oval Pearl Set</a></h3>
+              <div class="product-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">(12)</span>
+              </div>
+              <div class="product-price-row">
+                <span class="product-price">$1,250.00</span>
+              </div>
+              <button class="btn btn-gold btn-add-cart full-width" data-product="206">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Product 2 -->
+          <article class="product-card" data-product-id="207">
+            <div class="product-img-wrap">
+              <img src="https://www.toriasglamhaven.co.ke/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.17-1.jpeg" alt="Gold & Pearl Geometric Set" loading="lazy" />
+              <div class="product-badges">
+                <span class="badge badge--new">New</span>
+              </div>
+              <div class="product-overlay">
+                <button class="overlay-btn quick-view-btn" data-product="207" aria-label="Quick view">Quick View</button>
+                <button class="overlay-btn wishlist-toggle" data-product="207" aria-label="Add to wishlist">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <p class="product-category">Jewelry Sets</p>
+              <h3 class="product-name"><a href="product.html?id=207">Gold & Pearl Geometric Set</a></h3>
+              <div class="product-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">(8)</span>
+              </div>
+              <div class="product-price-row">
+                <span class="product-price">$1,250.00</span>
+              </div>
+              <button class="btn btn-gold btn-add-cart full-width" data-product="207">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Product 3 -->
+          <article class="product-card" data-product-id="208">
+            <div class="product-img-wrap">
+              <img src="https://www.toriasglamhaven.co.ke/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.16-1.jpeg" alt="Bold Gold Link Hoop" loading="lazy" />
+              <div class="product-badges">
+                <span class="badge badge--sale">-25%</span>
+              </div>
+              <div class="product-overlay">
+                <button class="overlay-btn quick-view-btn" data-product="208" aria-label="Quick view">Quick View</button>
+                <button class="overlay-btn wishlist-toggle" data-product="208" aria-label="Add to wishlist">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <p class="product-category">Earrings</p>
+              <h3 class="product-name"><a href="product.html?id=208">Bold Gold Link Hoop</a></h3>
+              <div class="product-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">(24)</span>
+              </div>
+              <div class="product-price-row">
+                <span class="product-price">$1,250.00</span>
+              </div>
+              <button class="btn btn-gold btn-add-cart full-width" data-product="208">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Product 4 -->
+          <article class="product-card" data-product-id="209">
+            <div class="product-img-wrap">
+              <img src="https://www.toriasglamhaven.co.ke/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.17.jpeg" alt="Minimalist Black & Gold Set" loading="lazy" />
+              <div class="product-badges">
+                <span class="badge badge--bestseller">Top Pick</span>
+              </div>
+              <div class="product-overlay">
+                <button class="overlay-btn quick-view-btn" data-product="209" aria-label="Quick view">Quick View</button>
+                <button class="overlay-btn wishlist-toggle" data-product="209" aria-label="Add to wishlist">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <p class="product-category">Jewelry Sets</p>
+              <h3 class="product-name"><a href="product.html?id=209">Minimalist Black & Gold Set</a></h3>
+              <div class="product-rating">
+                <span class="stars">★★★★☆</span>
+                <span class="rating-count">(19)</span>
+              </div>
+              <div class="product-price-row">
+                <span class="product-price">$1,250.00</span>
+              </div>
+              <button class="btn btn-gold btn-add-cart full-width" data-product="209">Add to Cart</button>
+            </div>
+          </article>
+
+        </div>
+        <div class="text-center mt-lg">
+          <a href="shop.html" class="btn btn-outline-gold">View All Products</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- BRAND STORY STRIP -->
+    <section class="brand-strip section" aria-label="Brand introduction">
+      <div class="container">
+        <div class="brand-strip-inner">
+          <div class="brand-strip-text">
+            <p class="overline">Our Story</p>
+            <h2 class="section-title">Crafted With<br /><em>Passion &amp; Purpose</em></h2>
+            <p class="brand-desc">Each piece from Torias Glam Haven is a blend of artistry and quality — made with hypoallergenic, tarnish-resistant materials that last. Whether you’re looking to elevate your everyday look or mark a special moment with something truly memorable, our jewelry helps you express your story with grace and glamour. Designed with love in Kenya.</p>
+            <a href="about.html" class="btn btn-gold mt-md">Discover Our Story</a>
+          </div>
+          <div class="brand-strip-img">
+            <img src="img/hero-pendant.jpg" alt="Luxury jewelry craftsmanship" loading="lazy" />
+            <div class="brand-strip-img-accent"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="features section section--blush" aria-label="Why choose Torias Glam Haven">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="overline">The Glam Difference</p>
+          <h2 class="section-title">Why Choose Us</h2>
+          <div class="title-divider"><span>✦</span></div>
+        </div>
+        <div class="features-grid">
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <h3>Premium Quality</h3>
+            <p>Elegant and timeless handmade designs made with hypoallergenic, tarnish-resistant premium metals.</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <h3>Fast Delivery</h3>
+            <p>Enjoy quick, secure shipping across Kenya and beyond. Rates based on your location — or choose pickup at no extra cost.</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>Satisfaction Guaranteed</h3>
+            <p>We’re committed to your happiness — return or exchange within 7 days if you're not completely in love.</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <h3>Elegant Gift Packaging</h3>
+            <p>Unbox sophistication — each jewel arrives in elegant gift packaging making it ideal for gifting.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DISCOVER TRENDING (reference-inspired lifestyle grid) -->
+    <section class="trending section" aria-label="Discover trending collection">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="overline">Hot Right Now</p>
+          <h2 class="section-title">Discover Trending<br /><em>Collections</em></h2>
+          <div class="title-divider"><span>✦</span></div>
+        </div>
+        <div class="trending-grid">
+          <div class="trending-hero-card">
+            <img src="img/hero-emerald.jpg" alt="Best Selling Emerald Collection" loading="lazy" />
+            <div class="trending-card-content">
+              <p class="badge badge--bestseller" style="width:fit-content;margin-bottom:8px">Best Selling</p>
+              <h3>Diamond<br />Collection</h3>
+              <p>Timeless brilliance, modern cut</p>
+              <a href="shop.html" class="btn btn-gold" style="margin-top:var(--sp-sm);padding:0.6em 1.5em">Shop Now</a>
+            </div>
+          </div>
+          <div class="trending-side-cards">
+            <div class="trending-sm-card">
+              <img src="img/blue-pendant.jpg" alt="Gold Necklace Trend" loading="lazy" />
+              <div class="trending-sm-info">
+                <span class="badge badge--new" style="width:fit-content;margin-bottom:6px">Trending</span>
+                <h4>Bella Gold — Necklace</h4>
+                <p>Shop Celebrity Style</p>
+                <a href="shop.html?cat=necklaces" class="trending-link">Shop Now →</a>
+              </div>
+            </div>
+            <div class="trending-sm-card">
+              <img src="img/bracelet-luxe.jpg" alt="Gold Chain Trend" loading="lazy" />
+              <div class="trending-sm-info">
+                <span class="badge badge--sale" style="width:fit-content;margin-bottom:6px">-20% OFF</span>
+                <h4>Elegante Gold Chain</h4>
+                <p>Limited Time Offer</p>
+                <a href="shop.html" class="trending-link">Shop Now →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OCCASION STRIP -->
+    <section class="occasion-strip section section--blush" aria-label="Shop by occasion">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="overline">The Perfect Gift</p>
+          <h2 class="section-title">Shop By Occasion</h2>
+          <div class="title-divider"><span>✦</span></div>
+        </div>
+        <div class="occasion-grid">
+          <a href="shop.html" class="occasion-card" id="occ-wedding">
+            <div class="occasion-img">
+              <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&q=75&auto=format&fit=crop" alt="Wedding Jewelry" loading="lazy" />
+            </div>
+            <div class="occasion-info">
+              <h4>Weddings</h4>
+              <span>Bridal &amp; Engagement</span>
+            </div>
+          </a>
+          <a href="shop.html" class="occasion-card" id="occ-birthday">
+            <div class="occasion-img">
+              <img src="https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=400&q=75&auto=format&fit=crop" alt="Birthday Gift Jewelry" loading="lazy" />
+            </div>
+            <div class="occasion-info">
+              <h4>Birthdays</h4>
+              <span>Celebrate in style</span>
+            </div>
+          </a>
+          <a href="shop.html" class="occasion-card" id="occ-gifts">
+            <div class="occasion-img">
+              <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=75&auto=format&fit=crop" alt="Gift Jewelry" loading="lazy" />
+            </div>
+            <div class="occasion-info">
+              <h4>Gifting</h4>
+              <span>Perfect presents</span>
+            </div>
+          </a>
+          <a href="shop.html" class="occasion-card" id="occ-everyday">
+            <div class="occasion-img">
+              <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&q=75&auto=format&fit=crop" alt="Everyday Jewelry" loading="lazy" />
+            </div>
+            <div class="occasion-info">
+              <h4>Everyday</h4>
+              <span>Daily luxury wear</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+
+    <section class="testimonials section" aria-label="Customer testimonials">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="overline">Happy Customers</p>
+          <h2 class="section-title">Words From Our Community</h2>
+          <div class="title-divider"><span>✦</span></div>
+        </div>
+        <div class="testimonials-slider" id="testimonials-slider">
+          <div class="testimonials-track" id="testimonials-track">
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">"The bracelet I ordered is absolutely stunning. The quality exceeded my expectations and it arrived in the most beautiful packaging. I've received so many compliments!"</p>
+              <div class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=80&h=80&q=80&auto=format&fit=crop&crop=face" alt="Amara Johnson" loading="lazy" />
+                <div>
+                  <strong>Amara Johnson</strong>
+                  <span>Lagos, Nigeria</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">"I bought the Royale Gold Set as a birthday gift for my sister and she absolutely loves it. The pieces are elegant and timeless. Will definitely shop here again!"</p>
+              <div class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&q=80&auto=format&fit=crop&crop=face" alt="Priya Sharma" loading="lazy" />
+                <div>
+                  <strong>Priya Sharma</strong>
+                  <span>London, UK</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">"Exceptional service and gorgeous jewelry. The gold necklace I ordered looks even better in person. Fast shipping and extremely secure packaging. 10/10!"</p>
+              <div class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=80&h=80&q=80&auto=format&fit=crop&crop=face" alt="Zoe Williams" loading="lazy" />
+                <div>
+                  <strong>Zoe Williams</strong>
+                  <span>Atlanta, USA</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">"I'm obsessed with my new earrings! They're lightweight, perfect for everyday wear, and look incredibly luxurious. Torias Glam Haven is my new go-to for jewelry."</p>
+              <div class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=80&h=80&q=80&auto=format&fit=crop&crop=face" alt="Fatima Al-Hassan" loading="lazy" />
+                <div>
+                  <strong>Fatima Al-Hassan</strong>
+                  <span>Dubai, UAE</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="slider-controls">
+            <button class="slider-btn prev-btn" id="testimonial-prev" aria-label="Previous testimonial">‹</button>
+            <div class="slider-dots" id="slider-dots">
+              <button class="dot active" aria-label="Testimonial 1"></button>
+              <button class="dot" aria-label="Testimonial 2"></button>
+              <button class="dot" aria-label="Testimonial 3"></button>
+              <button class="dot" aria-label="Testimonial 4"></button>
+            </div>
+            <button class="slider-btn next-btn" id="testimonial-next" aria-label="Next testimonial">›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTAGRAM GALLERY -->
+    <section class="instagram-section section section--blush" aria-label="Instagram gallery">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="overline">Follow Our Journey</p>
+          <h2 class="section-title">@ToriasGlamHaven</h2>
+          <div class="title-divider"><span>✦</span></div>
+          <p class="section-subtitle">Tag us in your photos for a chance to be featured</p>
+        </div>
+        <div class="insta-grid">
+          <a href="#" class="insta-item" aria-label="Instagram post 1">
+            <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=75&auto=format&fit=crop" alt="Instagram jewelry photo 1" loading="lazy" />
+            <div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#111" stroke-width="2"/></svg></div>
+          </a>
+          <a href="#" class="insta-item" aria-label="Instagram post 2">
+            <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&q=75&auto=format&fit=crop" alt="Instagram jewelry photo 2" loading="lazy" />
+            <div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#111" stroke-width="2"/></svg></div>
+          </a>
+          <a href="#" class="insta-item" aria-label="Instagram post 3">
+            <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=75&auto=format&fit=crop" alt="Instagram jewelry photo 3" loading="lazy" />
+            <div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#111" stroke-width="2"/></svg></div>
+          </a>
+          <a href="#" class="insta-item" aria-label="Instagram post 4">
+            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&q=75&auto=format&fit=crop" alt="Instagram jewelry photo 4" loading="lazy" />
+            <div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#111" stroke-width="2"/></svg></div>
+          </a>
+          <a href="#" class="insta-item" aria-label="Instagram post 5">
+            <img src="https://images.unsplash.com/photo-1573408301185-9519f94f1adf?w=400&q=75&auto=format&fit=crop" alt="Instagram jewelry photo 5" loading="lazy" />
+            <div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#111" stroke-width="2"/></svg></div>
+          </a>
+          <a href="#" class="insta-item" aria-label="Instagram post 6">
+            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&q=75&auto=format&fit=crop" alt="Instagram jewelry photo 6" loading="lazy" />
+            <div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#111" stroke-width="2"/></svg></div>
+          </a>
+        </div>
+        <div class="text-center mt-lg">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline-gold">Follow on Instagram</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter section" aria-label="Newsletter signup">
+      <div class="container">
+        <div class="newsletter-inner">
+          <div class="newsletter-text">
+            <p class="overline">Exclusive Access</p>
+            <h2>Join The Glam Circle</h2>
+            <p>Subscribe for early access to new collections, exclusive discounts, and insider style tips delivered to your inbox.</p>
+          </div>
+          <form class="newsletter-form" id="newsletter-form" novalidate>
+            <div class="newsletter-input-group">
+              <input type="email" id="newsletter-email" name="email" placeholder="Your email address" aria-label="Email address" required />
+              <button type="submit" class="btn btn-gold" id="newsletter-submit">Subscribe</button>
+            </div>
+            <p class="newsletter-note">✓ No spam. Unsubscribe anytime. We respect your privacy.</p>
+            <div class="newsletter-success" id="newsletter-success" aria-live="polite" hidden>
+              <span>✦</span> Welcome to the Glam Circle! Check your inbox for a welcome gift.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="search-overlay" hidden>
+      <div class="search-container container">
+        <div class="search-header">
+          <input type="text" id="search-input" placeholder="Search for jewelry..." aria-label="Search input" />
+          <button id="search-close" class="search-close-btn" aria-label="Close search">✕</button>
+        </div>
+        <div id="search-results" class="search-results-grid">
+          <!-- Results injected via main.js -->
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="footer-logo" aria-label="Torias Glam Haven">
+              <span class="logo-ornament">✦</span>
+              <div class="logo-text">
+                <span class="logo-main">Torias</span>
+                <span class="logo-sub">Glam Haven</span>
+              </div>
+              <span class="logo-ornament">✦</span>
+            </a>
+            <p class="footer-tagline">Discover timeless elegance with our curated collection of fine jewelry — designed to add a touch of luxury to your everyday style.</p>
+            <div class="social-links">
+              <a href="https://www.instagram.com/toriasglamhaven?igsh=MXhsczFrd3VveXRrZg==" target="_blank" rel="noopener" aria-label="Instagram" class="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+              <a href="https://www.facebook.com/share/1ALYybv12q/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook" class="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+              <a href="https://wa.me/254707353520" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              </a>
+              <a href="https://www.tiktok.com/@torias.glam.haven?_t=ZM-8wY0OZiOUXY&_r=1" target="_blank" rel="noopener" aria-label="TikTok" class="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-col-title">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="shop.html">Shop All</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-col-title">Collections</h4>
+            <ul class="footer-links">
+              <li><a href="shop.html?cat=bracelets">Bracelets</a></li>
+              <li><a href="shop.html?cat=necklaces">Necklaces</a></li>
+              <li><a href="shop.html?cat=earrings">Earrings</a></li>
+              <li><a href="shop.html?cat=sets">Jewelry Sets</a></li>
+              <li><a href="shop.html?cat=new">New Arrivals</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-col-title">Customer Care</h4>
+            <ul class="footer-links">
+              <li><a href="#">Shipping Policy</a></li>
+              <li><a href="#">Returns &amp; Exchanges</a></li>
+              <li><a href="#">Size Guide</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-col-title">Contact Us</h4>
+            <ul class="footer-contact-list">
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Nairobi CBD, Moi Avenue</span>
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <a href="mailto:toriabeautyhub@gmail.com">toriabeautyhub@gmail.com</a>
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.59 1.23h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.79a16 16 0 0 0 6.29 6.29l.87-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <a href="tel:+254707353520">+254 707 353520</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 Torias Glam Haven. All rights reserved. Designed with ♥ for our community.</p>
+        <div class="payment-icons" aria-label="Accepted payment methods">
+          <span class="payment-icon">VISA</span>
+          <span class="payment-icon">MC</span>
+          <span class="payment-icon">PayPal</span>
+          <span class="payment-icon">Stripe</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- QUICK VIEW MODAL -->
+  <div class="modal-overlay" id="quick-view-modal" role="dialog" aria-modal="true" aria-label="Quick view" hidden>
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+      <div class="modal-content">
+        <div class="modal-img">
+          <img src="https://images.unsplash.com/photo-1601121141461-9d6647bef0a1?w=600&q=80&auto=format&fit=crop" alt="Product" id="modal-img" />
+        </div>
+        <div class="modal-details">
+          <p class="product-category" id="modal-category">Bracelets</p>
+          <h3 id="modal-name">18K Gold Diamond Bangle</h3>
+          <div class="product-rating">
+            <span class="stars" id="modal-stars">★★★★★</span>
+            <span class="rating-count" id="modal-rating-count">(48)</span>
+          </div>
+          <div class="product-price-row">
+            <span class="product-price" id="modal-price">$189.00</span>
+            <span class="product-price-old" id="modal-old-price">$240.00</span>
+          </div>
+          <p class="modal-desc" id="modal-desc">A stunning 18K gold bangle encrusted with brilliant-cut diamonds. Lightweight yet striking, crafted for the modern luxury lover.</p>
+          <div class="qty-row">
+            <label for="modal-qty">Qty:</label>
+            <div class="qty-control">
+              <button class="qty-btn" id="qty-minus" aria-label="Decrease quantity">−</button>
+              <input type="number" id="modal-qty" value="1" min="1" max="10" aria-label="Quantity" />
+              <button class="qty-btn" id="qty-plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <div class="modal-actions">
+            <button class="btn btn-gold flex-1" id="modal-add-cart">Add to Cart</button>
+            <a href="product.html?id=1" class="btn btn-outline-gold flex-1" id="modal-view-full">View Full Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART TOAST -->
+  <div class="cart-toast" id="cart-toast" role="status" aria-live="polite">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+    <span>Item added to your cart!</span>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/home.js"></script>
+
+  <!-- SEARCH OVERLAY -->
+  <div class="search-overlay" id="search-overlay" hidden>
+    <div class="search-container container">
+      <div class="search-header">
+        <input type="text" id="search-input" placeholder="Search for jewelry..." aria-label="Search input" />
+        <button id="search-close" class="search-close-btn" aria-label="Close search">✕</button>
+      </div>
+      <div id="search-results" class="search-results-grid">
+        <!-- Results injected via main.js -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>
