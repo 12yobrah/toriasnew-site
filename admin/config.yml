@@ -1,0 +1,29 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "img/products"
+public_folder: "../img/products"
+
+collections:
+  - name: "inventory"
+    label: "Inventory Management"
+    files:
+      - file: "data/products.json"
+        label: "Jewelry Collection"
+        name: "products"
+        fields:
+          - label: "Jewelry Items"
+            name: "products"
+            widget: "list"
+            fields:
+              - { label: "Unique ID", name: "id", widget: "number" }
+              - { label: "Product Name", name: "name", widget: "string" }
+              - { label: "Category", name: "category", widget: "select", options: ["Necklace", "Earrings", "Jewelry Sets", "Bracelets", "Rings"] }
+              - { label: "Price (e.g. $1,250.00)", name: "price", widget: "string" }
+              - { label: "Old Price (Optional)", name: "oldPrice", widget: "string", required: false }
+              - { label: "Rating Stars (e.g. ★★★★★)", name: "stars", widget: "string" }
+              - { label: "Rating Count (e.g. (12))", name: "ratingCount", widget: "string" }
+              - { label: "Jewelry Image", name: "img", widget: "image" }
+              - { label: "Product Link (e.g. product.html?id=206)", name: "link", widget: "string" }
+              - { label: "Product Description", name: "desc", widget: "text" }
