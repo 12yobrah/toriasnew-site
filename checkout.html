@@ -57,250 +57,196 @@
       <div class="checkout-layout">
 
         <!-- FORM -->
-        <form class="checkout-form" id="checkout-form" novalidate>
-
-          <!-- 1. Contact Info -->
-          <div class="checkout-section">
-            <h2 class="checkout-section-title">
-              <span class="step-num">1</span>
-              Contact Information
-            </h2>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="billing-first">First Name *</label>
-                <input type="text" id="billing-first" name="first_name" class="form-control" placeholder="First name" required autocomplete="given-name" />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="billing-last">Last Name *</label>
-                <input type="text" id="billing-last" name="last_name" class="form-control" placeholder="Last name" required autocomplete="family-name" />
-              </div>
+        <div class="checkout-form-container">
+          <!-- Ship / Pickup Toggle -->
+          <div class="delivery-selector">
+            <div class="delivery-opt active" id="delivery-tab">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              Standard Delivery
             </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="billing-email">Email Address *</label>
-                <input type="email" id="billing-email" name="email" class="form-control" placeholder="your@email.com" required autocomplete="email" />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="billing-phone">Phone Number</label>
-                <input type="tel" id="billing-phone" name="phone" class="form-control" placeholder="+1 (555) 000-0000" autocomplete="tel" />
-              </div>
+            <div class="delivery-opt" id="pickup-tab">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              Local Pickup
             </div>
           </div>
 
-          <!-- 2. Shipping Address -->
-          <div class="checkout-section">
-            <h2 class="checkout-section-title">
-              <span class="step-num">2</span>
-              Shipping Address
-            </h2>
-            <div class="form-group">
-              <label class="form-label" for="ship-address">Street Address *</label>
-              <input type="text" id="ship-address" name="address" class="form-control" placeholder="123 Luxury Lane" required autocomplete="street-address" />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="ship-address2">Apartment, Suite, etc. (optional)</label>
-              <input type="text" id="ship-address2" name="address2" class="form-control" placeholder="Apt 4B" autocomplete="address-line2" />
-            </div>
-            <div class="form-row three">
-              <div class="form-group">
-                <label class="form-label" for="ship-city">City *</label>
-                <input type="text" id="ship-city" name="city" class="form-control" placeholder="New York" required autocomplete="address-level2" />
+          <form class="checkout-form" id="checkout-form" novalidate>
+
+            <!-- 1. Contact Info -->
+            <div class="checkout-section">
+              <h2 class="checkout-section-title"><span class="step-num">1</span>Contact Information</h2>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Full Name *</label>
+                  <input type="text" name="full_name" class="form-control" placeholder="e.g. Jane Doe" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Phone Number (M-Pesa) *</label>
+                  <input type="tel" id="checkout-phone" name="phone" class="form-control" placeholder="07XX XXX XXX" required />
+                </div>
               </div>
               <div class="form-group">
-                <label class="form-label" for="ship-state">State / Province *</label>
-                <input type="text" id="ship-state" name="state" class="form-control" placeholder="NY" required autocomplete="address-level1" />
+                <label class="form-label">Email Address (Optional)</label>
+                <input type="email" name="email" class="form-control" placeholder="your@email.com" />
+              </div>
+            </div>
+
+            <!-- 2. Delivery Details -->
+            <div class="checkout-section" id="delivery-section">
+              <h2 class="checkout-section-title"><span class="step-num">2</span>Delivery Details</h2>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">County *</label>
+                  <select name="county" class="form-control" required>
+                    <option value="Nairobi" selected>Nairobi</option>
+                    <option value="Kiambu">Kiambu</option>
+                    <option value="Mombasa">Mombasa</option>
+                    <option value="Kisumu">Kisumu</option>
+                    <option value="Nakuru">Nakuru</option>
+                    <option value="Machakos">Machakos</option>
+                    <option value="Kajiado">Kajiado</option>
+                    <option value="Other">Other County</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Area / Town *</label>
+                  <input type="text" name="town" class="form-control" placeholder="e.g. Westlands, Kilimani" required />
+                </div>
               </div>
               <div class="form-group">
-                <label class="form-label" for="ship-zip">ZIP Code *</label>
-                <input type="text" id="ship-zip" name="zip" class="form-control" placeholder="10001" required autocomplete="postal-code" />
+                <label class="form-label">Estate, Apartment & House No. *</label>
+                <input type="text" name="address" class="form-control" placeholder="e.g. Westside Apts, Door 4" required />
               </div>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="ship-country">Country *</label>
-              <select id="ship-country" name="country" class="form-control" required autocomplete="country">
-                <option value="" disabled selected>Select country</option>
-                <option value="US">United States</option>
-                <option value="UK">United Kingdom</option>
-                <option value="CA">Canada</option>
-                <option value="AU">Australia</option>
-                <option value="NG">Nigeria</option>
-                <option value="ZA">South Africa</option>
-                <option value="GH">Ghana</option>
-                <option value="AE">United Arab Emirates</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="form-group" style="margin-top:var(--sp-sm)">
-              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:var(--fs-sm);color:var(--clr-gray-400)">
-                <input type="checkbox" id="billing-same" name="billing_same" checked style="accent-color:var(--clr-gold)" />
-                Billing address same as shipping
-              </label>
-            </div>
-          </div>
 
-          <!-- 3. Shipping Method -->
-          <div class="checkout-section">
-            <h2 class="checkout-section-title">
-              <span class="step-num">3</span>
-              Shipping Method
-            </h2>
-            <div class="payment-method-list">
-              <label class="payment-method selected" id="ship-standard">
-                <div class="payment-method-header">
-                  <div class="pm-radio"></div>
-                  <span class="pm-name">Standard Shipping</span>
-                  <div class="pm-icons" style="margin-left:auto">
-                    <span style="font-size:var(--fs-sm);color:var(--clr-gold);font-weight:600">FREE</span>
+            <!-- 2b. Pickup Details -->
+            <div class="checkout-section" id="pickup-section" style="display:none">
+              <h2 class="checkout-section-title"><span class="step-num">2</span>Select Pickup Point</h2>
+              <div class="payment-method-list">
+                <label class="payment-method selected" id="pickup-hq">
+                  <div class="payment-method-header">
+                    <div class="pm-radio active"></div>
+                    <span class="pm-name">Main Collection Point</span>
+                    <span class="badge-kenya badge-pickup">FREE</span>
                   </div>
-                </div>
-                <p style="font-size:var(--fs-xs);color:var(--clr-gray-400);margin-top:6px;margin-left:26px">5–7 business days · Insured packaging</p>
-                <input type="radio" name="shipping_method" value="standard" hidden checked />
-              </label>
-              <label class="payment-method" id="ship-express">
-                <div class="payment-method-header">
-                  <div class="pm-radio"></div>
-                  <span class="pm-name">Express Shipping</span>
-                  <div class="pm-icons" style="margin-left:auto">
-                    <span style="font-size:var(--fs-sm);color:var(--clr-white);font-weight:600">$14.99</span>
+                  <div class="pickup-details-box">
+                    <strong>Sawa Mall, 3rd Floor</strong>
+                    <p>Moi Avenue, Nairobi CBD. Open Mon-Sat (9AM - 6PM)</p>
                   </div>
-                </div>
-                <p style="font-size:var(--fs-xs);color:var(--clr-gray-400);margin-top:6px;margin-left:26px">2–3 business days · Priority handling</p>
-                <input type="radio" name="shipping_method" value="express" hidden />
-              </label>
-              <label class="payment-method" id="ship-overnight">
-                <div class="payment-method-header">
-                  <div class="pm-radio"></div>
-                  <span class="pm-name">Overnight Delivery</span>
-                  <div class="pm-icons" style="margin-left:auto">
-                    <span style="font-size:var(--fs-sm);color:var(--clr-white);font-weight:600">$29.99</span>
-                  </div>
-                </div>
-                <p style="font-size:var(--fs-xs);color:var(--clr-gray-400);margin-top:6px;margin-left:26px">Next business day · White-glove service</p>
-                <input type="radio" name="shipping_method" value="overnight" hidden />
-              </label>
-            </div>
-          </div>
-
-          <!-- 4. Payment -->
-          <div class="checkout-section">
-            <h2 class="checkout-section-title">
-              <span class="step-num">4</span>
-              Payment Method
-            </h2>
-            <div class="payment-method-list">
-              <div class="payment-method selected" id="pm-mpesa">
-                <div class="payment-method-header">
-                  <div class="pm-radio active"></div>
-                  <span class="pm-name">M-Pesa (STK Push)</span>
-                  <div class="pm-icons">
-                    <span style="background:#46b04a;color:white;padding:2px 6px;border-radius:4px;font-weight:800;font-size:0.6rem">M-PESA</span>
-                  </div>
-                </div>
-                <div class="mpesa-fields" style="margin-top:var(--sp-md)">
-                   <div id="stk-idle">
-                      <label class="form-label" for="mpesa-phone">Safaricom Number *</label>
-                      <input type="tel" id="mpesa-phone" class="form-control" placeholder="07XX XXX XXX" />
-                      <p style="font-size:var(--fs-xs);color:rgba(255,255,255,0.5);margin-top:8px">You will receive a popup on your phone to enter your PIN.</p>
-                   </div>
-                   <div id="stk-processing" style="display:none;padding:10px 0;text-align:center">
-                      <p style="font-size:var(--fs-sm);color:var(--clr-gold)">Waiting for PIN entry...</p>
-                   </div>
-                </div>
+                  <input type="radio" name="pickup_point" value="hq" hidden checked />
+                </label>
               </div>
+            </div>
 
-              <div class="payment-method" id="pm-card">
-                <div class="payment-method-header">
-                  <div class="pm-radio"></div>
-                  <span class="pm-name">Credit / Debit Card</span>
-                  <div class="pm-icons">
-                    <span class="pm-icon-tag">VISA</span>
-                    <span class="pm-icon-tag">MC</span>
+            <!-- 3. Shipping Method -->
+            <div class="checkout-section" id="shipping-method-section">
+              <h2 class="checkout-section-title"><span class="step-num">3</span>Shipping Method</h2>
+              <div class="payment-method-list">
+                <label class="payment-method selected" id="ship-nairobi-cbd">
+                  <div class="payment-method-header">
+                    <div class="pm-radio active"></div>
+                    <span class="pm-name">Nairobi CBD Delivery</span>
+                    <div class="pm-icons"><span class="pm-cost">KES 50</span></div>
                   </div>
-                </div>
-                <div class="card-fields" style="margin-top:var(--sp-md);display:none">
-                  <div class="form-group">
-                    <label class="form-label" for="card-number">Card Number</label>
-                    <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19" />
+                  <p class="pm-desc">Same-day delivery within CBD circles.</p>
+                  <input type="radio" name="shipping_method" value="cbd" hidden checked />
+                </label>
+                <label class="payment-method" id="ship-nairobi-env">
+                  <div class="payment-method-header">
+                    <div class="pm-radio"></div>
+                    <span class="pm-name">Nairobi & Suburbs</span>
+                    <div class="pm-icons"><span class="pm-cost">KES 250</span></div>
                   </div>
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label class="form-label" for="card-expiry">Expiry</label>
-                      <input type="text" id="card-expiry" class="form-control" placeholder="MM / YY" />
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label" for="card-cvc">CVV</label>
-                      <input type="text" id="card-cvc" class="form-control" placeholder="123" />
+                  <p class="pm-desc">Home/Office delivery within 24 hours.</p>
+                  <input type="radio" name="shipping_method" value="environs" hidden />
+                </label>
+                <label class="payment-method" id="ship-mtaani">
+                  <div class="payment-method-header">
+                    <div class="pm-radio"></div>
+                    <span class="pm-name">Pickup Mtaani</span>
+                    <div class="pm-icons"><span class="badge-kenya badge-pickup">KES 120</span></div>
+                  </div>
+                  <p class="pm-desc">Pick up from your nearest MTAANI shop (Upcountry/Local).</p>
+                  <input type="radio" name="shipping_method" value="mtaani" hidden />
+                </label>
+              </div>
+            </div>
+
+            <!-- 4. Payment -->
+            <div class="checkout-section">
+              <h2 class="checkout-section-title"><span class="step-num">4</span>Payment Method</h2>
+              <div class="payment-method-list">
+                <div class="payment-method selected" id="pm-mpesa">
+                  <div class="payment-method-header">
+                    <div class="pm-radio active"></div>
+                    <span class="pm-name">M-Pesa (Till Number)</span>
+                    <span class="badge-kenya badge-mpesa">M-PESA</span>
+                  </div>
+                  <div class="mpesa-fields" style="margin-top:var(--sp-md)">
+                    <div id="stk-idle">
+                      <p style="font-size:var(--fs-xs);color:rgba(255,255,255,0.45);margin-bottom:12px">Pay to Buy Goods Till: <strong>5940520</strong> (Torias Glam). Enter Transaction Code below:</p>
+                      <input type="text" id="mpesa-code" class="form-control" placeholder="Enter M-Pesa Code (e.g. SGR5...)" maxlength="10" />
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="payment-method" id="pm-paypal">
-                <div class="payment-method-header">
-                  <div class="pm-radio"></div>
-                  <span class="pm-name">PayPal</span>
-                  <div class="pm-icons"><span class="pm-icon-tag" style="background:#003087;color:#fff">PayPal</span></div>
-                </div>
-              </div>
-              <div class="payment-method" id="pm-bank">
-                <div class="payment-method-header">
-                  <div class="pm-radio"></div>
-                  <span class="pm-name">Bank Transfer</span>
-                  <div class="pm-icons"><span class="pm-icon-tag">ACH</span></div>
+                <div class="payment-method" id="pm-cod">
+                  <div class="payment-method-header">
+                    <div class="pm-radio"></div>
+                    <span class="pm-name">Cash on Delivery</span>
+                  </div>
+                  <p class="pm-desc">Pay when items are delivered (Available in Nairobi CBD only).</p>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:var(--sp-md)">
-            <input type="checkbox" id="terms-accept" style="accent-color:var(--clr-gold);margin-top:3px;flex-shrink:0" required />
-            <label for="terms-accept" style="font-size:var(--fs-xs);color:var(--clr-gray-400);line-height:1.6">
-              I agree to the <a href="#" style="color:var(--clr-gold)">Terms of Service</a> and <a href="#" style="color:var(--clr-gold)">Privacy Policy</a>. I confirm my order is correct and consent to the charge.
-            </label>
-          </div>
-
-          <button type="submit" class="btn btn-gold full-width" id="place-order-btn" style="font-size:var(--fs-sm);padding:1em">
-            Place Order – $436.32
-          </button>
-          <p style="font-size:var(--fs-xs);color:var(--clr-gray-600);text-align:center;margin-top:var(--sp-sm)">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--clr-gold)" stroke-width="2" style="vertical-align:middle"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Your payment info is encrypted and secure. We never store your card details.
-          </p>
-        </form>
+            <button type="submit" class="btn btn-gold full-width" id="place-order-btn" style="padding:1.2em">
+              Confirm Order — KES <span id="btn-total-val">0</span>
+            </button>
+            <p style="font-size:var(--fs-xs);color:var(--clr-gray-600);text-align:center;margin-top:var(--sp-sm)">
+              Secure 256-bit encrypted checkout.
+            </p>
+          </form>
+        </div>
 
         <!-- ORDER SUMMARY SIDEBAR -->
         <aside class="order-summary-box" aria-label="Order summary">
           <div class="order-summary-title">Order Summary</div>
 
-          <!-- Mini cart items -->
-          <div style="display:flex;flex-direction:column;gap:var(--sp-sm);margin-bottom:var(--sp-md);padding-bottom:var(--sp-md);border-bottom:1px solid rgba(255,255,255,0.06)">
-            <div style="display:flex;gap:var(--sp-sm);align-items:center">
-              <img src="https://images.unsplash.com/photo-1601121141461-9d6647bef0a1?w=80&q=60&auto=format&fit=crop" alt="Gold Bangle" style="width:56px;height:56px;object-fit:cover;border-radius:4px;border:1px solid rgba(0,0,0,0.1)" />
-              <div style="flex:1">
-                <p style="font-size:var(--fs-xs);color:#2d2d2d;font-weight:600">18K Gold Diamond Bangle</p>
-                <p style="font-size:var(--fs-xs);color:#666666">Quantity: 1</p>
-              </div>
-              <span style="color:#800000;font-weight:600;font-size:var(--fs-sm)">$189.00</span>
-            </div>
-            <div style="display:flex;gap:var(--sp-sm);align-items:center">
-              <img src="https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=80&q=60&auto=format&fit=crop" alt="Pearl Pendant" style="width:56px;height:56px;object-fit:cover;border-radius:4px;border:1px solid rgba(0,0,0,0.1)" />
-              <div style="flex:1">
-                <p style="font-size:var(--fs-xs);color:#2d2d2d;font-weight:600">Pearl &amp; Gold Drop Pendant</p>
-                <p style="font-size:var(--fs-xs);color:#666666">Quantity: 1</p>
-              </div>
-              <span style="color:#800000;font-weight:600;font-size:var(--fs-sm)">$215.00</span>
-            </div>
+          <div id="checkout-items-list" style="margin-bottom:var(--sp-md);max-height:300px;overflow-y:auto">
+            <!-- Items injected by JS -->
           </div>
 
-          <div class="summary-line"><span>Subtotal</span><span>$404.00</span></div>
-          <div class="summary-line"><span>Shipping</span><span id="checkout-shipping-cost" style="color:#3da052">Free</span></div>
-          <div class="summary-line"><span>Tax (8%)</span><span>$32.32</span></div>
-          <div class="summary-line summary-total"><strong>Total</strong><span class="summary-total-price">$436.32</span></div>
+          <div class="summary-line"><span>Subtotal</span><span id="summary-subtotal">KES 0</span></div>
+          <div class="summary-line"><span>Shipping</span><span id="summary-shipping">KES 0</span></div>
+          
+          <!-- Tipping Section -->
+          <div class="tip-container">
+            <p class="tip-title">Add a tip for the team ✦</p>
+            <div class="tip-grid">
+              <button class="tip-btn" data-tip="0.10">10%</button>
+              <button class="tip-btn" data-tip="0.15">15%</button>
+              <button class="tip-btn active" data-tip="0.20">20%</button>
+              <button class="tip-btn" data-tip="custom">Other</button>
+            </div>
+          </div>
+          
+          <div class="summary-line summary-total">
+            <strong>Total</strong>
+            <span class="summary-total-price" id="summary-total-kes">KES 0</span>
+          </div>
 
-          <div style="margin-top:var(--sp-md);padding:var(--sp-sm);border:1px solid rgba(201,168,76,0.15);border-radius:var(--radius-sm);background:rgba(201,168,76,0.04)">
-            <p style="font-size:var(--fs-xs);color:var(--clr-gold);font-weight:500;margin-bottom:4px">✦ GLAMFREE Applied</p>
-            <p style="font-size:var(--fs-xs);color:var(--clr-gray-400)">10% discount has been applied to your order</p>
+          <!-- Checkout via WhatsApp (As requested) -->
+          <a href="#" class="btn-whatsapp-checkout" id="whatsapp-checkout-btn">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.974 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Checkout Via WhatsApp
+          </a>
+
+          <div style="margin-top:var(--sp-lg);padding:var(--sp-sm);border:1px solid rgba(201,168,76,0.15);border-radius:var(--radius-sm);background:rgba(201,168,76,0.04)">
+            <p style="font-size:var(--fs-xs);color:var(--clr-gold);font-weight:500;margin-bottom:4px">✦ Secure Delivery</p>
+            <p style="font-size:var(--fs-xs);color:var(--clr-gray-400)">All orders in Nairobi CBD are delivered within 4 hours.</p>
           </div>
         </aside>
+
 
       </div>
     </div>
@@ -308,6 +254,18 @@
 
   <script src="js/productsData.js"></script><script src="js/main.js"></script>
   <script src="js/checkout.js"></script>
+
+  <!-- WhatsApp Floating Widget -->
+  <div class="whatsapp-widget" id="whatsapp-widget">
+    <a href="https://wa.me/254707353520?text=Hello%20Torias%20Glam%20Haven!%20I%27d%20like%20to%20enquire%20about%20your%20jewelry." 
+       target="_blank" rel="noopener noreferrer"
+       class="whatsapp-btn" aria-label="Chat with us on WhatsApp">
+      <div class="whatsapp-icon">
+        <svg viewBox="0 0 24 24" fill="white" width="28" height="28" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.974 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </div>
+      <span class="whatsapp-label">Chat with us</span>
+    </a>
+  </div>
 </body>
 </html>
 

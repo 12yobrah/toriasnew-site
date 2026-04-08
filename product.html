@@ -8,20 +8,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://fonts.gstatic.com/s/cormorantgaramond/v22/co3YmX5slCNu2PGAn1yD4F86R3D_SumBPlW0.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="https://fonts.gstatic.com/s/jost/v14/pe0pMIuPIYBCpEV5eFdCBfe5.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+  <meta name="theme-color" content="#6F1A07" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/pages.css" />
 </head>
 <body>
 
-  <div class="promo-banner" id="promo-banner">
-    <p>✦ Free Delivery on Orders Above $150 &nbsp;|&nbsp; Use Code: <strong>GLAMFREE</strong> ✦</p>
-    <button class="promo-close" id="promo-close" aria-label="Close">✕</button>
-  </div>
 
   <header class="site-header scrolled" id="site-header">
     <div class="header-inner container">
       <a href="index.html" class="logo"><span class="logo-ornament">✦</span><div class="logo-text"><span class="logo-main">Torias</span><span class="logo-sub">Glam Haven</span></div><span class="logo-ornament">✦</span></a>
-      <nav class="main-nav" id="main-nav">
+      <nav class="main-nav" id="main-nav" aria-label="Primary navigation">
         <ul class="nav-list">
           <li><a href="index.html" class="nav-link">Home</a></li>
           <li class="nav-dropdown"><a href="shop.html" class="nav-link active">Shop <span class="dropdown-arrow">▾</span></a><ul class="dropdown-menu"><li><a href="shop.html?cat=bracelets">Bracelets</a></li><li><a href="shop.html?cat=necklaces">Necklaces</a></li><li><a href="shop.html?cat=earrings">Earrings</a></li><li><a href="shop.html?cat=sets">Jewelry Sets</a></li></ul></li>
@@ -51,7 +51,7 @@
     </div>
   </div>
 
-  <main>
+  <main id="main-content">
     <div class="container">
 
       <!-- PRODUCT LAYOUT -->
@@ -60,23 +60,23 @@
         <!-- GALLERY -->
         <div class="product-gallery">
           <div class="gallery-main" id="gallery-main">
-            <img src="https://images.unsplash.com/photo-1601121141461-9d6647bef0a1?w=700&q=85&auto=format&fit=crop" alt="18K Gold Diamond Bangle - main view" id="main-img" />
+            <img src="https://www.toriasglamhaven.co.ke/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.18.jpeg" alt="18K Gold Diamond Bangle - main view" id="main-img" style="opacity:1;" />
             <div class="gallery-badge">
               <span class="badge badge--sale">-21% OFF</span>
             </div>
           </div>
           <div class="gallery-thumbnails" id="gallery-thumbs">
-            <button class="gallery-thumb active" data-img="https://images.unsplash.com/photo-1601121141461-9d6647bef0a1?w=700&q=85&auto=format&fit=crop" aria-label="View image 1">
-              <img src="https://images.unsplash.com/photo-1601121141461-9d6647bef0a1?w=120&q=60&auto=format&fit=crop" alt="18K Gold Diamond Bangle view 1" />
+            <button class="gallery-thumb active" data-img="https://www.toriasglamhaven.co.ke/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.18.jpeg" aria-label="View image 1">
+              <img src="https://www.toriasglamhaven.co.ke/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.18.jpeg" alt="18K Gold Diamond Bangle view 1" />
             </button>
-            <button class="gallery-thumb" data-img="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=700&q=85&auto=format&fit=crop" aria-label="View image 2">
-              <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=120&q=60&auto=format&fit=crop" alt="18K Gold Diamond Bangle view 2" />
+            <button class="gallery-thumb" data-img="https://www.toriasglamhaven.co.ke/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.17-1.jpeg" aria-label="View image 2">
+              <img src="https://www.toriasglamhaven.co.ke/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.17-1.jpeg" alt="18K Gold Diamond Bangle view 2" />
             </button>
-            <button class="gallery-thumb" data-img="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=700&q=85&auto=format&fit=crop" aria-label="View image 3">
-              <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=120&q=60&auto=format&fit=crop" alt="18K Gold Diamond Bangle view 3" />
+            <button class="gallery-thumb" data-img="https://www.toriasglamhaven.co.ke/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.16-1.jpeg" aria-label="View image 3">
+              <img src="https://www.toriasglamhaven.co.ke/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.16-1.jpeg" alt="18K Gold Diamond Bangle view 3" />
             </button>
-            <button class="gallery-thumb" data-img="https://images.unsplash.com/photo-1573408301185-9519f94f1adf?w=700&q=85&auto=format&fit=crop" aria-label="View image 4">
-              <img src="https://images.unsplash.com/photo-1573408301185-9519f94f1adf?w=120&q=60&auto=format&fit=crop" alt="18K Gold Diamond Bangle view 4" />
+            <button class="gallery-thumb" data-img="https://www.toriasglamhaven.co.ke/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.17.jpeg" aria-label="View image 4">
+              <img src="https://www.toriasglamhaven.co.ke/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.17.jpeg" alt="18K Gold Diamond Bangle view 4" />
             </button>
           </div>
         </div>
@@ -92,9 +92,9 @@
           </div>
 
           <div class="product-price-section">
-            <span class="product-price">$189.00</span>
-            <span class="product-price-old">$240.00</span>
-            <span class="discount-badge">Save $51</span>
+            <span class="product-price">KES 1,500</span>
+            <span class="product-price-old">KES 1,900</span>
+            <span class="discount-badge">Save KES 400</span>
           </div>
 
           <div class="product-meta">
@@ -116,7 +116,7 @@
             </div>
             <div class="product-meta-row">
               <span class="product-meta-label">Availability:</span>
-              <span class="product-meta-value" style="color:var(--clr-gold)">✓ In Stock</span>
+              <span class="product-meta-value product-meta-value--stock">✓ In Stock</span>
             </div>
           </div>
 
@@ -131,13 +131,13 @@
               <input type="number" id="product-qty" value="1" min="1" max="10" aria-label="Quantity" />
               <button class="qty-btn" id="product-qty-plus" aria-label="Increase">+</button>
             </div>
-            <button class="btn btn-gold" id="main-add-cart" style="flex:1">Add to Cart</button>
+            <button class="btn btn-gold btn-add-cart" id="main-add-cart">Add to Cart</button>
             <button class="wishlist-product-btn" id="wishlist-product-btn" aria-label="Add to wishlist">
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </button>
           </div>
 
-          <a href="checkout.html" class="btn btn-outline-gold full-width" style="margin-top:0">Buy Now</a>
+          <a href="checkout.html" class="btn btn-outline-gold btn-buy-now full-width">Buy Now</a>
 
           <!-- Trust Badges -->
           <div class="trust-badges">
@@ -172,48 +172,48 @@
             <p>out of 5</p>
           </div>
           <div class="rating-bars">
-            <div class="rating-bar-row"><span>5 ★</span><div class="rating-bar-fill"><div class="rating-bar-fill-inner" style="width:88%"></div></div><span>42</span></div>
-            <div class="rating-bar-row"><span>4 ★</span><div class="rating-bar-fill"><div class="rating-bar-fill-inner" style="width:8%"></div></div><span>4</span></div>
-            <div class="rating-bar-row"><span>3 ★</span><div class="rating-bar-fill"><div class="rating-bar-fill-inner" style="width:2%"></div></div><span>1</span></div>
-            <div class="rating-bar-row"><span>2 ★</span><div class="rating-bar-fill"><div class="rating-bar-fill-inner" style="width:2%"></div></div><span>1</span></div>
-            <div class="rating-bar-row"><span>1 ★</span><div class="rating-bar-fill"><div class="rating-bar-fill-inner" style="width:0%"></div></div><span>0</span></div>
+            <div class="rating-bar-row"><span>5 ★</span><div class="rating-bar-fill"><div class="rating-bar-fill-inner rating-bar-fill-inner--5"></div></div><span>42</span></div>
+            <div class="rating-bar-row"><span>4 ★</span><div class="rating-bar-fill"><div class="rating-bar-fill-inner rating-bar-fill-inner--4"></div></div><span>4</span></div>
+            <div class="rating-bar-row"><span>3 ★</span><div class="rating-bar-fill"><div class="rating-bar-fill-inner rating-bar-fill-inner--3"></div></div><span>1</span></div>
+            <div class="rating-bar-row"><span>2 ★</span><div class="rating-bar-fill"><div class="rating-bar-fill-inner rating-bar-fill-inner--2"></div></div><span>1</span></div>
+            <div class="rating-bar-row"><span>1 ★</span><div class="rating-bar-fill"><div class="rating-bar-fill-inner rating-bar-fill-inner--1"></div></div><span>0</span></div>
           </div>
         </div>
 
         <div class="review-card">
           <div class="review-header">
-            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=80&h=80&q=80&auto=format&fit=crop&crop=face" alt="Amara J." class="reviewer-avatar" />
+            <div class="testimonial-avatar">AW</div>
             <div class="reviewer-info">
-              <strong>Amara Johnson</strong>
-              <span>Lagos, Nigeria · March 2026</span>
+              <strong>Amina Wanjiru</strong>
+              <span>Westlands, Nairobi · March 2026</span>
             </div>
             <div class="review-stars">★★★★★</div>
           </div>
-          <p class="review-text">This bracelet is absolutely stunning! The diamonds catch light beautifully and the gold quality is superb. It arrived in the most elegant packaging I've ever seen. Already received 10+ compliments. Will be ordering more pieces very soon!</p>
+          <p class="review-text">I ordered the golden set for my sister's birthday and she literally cried when she opened it. The packaging is so elegant — felt like I bought it from a high-end boutique. The necklace is beautiful and hasn't tarnished at all. Torias really is different from the rest!</p>
         </div>
 
         <div class="review-card">
           <div class="review-header">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&q=80&auto=format&fit=crop&crop=face" alt="Priya S." class="reviewer-avatar" />
+            <div class="testimonial-avatar">FK</div>
             <div class="reviewer-info">
-              <strong>Priya Sharma</strong>
-              <span>London, UK · February 2026</span>
+              <strong>Faith Kamau</strong>
+              <span>Kilimani, Nairobi · February 2026</span>
             </div>
             <div class="review-stars">★★★★★</div>
           </div>
-          <p class="review-text">Bought this as a treat to myself and I have zero regrets. The bangle is dainty but substantial, elegant yet noticeable. The certificate of authenticity was a lovely touch that gave me confidence in my purchase. Genuinely luxury quality.</p>
+          <p class="review-text">Been buying jewelry online for years and nothing compares to Torias Glam Haven. This piece arrived within 24hrs, was well-packaged, and the quality speaks for itself. The gold colour is rich and brilliant — not the cheap shiny kind. Already placing another order!</p>
         </div>
 
         <div class="review-card">
           <div class="review-header">
-            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=80&h=80&q=80&auto=format&fit=crop&crop=face" alt="Zoe W." class="reviewer-avatar" />
+            <div class="testimonial-avatar">GM</div>
             <div class="reviewer-info">
-              <strong>Zoe Williams</strong>
-              <span>Atlanta, USA · January 2026</span>
+              <strong>Grace Muthoni</strong>
+              <span>Lavington, Nairobi · January 2026</span>
             </div>
             <div class="review-stars">★★★★★</div>
           </div>
-          <p class="review-text">Perfection. The weight is just right – heavy enough to feel luxurious, light enough to wear all day. The diamonds are bright and clear. Fast shipping, beautiful presentation. TORIAS GLAM HAVEN has a customer for life.</p>
+          <p class="review-text">I wore this to a corporate event in the CBD and got so many compliments from colleagues. The bracelet is delicate and luxurious — it pairs perfectly with business outfits. Torias Glam Haven is hands down my go-to for jewelry in Nairobi!</p>
         </div>
       </section>
 
@@ -252,6 +252,22 @@
   </footer>
 
   <div class="cart-toast" id="cart-toast" role="status"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Item added to your cart!</span></div>
+
+  <!-- WhatsApp Floating Widget -->
+  <div class="whatsapp-widget" id="whatsapp-widget">
+    <a href="https://wa.me/254707353520?text=Hello%20Torias%20Glam%20Haven!%20I%27d%20like%20to%20enquire%20about%20your%20jewelry." 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="whatsapp-btn"
+       aria-label="Chat with us on WhatsApp">
+      <div class="whatsapp-icon">
+        <svg viewBox="0 0 24 24" fill="white" width="28" height="28">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.974 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </div>
+      <span class="whatsapp-label">Chat with us</span>
+    </a>
+  </div>
 
   <script src="js/productsData.js"></script><script src="js/main.js"></script>
   <script src="js/product.js"></script>

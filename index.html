@@ -8,10 +8,30 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://fonts.gstatic.com/s/cormorantgaramond/v22/co3YmX5slCNu2PGAn1yD4F86R3D_SumBPlW0.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="https://fonts.gstatic.com/s/jost/v14/pe0pMIuPIYBCpEV5eFdCBfe5.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+  <link rel="canonical" href="https://toriasnew-site.vercel.app/index.html" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="TORIAS GLAM HAVEN" />
+  <meta name="theme-color" content="#6F1A07" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/home.css" />
+
+  <!-- SEO & Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://toriasnew-site.vercel.app/index.html" />
+  <meta property="og:title" content="TORIAS GLAM HAVEN | Timeless Luxury Jewelry" />
+  <meta property="og:description" content="Discover TORIAS GLAM HAVEN – a curated collection of luxury jewelry crafted for elegance and timeless beauty." />
+  <meta property="og:image" content="https://toriasnew-site.vercel.app/img/hero-pendant.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TORIAS GLAM HAVEN | Timeless Luxury Jewelry" />
+  <meta name="twitter:description" content="Discover TORIAS GLAM HAVEN – a curated collection of luxury jewelry." />
+  <meta name="twitter:image" content="https://toriasnew-site.vercel.app/img/hero-pendant.jpg" />
 </head>
 <body>
+
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
   <!-- PROMO BANNER -->
   <div class="promo-banner" id="promo-banner">
@@ -65,7 +85,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           <span class="icon-badge wishlist-count">3</span>
         </a>
-        <a href="cart.html" class="icon-btn cart-btn" aria-label="Shopping cart">
+        <a href="cart.html" class="icon-btn cart-btn" aria-label="Shopping cart with 2 items">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           <span class="icon-badge cart-count">2</span>
         </a>
@@ -93,7 +113,7 @@
 
   </header>
 
-  <main>
+  <main id="main-content">
 
     <!-- HERO SECTION -->
     <section class="hero" id="hero" aria-label="Hero section">
@@ -104,12 +124,29 @@
       <div class="container hero-container">
         <div class="hero-content">
           <p class="hero-subtitle animate-fade">✦ Timeless Collection 2025 ✦</p>
-          <h1 class="hero-title animate-up">Elegant Jewelry for Every Occasion</h1>
-          <p class="hero-subline animate-up">Discover timeless beauty with our collection of bracelets, necklaces, earrings, and jewelry sets</p>
-          <div class="hero-desc animate-up">At TORIAS GLAM HAVEN, we offer stylish, high-quality jewelry designed to elevate your everyday look and special moments with a touch of luxury and confidence</div>
+          <h1 class="hero-title animate-up">
+            Elegance
+            <em>Redefined</em>
+          </h1>
+          <p class="hero-subline animate-up">Discover handcrafted luxury — bracelets, necklaces, earrings &amp; sets designed for those who wear confidence.</p>
+          <div class="hero-divider"></div>
           <div class="hero-actions animate-up">
-            <a href="shop.html" class="btn btn-gold btn-lg">Shop Now</a>
-            <a href="shop.html?filter=collection" class="btn btn-outline btn-lg">Explore Collection</a>
+            <a href="shop.html" class="btn btn-gold">Shop the Collection</a>
+            <a href="about.html" class="btn btn-outline">Our Story</a>
+          </div>
+          <div class="hero-stats animate-up">
+            <div class="hero-stat">
+              <span class="stat-number">500+</span>
+              <span class="stat-label">Pieces Crafted</span>
+            </div>
+            <div class="hero-stat">
+              <span class="stat-number">2K+</span>
+              <span class="stat-label">Happy Clients</span>
+            </div>
+            <div class="hero-stat">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Authentic</span>
+            </div>
           </div>
         </div>
       </div>
@@ -479,17 +516,17 @@
           <div class="trending-hero-card">
             <img src="img/hero-emerald.jpg" alt="Best Selling Emerald Collection" loading="lazy" />
             <div class="trending-card-content">
-              <p class="badge badge--bestseller" style="width:fit-content;margin-bottom:8px">Best Selling</p>
+              <p class="badge badge--bestseller badge--trending">Best Selling</p>
               <h3>Diamond<br />Collection</h3>
               <p>Timeless brilliance, modern cut</p>
-              <a href="shop.html" class="btn btn-gold" style="margin-top:var(--sp-sm);padding:0.6em 1.5em">Shop Now</a>
+              <a href="shop.html" class="btn btn-gold btn-trending">Shop Now</a>
             </div>
           </div>
           <div class="trending-side-cards">
             <div class="trending-sm-card">
               <img src="img/blue-pendant.jpg" alt="Gold Necklace Trend" loading="lazy" />
               <div class="trending-sm-info">
-                <span class="badge badge--new" style="width:fit-content;margin-bottom:6px">Trending</span>
+                <span class="badge badge--new badge--trending-sm">Trending</span>
                 <h4>Bella Gold — Necklace</h4>
                 <p>Shop Celebrity Style</p>
                 <a href="shop.html?cat=necklaces" class="trending-link">Shop Now →</a>
@@ -498,7 +535,7 @@
             <div class="trending-sm-card">
               <img src="img/bracelet-luxe.jpg" alt="Gold Chain Trend" loading="lazy" />
               <div class="trending-sm-info">
-                <span class="badge badge--sale" style="width:fit-content;margin-bottom:6px">-20% OFF</span>
+                <span class="badge badge--sale badge--trending-sm">-20% OFF</span>
                 <h4>Elegante Gold Chain</h4>
                 <p>Limited Time Offer</p>
                 <a href="shop.html" class="trending-link">Shop Now →</a>
@@ -875,21 +912,24 @@
     <span>Item added to your cart!</span>
   </div>
 
+  <!-- WhatsApp Floating Widget -->
+  <div class="whatsapp-widget" id="whatsapp-widget">
+    <a href="https://wa.me/254707353520?text=Hello%20Torias%20Glam%20Haven!%20I%27d%20like%20to%20enquire%20about%20your%20jewelry." 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="whatsapp-btn"
+       aria-label="Chat with us on WhatsApp">
+      <div class="whatsapp-icon">
+        <svg viewBox="0 0 24 24" fill="white" width="28" height="28" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.974 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </div>
+      <span class="whatsapp-label">Chat with us</span>
+    </a>
+  </div>
+
   <script src="js/productsData.js"></script><script src="js/main.js"></script>
   <script src="js/home.js"></script>
-
-  <!-- SEARCH OVERLAY -->
-  <div class="search-overlay" id="search-overlay" hidden>
-    <div class="search-container container">
-      <div class="search-header">
-        <input type="text" id="search-input" placeholder="Search for jewelry..." aria-label="Search input" />
-        <button id="search-close" class="search-close-btn" aria-label="Close search">✕</button>
-      </div>
-      <div id="search-results" class="search-results-grid">
-        <!-- Results injected via main.js -->
-      </div>
-    </div>
-  </div>
 </body>
 </html>
 

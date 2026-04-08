@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Convert products object to array, and parse prices to pure floats
     const allProducts = Object.entries(productsData).map(([id, product]) => {
-      let rawPrice = product.price.replace('$', '').replace(',', '');
+      let rawPrice = product.price.replace('KES', '').replace('$', '').replace(',', '').trim();
       return { 
         id, 
         ...product,
@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
       // Attach event listeners for buttons generated
       if(window.attachProductEvents) { window.attachProductEvents(); }
     }    const materialChecks = document.querySelectorAll('input[name="material"]');
-    const ratingRadios = document.querySelectorAll('input[name="rating"]');
     const searchInput = document.getElementById('search-input');
 
     function filterProducts() {
@@ -80,10 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const activeMaterials = Array.from(materialChecks)
         .filter(cb => cb.checked)
         .map(cb => cb.value.toLowerCase());
-
-      // Ratings
-      const activeRatingRadio = Array.from(ratingRadios).find(r => r.checked);
-      const minRating = activeRatingRadio ? parseInt(activeRatingRadio.value) : 0;
 
       // Price
       const maxPrice = parseFloat(priceRange.value);
@@ -106,13 +101,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // 3. Filter by Category
-        if (!activeCategories.includes('all')) {
+        if (!activeCategories.includes('all') && activeCategories.length > 0) {
           let catMatch = false;
-          let pCat = p.category.toLowerCase();
+          let pCat = p.category.toLowerCase(); // e.g. "necklace" or "jewelry sets"
+          
           if (activeCategories.includes('sets') && pCat.includes('set')) catMatch = true;
           if (activeCategories.includes('earrings') && pCat.includes('earring')) catMatch = true;
           if (activeCategories.includes('necklaces') && pCat.includes('necklace')) catMatch = true;
           if (activeCategories.includes('bracelets') && pCat.includes('bracelet')) catMatch = true;
+          
           if (!catMatch) return false;
         }
 
@@ -121,12 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
           const searchableText = (p.name + " " + p.desc).toLowerCase();
           const hasMaterial = activeMaterials.some(mat => searchableText.includes(mat));
           if (!hasMaterial) return false;
-        }
-
-        // 5. Filter by Rating
-        if (minRating > 0) {
-          const starCount = (p.stars.match(/★/g) || []).length;
-          if (starCount < minRating) return false;
         }
 
         return true;
@@ -149,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event Listeners
     if (priceRange) {
       priceRange.addEventListener('input', () => {
-        priceRangeValue.textContent = '$' + priceRange.value;
+        priceRangeValue.textContent = 'KES ' + parseInt(priceRange.value).toLocaleString();
         filterProducts();
       });
     }
@@ -162,8 +153,17 @@ document.addEventListener('DOMContentLoaded', () => {
       searchInput.addEventListener('input', filterProducts);
     }
 
+    // Clear filters
+    document.getElementById('clear-filters')?.addEventListener('click', () => {
+      categoryChecks.forEach(cb => cb.checked = (cb.value === 'all'));
+      materialChecks.forEach(cb => cb.checked = false);
+      if (searchInput) searchInput.value = '';
+      if (priceRange) { priceRange.value = 2000; priceRangeValue.textContent = 'KES 2,000'; }
+      if (sortSelect) sortSelect.value = 'featured';
+      filterProducts();
+    });
+
     materialChecks.forEach(cb => cb.addEventListener('change', filterProducts));
-    ratingRadios.forEach(r => r.addEventListener('change', filterProducts));
 
     categoryChecks.forEach(cb => {
       cb.addEventListener('change', (e) => {
@@ -181,17 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Clear filters
-    document.getElementById('clear-filters')?.addEventListener('click', () => {
-      categoryChecks.forEach(cb => cb.checked = (cb.value === 'all'));
-      materialChecks.forEach(cb => cb.checked = false);
-      ratingRadios.forEach(r => r.checked = false);
-      if (searchInput) searchInput.value = '';
-      if (priceRange) { priceRange.value = 2000; priceRangeValue.textContent = '$2000'; }
-      if (sortSelect) sortSelect.value = 'featured';
-      filterProducts();
-    });
-
     // View toggle
     const gridView = document.getElementById('grid-view');
     const listView = document.getElementById('list-view');
@@ -207,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Initial Render
-    if (priceRange) { priceRange.max = "2000"; priceRange.value = "2000"; priceRangeValue.textContent = "$2000"; }
+    if (priceRange) { priceRange.max = "2000"; priceRange.value = "2000"; priceRangeValue.textContent = "KES 2,000"; }
     filterProducts();
   };
   

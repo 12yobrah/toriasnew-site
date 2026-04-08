@@ -3,17 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us | TORIAS GLAM HAVEN – Our Story</title>
-  <meta name="description" content="Learn the story behind TORIAS GLAM HAVEN – a luxury jewelry brand born from a love of elegance, confidence, and timeless beauty. Discover our mission and values." />
+  <title>About Us | TORIAS GLAM HAVEN – Jewelry Built With Love</title>
+  <meta name="description" content="Discover the story of TORIAS GLAM HAVEN. Born from a need for lasting, high-quality jewelry for Nairobi's modern woman. Learn about our mission, vision, and craftsmanship." />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://toriasnew-site.vercel.app/about.html" />
+  <meta property="og:title" content="About Us | TORIAS GLAM HAVEN" />
+  <meta property="og:description" content="Born from frustration. Built with love. Discover why TORIAS GLAM HAVEN is Nairobi's destination for tarnish-resistant luxury jewelry." />
+  <meta property="og:image" content="https://toriasnew-site.vercel.app/img/hero-pendant.jpg" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://toriasnew-site.vercel.app/about.html" />
+  <meta property="twitter:title" content="About Us | TORIAS GLAM HAVEN" />
+  <meta property="twitter:description" content="Born from frustration. Built with love. Discover why TORIAS GLAM HAVEN is Nairobi's destination for tarnish-resistant luxury jewelry." />
+  <meta property="twitter:image" content="https://toriasnew-site.vercel.app/img/hero-pendant.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://fonts.gstatic.com/s/cormorantgaramond/v22/co3YmX5slCNu2PGAn1yD4F86R3D_SumBPlW0.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="https://fonts.gstatic.com/s/jost/v14/pe0pMIuPIYBCpEV5eFdCBfe5.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="canonical" href="https://toriasnew-site.vercel.app/about.html" />
+  <meta name="theme-color" content="#C9A84C" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+  
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/about.css" />
 </head>
-<body>
+<body class="about-page">
 
-  <div class="promo-banner" id="promo-banner">
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+  <div class="promo-banner" id="promo-banner" role="complementary" aria-label="Promotion">
     <div class="promo-marquee">
       <div class="marquee-content">
         <span>✦ New Collection Arriving Soon ✦</span>
@@ -27,223 +50,279 @@
     <button class="promo-close" id="promo-close" aria-label="Close banner">✕</button>
   </div>
 
-  <header class="site-header" id="site-header">
+  <header class="site-header" id="site-header" role="banner">
     <div class="header-inner container">
-      <a href="index.html" class="logo" aria-label="TORIAS GLAM HAVEN Home">
+      <a href="index.html" class="logo" aria-label="TORIAS GLAM HAVEN - Home">
         <span class="logo-ornament">✦</span>
-        <div class="logo-text"><span class="logo-main">Torias</span><span class="logo-sub">Glam Haven</span></div>
+        <div class="logo-text">
+          <span class="logo-main">Torias</span>
+          <span class="logo-sub">Glam Haven</span>
+        </div>
         <span class="logo-ornament">✦</span>
       </a>
 
-      <nav class="main-nav" id="main-nav">
-        <ul class="nav-list">
+      <nav class="main-nav" id="main-nav" role="navigation" aria-label="Main Navigation">
+        <ul class="nav-list" role="list">
           <li><a href="index.html" class="nav-link">Home</a></li>
           <li class="nav-dropdown">
-            <a href="shop.html" class="nav-link">Shop <span class="dropdown-arrow">▾</span></a>
-            <ul class="dropdown-menu">
+            <a href="shop.html" class="nav-link" aria-haspopup="true" aria-expanded="false">Shop <span class="dropdown-arrow" aria-hidden="true">▾</span></a>
+            <ul class="dropdown-menu" role="list">
               <li><a href="shop.html?cat=bracelets">Bracelets</a></li>
               <li><a href="shop.html?cat=necklaces">Necklaces</a></li>
               <li><a href="shop.html?cat=earrings">Earrings</a></li>
               <li><a href="shop.html?cat=sets">Jewelry Sets</a></li>
             </ul>
           </li>
-          <li><a href="about.html" class="nav-link active">About Us</a></li>
+          <li><a href="about.html" class="nav-link active" aria-current="page">About Us</a></li>
           <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
       </nav>
 
       <div class="header-actions">
-        <button class="icon-btn search-btn" id="search-btn" aria-label="Search">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <button class="icon-btn search-btn" id="search-btn" aria-label="Open Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </button>
 
         <a href="#" class="icon-btn wishlist-btn" aria-label="Wishlist">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           <span class="icon-badge wishlist-count">3</span>
         </a>
-        <a href="cart.html" class="icon-btn cart-btn" aria-label="Shopping cart">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <a href="cart.html" class="icon-btn cart-btn" aria-label="Shopping Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           <span class="icon-badge cart-count">2</span>
         </a>
-        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <button class="hamburger" id="hamburger" aria-label="Open Mobile Menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="about-hero" aria-label="About us hero">
-    <div class="about-hero-bg">
-      <img src="img/hero-pendant.jpg" alt="Jewelry being crafted" />
-      <div class="hero-overlay"></div>
-    </div>
-    <div class="about-hero-content container">
-      <p class="overline animate-up">Our Story</p>
-      <h1 class="animate-up">Born From a Love of<br /><em>Elegance &amp; Self-Expression</em></h1>
-      <p class="animate-up" style="max-width:560px;color:rgba(255,255,255,0.75);font-size:var(--fs-md);line-height:1.8;">We believe that jewelry is more than an accessory – it's a reflection of who you are and who you're becoming.</p>
-    </div>
-  </section>
+  <main id="main-content">
+    
+    <!-- ══ HERO ══ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-ring" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="logo-mark" aria-hidden="true">
+          <span class="logo-tgh">T . G . H</span>
+          <span class="logo-name">Toria's Glam Haven</span>
+          <span class="logo-tagline">Elegance and style</span>
+        </div>
 
-  <main>
+        <p class="hero-eyebrow">Our Story</p>
 
-    <!-- BRAND STORY -->
-    <section class="about-story section" aria-label="Brand story">
-      <div class="container">
-        <div class="about-story-grid">
-          <div class="about-story-img">
-            <img src="img/collection-circle.jpg" alt="Luxury gold jewelry pieces" loading="lazy" />
-            <div class="about-img-accent"></div>
+        <h1 id="hero-title">Born From Frustration.<br><em>Built With Love.</em></h1>
+
+        <p class="hero-sub">The story of why Toria's Glam Haven exists — and who it was made for.</p>
+
+        <div class="gold-rule" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ══ ORIGIN ══ -->
+    <section class="about-section origin" aria-labelledby="origin-title">
+      <div class="container-about">
+        <div class="origin-grid">
+          <div class="origin-text">
+            <span class="section-label-about">How It Started</span>
+            <h2 id="origin-title">Tired of Pretty Pieces That <em>Did Not Last</em></h2>
+            <p class="about-paragraph">If you have ever bought a beautiful piece of jewelry, worn it twice, and watched it turn green on your wrist, this brand was made for you.</p>
+            <p class="about-paragraph">That is exactly where Toria's Glam Haven began. Like most women who love jewelry, our founder Toria spent years buying pieces that promised elegance but delivered disappointment. Necklaces that faded after the first wash. Bracelets that broke before the occasion was over. Earrings that irritated your skin by noon.</p>
+            <p class="about-paragraph">The market was full of pretty pieces. But quality? That was either missing, or came with a price tag that felt completely out of reach. So she stopped settling, and started building.</p>
           </div>
-          <div class="about-story-text animate-up">
-            <p class="overline">The Beginning</p>
-            <h2>How TORIAS GLAM HAVEN Came to Be</h2>
-            <div class="title-divider" style="justify-content:flex-start;margin:var(--sp-sm) 0"><span>✦</span></div>
-            <p>TORIAS GLAM HAVEN was founded with a single, powerful vision: to make luxury jewelry accessible to every woman who believes she deserves to sparkle. What started as a passion project — sourcing the finest gems and crafting pieces in small batches — has grown into a celebrated jewelry brand trusted by thousands of customers worldwide.</p>
-            <p style="margin-top:var(--sp-sm)">Our founder, a lifelong lover of fine jewelry, saw a gap in the market: beautiful, high-quality pieces at prices that don't require a trust fund. She built TORIAS GLAM HAVEN on honesty, craftsmanship, and the belief that elegance should be for everyone.</p>
-            <div class="about-signature">
-              <p class="signature-text">— Tória, Founder &amp; Creative Director</p>
+
+          <div class="origin-card-wrap">
+            <div class="quote-card">
+              <blockquote>"I wanted jewelry I could wear to a meeting on Monday and a wedding on Saturday, and still look just as beautiful weeks later."</blockquote>
+              <p class="quote-attr"><span>Toria</span> &nbsp;|&nbsp; Founder &amp; Creative Director</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- STATS STRIP -->
-    <section class="about-stats section section--blush" aria-label="Brand statistics">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-item animate-up">
-            <div class="stat-number">10K+</div>
-            <div class="stat-label">Happy Customers</div>
+    <!-- ══ THE GAP ══ -->
+    <section class="about-section gap-section" aria-labelledby="gap-title">
+      <div class="container-about">
+        <span class="section-label-about">The Gap We Saw</span>
+        <h2 id="gap-title">Nairobi's Women Deserve <em>Better</em></h2>
+        <p class="about-paragraph">We looked at the market and saw the same problem everywhere. Cheap jewelry was abundant but disappointing. Luxury jewelry was beautiful but unattainable. The women in between, the ones who wanted both quality and value, were left with nothing that truly served them.</p>
+        <p class="about-paragraph">That gap became our purpose.</p>
+
+        <div class="gap-cards">
+          <article class="gap-card">
+            <div class="gap-num" aria-hidden="true">01</div>
+            <h3>Fast Jewelry Was Everywhere</h3>
+            <p class="about-paragraph">Affordable pieces that looked great in the shop but faded, broke, or irritated skin within weeks of purchase.</p>
+          </article>
+          <article class="gap-card">
+            <div class="gap-num" aria-hidden="true">02</div>
+            <h3>Luxury Felt Out of Reach</h3>
+            <p class="about-paragraph">High-quality jewelry existed, but at prices that made everyday wear feel like an impossible dream for most women.</p>
+          </article>
+          <article class="gap-card">
+            <div class="gap-num" aria-hidden="true">03</div>
+            <h3>Gifting Had No Middle Ground</h3>
+            <p class="about-paragraph">Finding a gift that looked luxurious, lasted long, and did not break the bank was nearly impossible. We changed that.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PROMISE ══ -->
+    <section class="about-section promise" aria-labelledby="promise-title">
+      <div class="container-about">
+        <span class="section-label-about">What We Stand For</span>
+        <h2 id="promise-title">Our Promise to <em>Every Customer</em></h2>
+        <p class="about-paragraph">We built Toria's Glam Haven on one obsession: pieces that stay. No tarnishing. No fading. No "I can only wear this once." Just jewelry you can reach for every day, for every milestone, for every mood, and still look just as stunning six months later.</p>
+
+        <div class="promise-grid">
+          <div class="promise-item">
+            <div class="promise-icon" aria-hidden="true">✦</div>
+            <div>
+              <strong>Pieces That Last</strong>
+              <span>Every item is crafted from tarnish-resistant, hypoallergenic materials that hold their shine through daily wear.</span>
+            </div>
           </div>
-          <div class="stat-item animate-up">
-            <div class="stat-number">200+</div>
-            <div class="stat-label">Unique Designs</div>
+          <div class="promise-item">
+            <div class="promise-icon" aria-hidden="true">✦</div>
+            <div>
+              <strong>Jewelry for Every Moment</strong>
+              <span>From everyday confidence to milestone celebrations, we have a piece for every chapter of your story.</span>
+            </div>
           </div>
-          <div class="stat-item animate-up">
-            <div class="stat-number">50+</div>
-            <div class="stat-label">Countries Served</div>
+          <div class="promise-item">
+            <div class="promise-icon" aria-hidden="true">✦</div>
+            <div>
+              <strong>Gifts That Mean Something</strong>
+              <span>When you give jewelry that lasts, you are not just giving an accessory. You are giving a memory they will wear.</span>
+            </div>
           </div>
-          <div class="stat-item animate-up">
-            <div class="stat-number">4.9★</div>
-            <div class="stat-label">Average Rating</div>
+          <div class="promise-item">
+            <div class="promise-icon" aria-hidden="true">✦</div>
+            <div>
+              <strong>Quality Without Compromise</strong>
+              <span>Rigorous quality checks on every single piece before it reaches your hands, because you deserve nothing less.</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- MISSION & VISION -->
-    <section class="about-mission section" aria-label="Mission and vision">
-      <div class="container">
-        <div class="section-header text-center">
-          <p class="overline">Our Purpose</p>
-          <h2 class="section-title">Mission &amp; Vision</h2>
-          <div class="title-divider"><span>✦</span></div>
-        </div>
-        <div class="mission-grid">
-          <div class="mission-card animate-up">
-            <div class="mission-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-            </div>
-            <h3>Our Mission</h3>
-            <p>To design and deliver exquisitely crafted jewelry that inspires confidence, celebrates individuality, and makes every woman feel like royalty — without the royal price tag. We are committed to ethical sourcing, transparent pricing, and unmatched customer service at every touchpoint.</p>
+    <!-- ══ TESTIMONIALS (NEW) ══ -->
+    <section class="about-section testimonials" aria-labelledby="testimonials-title">
+      <div class="container-about">
+        <span class="section-label-about">Real Voices</span>
+        <h2 id="testimonials-title">Loved by <em>Extraordinary Women</em></h2>
+        <div class="testimonial-grid">
+          <div class="testimonial-item">
+            <p>"I've worn my TG Haven necklace every day for 4 months, even in the shower, and it still looks like it came out of the box today. Incredible quality."</p>
+            <span class="testimonial-author">Sarah M. — Verified Buyer</span>
           </div>
-          <div class="mission-card animate-up">
-            <div class="mission-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            </div>
-            <h3>Our Vision</h3>
-            <p>To become the world's most trusted destination for accessible luxury jewelry — a brand synonymous with timeless elegance, authenticity, and the empowerment of women everywhere. We envision a world where every milestone, every occasion, and every everyday moment is adorned with beauty.</p>
-          </div>
-          <div class="mission-card animate-up">
-            <div class="mission-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </div>
-            <h3>Our Values</h3>
-            <p>Authenticity in every gem. Excellence in every craft. Transparency in every transaction. Joy in every unboxing. We measure success not by pieces sold, but by the smiles we create — the woman who gifted herself her first luxury piece, the mother who passed it to her daughter.</p>
+          <div class="testimonial-item">
+            <p>"Finally found jewelry that doesn't irritate my sensitive skin. The sets are my go-to for every business meeting."</p>
+            <span class="testimonial-author">Faith K. — Creative Director</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CRAFTSMANSHIP -->
-    <section class="about-craft section section--blush" aria-label="Our craftsmanship">
-      <div class="container">
-        <div class="about-craft-inner">
-          <div class="about-craft-text animate-up">
-            <p class="overline">Handcrafted Excellence</p>
-            <h2>Made With Intention,<br /><em>Worn With Pride</em></h2>
-            <div class="title-divider" style="justify-content:flex-start;margin:var(--sp-sm) 0"><span>✦</span></div>
-            <p>Every TORIAS GLAM HAVEN piece begins as a sketch — a vision of beauty translated into metal and gem. Our master craftspeople work with ethically sourced materials, precision tools, and an attention to detail that borders on obsession. From the first mold to the final polish, each piece passes through a rigorous quality control process before it reaches your hands.</p>
-            <p style="margin-top:var(--sp-sm)">We partner only with suppliers who share our values of sustainable, conflict-free sourcing. Because true luxury begins with integrity.</p>
-            <div class="craft-pillars">
-              <div class="craft-pillar">
-                <span class="pillar-num">01</span>
-                <div>
-                  <strong>Ethical Sourcing</strong>
-                  <p>All gems are conflict-free and certified</p>
-                </div>
-              </div>
-              <div class="craft-pillar">
-                <span class="pillar-num">02</span>
-                <div>
-                  <strong>Hand Finishing</strong>
-                  <p>Each piece is hand-polished to perfection</p>
-                </div>
-              </div>
-              <div class="craft-pillar">
-                <span class="pillar-num">03</span>
-                <div>
-                  <strong>Quality Certified</strong>
-                  <p>Rigorous QC before every shipment</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="about-craft-images">
-            <img src="img/bracelet-luxe.jpg" alt="Luxury jewelry craftsmanship" loading="lazy" class="craft-img-main" />
-            <img src="img/blue-pendant.jpg" alt="Gold necklace detail" loading="lazy" class="craft-img-secondary" />
-          </div>
+    <!-- ══ AUDIENCE ══ -->
+    <section class="about-section audience" aria-labelledby="audience-title">
+      <div class="container-about">
+        <span class="section-label-about">Who We Are For</span>
+        <h2 id="audience-title">For the Woman Who <em>Refuses to Compromise</em></h2>
+        <p class="about-paragraph">We exist for every woman who wants to look and feel luxurious without constantly replacing what she owns.</p>
+
+        <div class="audience-grid">
+          <article class="audience-cell">
+            <span class="cell-icon" role="img" aria-label="Business Suitcase">💼</span>
+            <h3>The Boss Woman</h3>
+            <p class="about-paragraph">Building her brand one outfit at a time. She needs her look to command a room, and her jewelry to keep up.</p>
+          </article>
+          <article class="audience-cell">
+            <span class="cell-icon" role="img" aria-label="Glowing Star">🌟</span>
+            <h3>The Young Professional</h3>
+            <p class="about-paragraph">Treating herself because she has earned it. She wants pieces that feel luxurious without the guilt.</p>
+          </article>
+          <article class="audience-cell">
+            <span class="cell-icon" role="img" aria-label="Gift Box">🎁</span>
+            <h3>The Thoughtful Giver</h3>
+            <p class="about-paragraph">Looking for a gift that actually means something. Something beautiful that will last long after the occasion.</p>
+          </article>
+          <article class="audience-cell">
+            <span class="cell-icon" role="img" aria-label="Crown">👑</span>
+            <h3>The Woman Who Loves to Shine</h3>
+            <p class="about-paragraph">For every mood, every milestone, every reason and no reason at all. She just loves to feel extraordinary.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="about-cta section" aria-label="Shop call to action">
-      <div class="container text-center">
-        <p class="overline">Ready to Shine?</p>
-        <h2 class="section-title">Find Your<br /><em>Perfect Piece</em></h2>
-        <p style="color:var(--clr-gray-400);max-width:480px;margin:var(--sp-md) auto var(--sp-lg);font-size:var(--fs-md)">Browse our full collection of luxury bracelets, necklaces, earrings, and jewelry sets — each crafted to make you feel extraordinary.</p>
-        <div style="display:flex;justify-content:center;gap:var(--sp-sm);flex-wrap:wrap">
-          <a href="shop.html" class="btn btn-gold">Shop the Collection</a>
-          <a href="contact.html" class="btn btn-outline-gold">Get in Touch</a>
+    <!-- ══ FEATURED PRODUCTS (NEW) ══ -->
+    <section class="about-section featured-items" aria-labelledby="featured-title">
+      <div class="container-about">
+        <span class="section-label-about">The Collection</span>
+        <h2 id="featured-title">Start Your <em>Collection</em></h2>
+        <div class="featured-grid">
+          <a href="shop.html?cat=necklaces" class="featured-item-card" aria-label="Shop Necklaces">
+            <div class="featured-item-img"><img src="img/hero-pendant.jpg" alt="Necklaces Collection"></div>
+            <span>Necklaces</span>
+          </a>
+          <a href="shop.html?cat=bracelets" class="featured-item-card" aria-label="Shop Bracelets">
+            <div class="featured-item-img"><img src="img/bracelet-luxe.jpg" alt="Bracelets Collection"></div>
+            <span>Bracelets</span>
+          </a>
+          <a href="shop.html?cat=earrings" class="featured-item-card" aria-label="Shop Earrings">
+            <div class="featured-item-img"><img src="img/blue-pendant.jpg" alt="Earrings Collection"></div>
+            <span>Earrings</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CTA ══ -->
+    <section class="about-cta-section" aria-labelledby="cta-title">
+      <div class="container-about">
+        <div class="cta-divider" aria-hidden="true">
+          <div class="divider-line"></div>
+          <span class="divider-star">✦</span>
+          <div class="divider-line"></div>
+        </div>
+        <h2 id="cta-title">Ready to Find Your <em>Perfect Piece?</em></h2>
+        <p class="about-paragraph">Browse our full collection of lasting, luxurious jewelry, each piece crafted to make you feel extraordinary.</p>
+        <div class="btn-group">
+          <a href="shop.html" class="btn-about btn-filled-about">Shop the Collection</a>
+          <a href="contact.html" class="btn-about btn-outline-about">Get in Touch</a>
         </div>
       </div>
     </section>
 
   </main>
 
-
-  <footer class="site-footer">
+  <footer class="site-footer" role="contentinfo">
     <div class="footer-top">
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a href="index.html" class="footer-logo">
+            <a href="index.html" class="footer-logo" aria-label="TORIAS GLAM HAVEN - Home">
               <span class="logo-ornament">✦</span>
-              <div class="logo-text"><span class="logo-main">Torias</span><span class="logo-sub">Glam Haven</span></div>
+              <div class="logo-text">
+                <span class="logo-main">Torias</span>
+                <span class="logo-sub">Glam Haven</span>
+              </div>
               <span class="logo-ornament">✦</span>
             </a>
             <p class="footer-tagline">Where elegance meets confidence.</p>
             <div class="social-links">
-              <a href="#" aria-label="Instagram" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/></svg></a>
-              <a href="#" aria-label="Facebook" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+              <a href="#" aria-label="Follow us on Instagram" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/></svg></a>
+              <a href="#" aria-label="Follow us on Facebook" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
             </div>
           </div>
           <div class="footer-col">
             <h4 class="footer-col-title">Navigation</h4>
-            <ul class="footer-links">
+            <ul class="footer-links" role="list">
               <li><a href="index.html">Home</a></li>
               <li><a href="shop.html">Shop</a></li>
               <li><a href="about.html">About Us</a></li>
@@ -252,7 +331,7 @@
           </div>
           <div class="footer-col">
             <h4 class="footer-col-title">Customer Care</h4>
-            <ul class="footer-links">
+            <ul class="footer-links" role="list">
               <li><a href="#">Shipping Policy</a></li>
               <li><a href="#">Returns</a></li>
               <li><a href="#">FAQs</a></li>
@@ -262,9 +341,9 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="container">
+      <div class="container text-center">
         <p>© 2026 TORIAS GLAM HAVEN. All rights reserved.</p>
-        <div class="payment-icons">
+        <div class="payment-icons" aria-label="Accepted payment methods">
           <span class="payment-icon">VISA</span>
           <span class="payment-icon">MC</span>
           <span class="payment-icon">PayPal</span>
@@ -273,25 +352,36 @@
     </div>
   </footer>
 
-  <script src="js/productsData.js"></script><script src="js/main.js"></script>
+  <script src="js/productsData.js"></script>
+  <script src="js/main.js"></script>
 
   <!-- SEARCH OVERLAY -->
-  <div class="search-overlay" id="search-overlay" hidden>
+  <div class="search-overlay" id="search-overlay" hidden role="dialog" aria-modal="true" aria-label="Product Search">
     <div class="search-container container">
       <div class="search-header">
-        <input type="text" id="search-input" placeholder="Search for jewelry..." aria-label="Search input" />
+        <input type="text" id="search-input" placeholder="Search for jewelry..." aria-label="Search items" />
         <button id="search-close" class="search-close-btn" aria-label="Close search">✕</button>
       </div>
-      <div id="search-results" class="search-results-grid">
+      <div id="search-results" class="search-results-grid" aria-live="polite">
         <!-- Results injected via main.js -->
       </div>
     </div>
   </div>
+
+  <!-- WhatsApp Floating Widget -->
+  <div class="whatsapp-widget" id="whatsapp-widget">
+    <a href="https://wa.me/254707353520?text=Hello%20Torias%20Glam%20Haven!%20I%27d%20like%20to%20enquire%20about%20your%20jewelry." 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="whatsapp-btn"
+       aria-label="Chat with us on WhatsApp">
+      <div class="whatsapp-icon">
+        <svg viewBox="0 0 24 24" fill="white" width="28" height="28" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.974 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </div>
+      <span class="whatsapp-label">Chat with us</span>
+    </a>
+  </div>
 </body>
 </html>
-
-
-
-
-
-

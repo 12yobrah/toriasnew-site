@@ -164,9 +164,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (oldPriceEl) { oldPriceEl.textContent = p.oldPrice; oldPriceEl.style.display = p.oldPrice ? '' : 'none'; }
     document.getElementById('modal-stars').textContent = p.stars;
     document.getElementById('modal-rating-count').textContent = p.ratingCount;
-    // Set src with cache-busting to ensure fresh load in file:// context
+    // Load image with fade-in, never clear to empty first (causes blank white)
     const imgEl = document.getElementById('modal-img');
-    if (imgEl) { imgEl.src = ''; imgEl.src = p.img; imgEl.alt = p.name; }
+    if (imgEl) {
+      imgEl.alt = p.name;
+      imgEl.style.opacity = '0';
+      imgEl.onload = () => { imgEl.style.transition = 'opacity 0.35s ease'; imgEl.style.opacity = '1'; };
+      imgEl.onerror = () => { imgEl.style.opacity = '1'; };
+      imgEl.src = p.img;
+    }
     document.getElementById('modal-desc').textContent = p.desc;
     const viewLink = document.getElementById('modal-view-full');
     if (viewLink) viewLink.href = p.link;

@@ -12,12 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
       thumbs.forEach(t => t.classList.remove('active'));
       thumb.classList.add('active');
       if (mainImg) {
+        mainImg.style.transition = 'opacity 0.18s ease';
         mainImg.style.opacity = '0';
         setTimeout(() => {
           mainImg.src = thumb.dataset.img;
-          mainImg.style.opacity = '1';
+          mainImg.onload = () => { mainImg.style.opacity = '1'; };
+          mainImg.onerror = () => { mainImg.style.opacity = '1'; }; // always restore
         }, 180);
-        mainImg.style.transition = 'opacity 0.18s ease';
       }
     });
   });
