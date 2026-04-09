@@ -500,28 +500,42 @@ strong { font-weight: 600; }
 .logo, .footer-logo {
   display: flex;
   align-items: center;
-  gap: 8px;
   text-decoration: none;
   flex-shrink: 0;
 }
-.logo-ornament { color: #C9A84C; font-size: 0.8rem; }
-.logo-text { display: flex; flex-direction: column; line-height: 1; }
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+.logo-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-ornament { 
+  color: #C9A84C; 
+  font-size: 0.7rem;
+  margin-top: 5px;
+}
 .logo-main {
   font-family: var(--font-logo);
-  font-size: 2.2rem;
+  font-size: 3.2rem;
   color: #ffffff;
   letter-spacing: -0.01em;
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
+  line-height: 0.8;
 }
 .logo-sub {
   font-family: var(--font-sans);
-  font-size: 0.58rem;
-  letter-spacing: 0.35em;
+  font-size: 0.54rem;
+  letter-spacing: 0.55em;
   text-transform: uppercase;
   color: #C9A84C;
-  font-weight: 400;
-  margin-top: 1px;
+  font-weight: 500;
+  margin-top: -2px;
 }
 
 /* ── NAV ────────────────────────────────────────────────────── */
@@ -572,6 +586,15 @@ strong { font-weight: 600; }
   pointer-events: none;
   transition: var(--transition);
   z-index: 100;
+}
+/* Invisible bridge to prevent closing when moving cursor into the menu gap */
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+  height: 20px;
 }
 .nav-dropdown:hover .dropdown-menu {
   opacity: 1;
