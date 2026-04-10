@@ -155,24 +155,22 @@
     try {
       const { data, error } = await client
         .from('products')
-        .select('*, categories(name)');
+        .select('*');
 
       if (error) throw error;
 
       if (data && data.length > 0) {
         window.productsData = {}; // Clear fallback data
         data.forEach((item, index) => {
-          const pId = item.id || `supa_${index}`;
+          const pId = item.id || `item_${index}`;
           window.productsData[pId] = {
             ...item,
             id: pId,
-            // Map the new table structure back to what the website expects
-            category: (item.categories && item.categories.name) || 'Jewelry',
-            img: item.image_url || 'https://via.placeholder.com/300',
-            desc: item.description || ''
+            desc: item.description || '',
+            img: item.image_url || 'https://via.placeholder.com/300'
           };
         });
-        console.log("Professional Supabase inventory loaded successfully with " + data.length + " products.");
+        console.log("Merchant-ready Supabase inventory loaded: " + data.length + " items.");
       }
       
       // Trigger UI updates
@@ -181,7 +179,7 @@
         window.initShopFilters();
       }
     } catch (err) {
-      console.error("Supabase load failed, using local fallback.", err);
+      console.error("Connection failed! Check your Supabase keys.", err);
       if (typeof window.initShopFilters === 'function') window.initShopFilters();
     }
   }
