@@ -136,18 +136,55 @@
   // Fire the ready event immediately (data is synchronous)
   document.dispatchEvent(new CustomEvent('inventoryReady'));
 
-  // Try to refresh from JSON if on HTTP (silently fails on file://)
+  // ============================================================
+  // SUPABASE INTEGRATION
+  // ============================================================
+  const SUPABASE_URL = 'https://xfuhxmrqykkmfqcpshhs.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_tA-hIr0xRAkpb_Rt0l_Odg_nonm1k6v';
+
+  async function fetchSupabaseProducts() {
+    if (typeof supabase === 'undefined') {
+      console.warn("Supabase SDK not loaded yet.");
+      if (typeof window.initShopFilters === 'function') window.initShopFilters();
+      return;
+    }
+
+    const { createClient } = supabase;
+    const client = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    try {
+      const { data, error } = await client
+        .from('products')
+        .select('*');
+
+      if (error) throw error;
+
+      if (data && data.length > 0) {
+        window.productsData = {}; // Clear fallback data
+        data.forEach(item => {
+          // Ensure ID is a number/string as expected by shop.js
+          window.productsData[item.id] = item;
+        });
+        console.log("Supabase inventory loaded successfully.");
+      }
+      
+      // Trigger UI updates
+      document.dispatchEvent(new CustomEvent('inventoryReady'));
+      if (typeof window.initShopFilters === 'function') {
+        window.initShopFilters();
+      }
+    } catch (err) {
+      console.error("Supabase load failed, using local fallback.", err);
+      if (typeof window.initShopFilters === 'function') window.initShopFilters();
+    }
+  }
+
+  // Initialize fetch
   if (window.location.protocol !== 'file:') {
-    fetch('data/products.json')
-      .then(r => r.json())
-      .then(data => {
-        data.forEach(item => { window.productsData[item.id] = item; });
-        document.dispatchEvent(new CustomEvent('inventoryReady'));
-        if (typeof window.initShopFilters === 'function') window.initShopFilters();
-      })
-      .catch(() => { /* silently ignore – inline data is already loaded */ });
+    // Small delay to ensure SDK is initialized
+    setTimeout(fetchSupabaseProducts, 100);
   } else {
-    // On file:// trigger shop filters directly
+    // On file:// trigger shop filters directly using inline data
     if (typeof window.initShopFilters === 'function') window.initShopFilters();
   }
 })();

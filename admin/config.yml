@@ -2,28 +2,34 @@ backend:
   name: git-gateway
   branch: main
 
+# This allows the client to see the live site images in the dashboard
 media_folder: "img/products"
-public_folder: "../img/products"
+public_folder: "img/products"
 
+# Define the collections (Dashboard Sections)
 collections:
   - name: "inventory"
-    label: "Inventory Management"
+    label: "Jewelry Inventory"
+    delete: false # Prevent accidental deletion of the whole file
+    editor:
+      preview: false
     files:
       - file: "data/products.json"
-        label: "Jewelry Collection"
-        name: "products"
+        label: "Product List"
+        name: "products_file"
         fields:
-          - label: "Jewelry Items"
+          - label: "All Products"
             name: "products"
             widget: "list"
+            summary: "{{fields.name}} ({{fields.category}})"
             fields:
-              - { label: "Unique ID", name: "id", widget: "number" }
+              - { label: "ID (Numerical, unique)", name: "id", widget: "number", value_type: "int" }
               - { label: "Product Name", name: "name", widget: "string" }
-              - { label: "Category", name: "category", widget: "select", options: ["Necklace", "Earrings", "Jewelry Sets", "Bracelets", "Rings"] }
-              - { label: "Price (e.g. $1,250.00)", name: "price", widget: "string" }
+              - { label: "Category", name: "category", widget: "select", options: ["Necklaces", "Earrings", "Jewelry Sets", "Bracelets", "Rings"] }
+              - { label: "Price (e.g. KES 1,250)", name: "price", widget: "string" }
               - { label: "Old Price (Optional)", name: "oldPrice", widget: "string", required: false }
-              - { label: "Rating Stars (e.g. ★★★★★)", name: "stars", widget: "string" }
-              - { label: "Rating Count (e.g. (12))", name: "ratingCount", widget: "string" }
-              - { label: "Jewelry Image", name: "img", widget: "image" }
-              - { label: "Product Link (e.g. product.html?id=206)", name: "link", widget: "string" }
-              - { label: "Product Description", name: "desc", widget: "text" }
+              - { label: "Rating Stars (e.g. ★★★★★)", name: "stars", widget: "string", default: "★★★★★" }
+              - { label: "Rating Count (e.g. (10))", name: "ratingCount", widget: "string", default: "(0)" }
+              - { label: "Product Image", name: "img", widget: "image" }
+              - { label: "Link (e.g. product.html?id=206)", name: "link", widget: "string" }
+              - { label: "Short Description", name: "desc", widget: "text" }

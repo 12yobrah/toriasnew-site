@@ -28,6 +28,8 @@
   <meta name="twitter:title" content="TORIAS GLAM HAVEN | Timeless Luxury Jewelry" />
   <meta name="twitter:description" content="Discover TORIAS GLAM HAVEN – a curated collection of luxury jewelry." />
   <meta name="twitter:image" content="https://toriasnew-site.vercel.app/img/hero-pendant.jpg" />
+  
+  <!-- Netlify Identity Widget -->
 </head>
 <body>
 
@@ -119,9 +121,17 @@
   <main id="main-content">
 
     <!-- HERO SECTION -->
-    <section class="hero" id="hero" aria-label="Hero section">
+    <section class="hero" id="hero" aria-label="Luxury Hero Gallery">
       <div class="hero-bg">
-        <img src="img/hero-pendant.jpg" alt="Luxury gold pendant jewelry" class="hero-img" />
+        <div class="hero-slide active">
+          <img src="img/hero-pendant.jpg" alt="Luxury gold pendant jewelry" class="hero-img" />
+        </div>
+        <div class="hero-slide">
+          <img src="img/hero-emerald.jpg" alt="Exquisite emerald jewelry set" class="hero-img" />
+        </div>
+        <div class="hero-slide">
+          <img src="img/blue-pendant.jpg" alt="Timeless blue stone necklace" class="hero-img" />
+        </div>
         <div class="hero-overlay"></div>
       </div>
       <div class="container hero-container">
@@ -933,6 +943,7 @@
     </a>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/productsData.js"></script><script src="js/main.js"></script>
   <script src="js/home.js"></script>
 </body>
