@@ -143,9 +143,9 @@
                 <input type="checkbox" id="cat-filter-sets" name="category" value="sets" />
                 <label for="cat-filter-sets">Jewelry Sets <span class="filter-count">3</span></label>
               </li>
-              <li class="filter-item" style="opacity:0.45;pointer-events:none;">
-                <input type="checkbox" id="cat-filter-bracelets" name="category" value="bracelets" disabled />
-                <label for="cat-filter-bracelets">Bracelets <span class="filter-count" style="color:var(--clr-gold);font-size:0.6rem;">Coming Soon</span></label>
+              <li class="filter-item">
+                <input type="checkbox" id="cat-filter-bracelets" name="category" value="bracelets" />
+                <label for="cat-filter-bracelets">Bracelets <span class="filter-count">0</span></label>
               </li>
             </ul>
           </div>
@@ -153,11 +153,11 @@
           <!-- Price Range -->
           <div class="filter-group">
             <div class="filter-group-title">Price Range</div>
-            <div class="price-range-slider">
-              <input type="range" id="price-range" min="1000" max="2000" value="2000" step="50" aria-label="Maximum price" />
+            <div class="price-slider-wrap">
+              <input type="range" id="price-range" min="0" max="50000" step="100" value="50000" />
               <div class="price-range-labels">
-                <span>KES 1,000</span>
-                <span id="price-range-value">KES 2,000</span>
+                <span>KES 0</span>
+                <span id="price-range-value">KES 50,000</span>
               </div>
             </div>
           </div>
