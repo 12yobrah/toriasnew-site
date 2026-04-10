@@ -155,27 +155,24 @@
     try {
       const { data, error } = await client
         .from('products')
-        .select('*');
+        .select('*, categories(name)');
 
       if (error) throw error;
 
       if (data && data.length > 0) {
         window.productsData = {}; // Clear fallback data
         data.forEach((item, index) => {
-          // Fallback ID if missing, to ensure it shows up regardless
           const pId = item.id || `supa_${index}`;
           window.productsData[pId] = {
             ...item,
             id: pId,
-            category: item.category || 'Jewelry',
-            price: item.price || 'KES 0',
-            stars: item.stars || '★★★★★',
-            ratingCount: item.ratingCount || '(0)',
-            img: item.img || 'https://via.placeholder.com/300',
-            name: item.name || 'New Collection Item'
+            // Map the new table structure back to what the website expects
+            category: (item.categories && item.categories.name) || 'Jewelry',
+            img: item.image_url || 'https://via.placeholder.com/300',
+            desc: item.description || ''
           };
         });
-        console.log("Supabase inventory loaded successfully with " + data.length + " products.");
+        console.log("Professional Supabase inventory loaded successfully with " + data.length + " products.");
       }
       
       // Trigger UI updates
