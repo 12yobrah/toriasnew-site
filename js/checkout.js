@@ -3,11 +3,17 @@
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
 
-  // --- MOCK CART DATA (Fallback if real cart empty) ---
-  const cartItems = [
-    { id: 206, name: "Golden Oval Pearl Set", price: 1250, qty: 1, img: "https://www.toriasglamhaven.co.ke/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.18.jpeg" },
-    { id: 212, name: "The Golden Halo", price: 1250, qty: 1, img: "https://www.toriasglamhaven.co.ke/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-22.57.33-2.jpeg" }
-  ];
+  // --- REAL CART DATA ---
+  const cartItems = (window.cart || []).map(item => {
+    const p = productsData[item.id] || { name: 'Item', price: 'KES 0', img: '' };
+    return {
+      id: item.id,
+      name: p.name,
+      price: parseInt(p.price.replace(/[^0-9]/g, '')) || 0,
+      qty: item.qty,
+      img: p.img
+    };
+  });
 
   const shippingCosts = {
     'cbd': 50,
@@ -157,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- Form Submission ---
-  checkoutForm?.addEventListener('submit', (e) => {
+  checkoutForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const isMpesa = document.getElementById('pm-mpesa').classList.contains('selected');
     const mpesaCode = document.getElementById('mpesa-code')?.value.trim();
@@ -171,19 +177,65 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.textContent = "Processing Order...";
     btn.disabled = true;
 
-    // Simulate completion
+    // --- SUPABASE ORDER SAVE ---
+    const SUPABASE_URL = 'https://xfuhxmrqykkmfqcpshhs.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_tA-hIr0xRAkpb_Rt0l_Odg_nonm1k6v';
+    const supabaseClient = (typeof supabase !== 'undefined') ? supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+
+    if (supabaseClient) {
+      const { data: { user } } = await supabaseClient.auth.getUser();
+      const subtotal = cartItems.reduce((acc, item) => acc + (item.price * item.qty), 0);
+      const shipping = shippingCosts[selectedShipping] || 0;
+      const tip = Math.round(subtotal * tipPercent);
+      const total = subtotal + shipping + tip;
+
+      // 1. Create Order
+      const { data: order, error: orderErr } = await supabaseClient
+        .from('orders')
+        .insert([{
+          user_id: user ? user.id : null,
+          total_amount: total,
+          status: 'Pending Payment',
+          shipping_address: document.getElementById('shipping-address')?.value || 'Pickup',
+          shipping_method: selectedShipping,
+          payment_method: isMpesa ? 'M-Pesa' : 'COD',
+          mpesa_code: mpesaCode
+        }])
+        .select()
+        .single();
+
+      if (orderErr) {
+        console.error("Order Save Error:", orderErr.message);
+      } else if (order) {
+        // 2. Create Order Items
+        const itemsToSave = cartItems.map(item => ({
+          order_id: order.id,
+          product_id: item.id,
+          quantity: item.qty,
+          price: item.price
+        }));
+
+        const { error: itemsErr } = await supabaseClient
+          .from('order_items')
+          .insert(itemsToSave);
+        
+        if (itemsErr) console.error("Items Save Error:", itemsErr.message);
+      }
+    }
+
+    // WhatsApp logic still runs (triggered by user manually clicking button or we redirect)
+    // For now we show the thank you page as before
     setTimeout(() => {
       document.querySelector('.container').innerHTML = `
         <div style="text-align:center;padding:100px 20px;max-width:600px;margin:0 auto">
           <div style="font-size:4rem;margin-bottom:20px;color:var(--clr-gold)">✦</div>
           <h1 style="font-family:var(--font-serif);color:#fff;margin-bottom:15px">Thank You For Your Order!</h1>
-          <p style="color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:30px">Your order has been received and is being processed. We will contact you shortly to confirm delivery details.</p>
+          <p style="color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:30px">Your order has been recorded in our database. We have also prepared your WhatsApp confirmation below.</p>
           <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:30px;text-align:left;margin-bottom:30px">
-            <p style="font-size:var(--fs-xs);color:var(--clr-gold);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px">Order Details</p>
-            <p style="color:#fff;font-size:var(--fs-sm)">Order ID: <strong>#TGH-88${Math.floor(Math.random()*9000)+1000}</strong></p>
-            <p style="color:#fff;font-size:var(--fs-sm)">Status: <strong>Awaiting Confirmation</strong></p>
+             <p style="color:#fff;font-size:var(--fs-sm)">Order Status: <strong>Pending Verification</strong></p>
+             <a href="${waBtn?.href}" target="_blank" class="btn btn-gold" style="margin-top:20px;width:100%">Confirm via WhatsApp</a>
           </div>
-          <a href="shop.html" class="btn btn-gold">Continue Shopping</a>
+          <a href="shop.html" class="btn btn-outline" style="margin-top:20px">Keep Shopping</a>
         </div>
       `;
       window.scrollTo({ top: 0, behavior: 'smooth' });

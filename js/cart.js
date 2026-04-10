@@ -1,107 +1,85 @@
 // ============================================================
-// CART PAGE – DYNAMIC QUANTITY & TOTALS
+// CART PAGE – DYNAMIC RENDERING FROM STATE
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
 
-  const prices = { 1: 189.00, 2: 215.00 };
+  const cartContainer = document.getElementById('cart-container-js');
   const TAX_RATE = 0.08;
 
-  function getQty(item) {
-    return parseInt(document.getElementById(`cart-qty-${item}`)?.value || '1', 10);
+  function renderCart() {
+    if (!cartContainer) return;
+
+    if (!window.cart || window.cart.length === 0) {
+      cartContainer.innerHTML = `<p style="text-align:center; padding: 50px; color: rgba(255,255,255,0.4);">Your cart is empty.</p>`;
+      updateTotals(0);
+      return;
+    }
+
+    cartContainer.innerHTML = window.cart.map(item => {
+      const p = productsData[item.id] || { name: 'Jewelry Item', price: 'KES 0', img: '' };
+      const priceNum = parseInt(p.price.replace(/[^0-9]/g, '')) || 0;
+      const subtotal = priceNum * item.qty;
+
+      return `
+        <div class="cart-item" id="cart-item-${item.id}">
+          <div class="cart-item-product">
+            <img src="${p.img}" alt="${p.name}" class="cart-item-img" />
+            <div class="cart-item-info">
+              <h4>${p.name}</h4>
+              <p>${p.category || 'Jewelry'}</p>
+            </div>
+          </div>
+          <div class="cart-item-price">${p.price}</div>
+          <div class="qty-control" style="justify-self:start">
+            <button class="qty-btn" onclick="updateQty(${item.id}, -1)">−</button>
+            <input type="number" class="cart-qty-input" value="${item.qty}" readonly />
+            <button class="qty-btn" onclick="updateQty(${item.id}, 1)">+</button>
+          </div>
+          <div class="cart-item-subtotal">KES ${subtotal.toLocaleString()}</div>
+          <button class="cart-item-remove" onclick="removeFromCart(${item.id})">✕</button>
+        </div>
+      `;
+    }).join('');
+
+    calculateOverallTotal();
   }
 
-  function updateTotals() {
+  window.updateQty = (id, delta) => {
+    const item = window.cart.find(i => i.id === id);
+    if (item) {
+      item.qty = Math.max(1, Math.min(10, item.qty + delta));
+      localStorage.setItem('tgh_cart', JSON.stringify(window.cart));
+      renderCart();
+      // Sync to cloud if exists
+      if (window.addToCart) window.addToCart(id, 0); 
+    }
+  };
+
+  window.removeFromCart = (id) => {
+    window.cart = window.cart.filter(i => i.id !== id);
+    localStorage.setItem('tgh_cart', JSON.stringify(window.cart));
+    renderCart();
+    // In a real app we'd also delete from Supabase here
+  };
+
+  function calculateOverallTotal() {
     let subtotal = 0;
-    Object.keys(prices).forEach(item => {
-      const qty = getQty(item);
-      const sub = prices[item] * qty;
-      const subEl = document.getElementById(`cart-subtotal-${item}`);
-      if (subEl) subEl.textContent = `$${sub.toFixed(2)}`;
-      if (document.getElementById(`cart-item-${item}`)) subtotal += sub;
-    });
-    const tax = subtotal * TAX_RATE;
-    const total = subtotal + tax;
-    const subtotalEl = document.getElementById('summary-subtotal');
-    const taxEl = document.getElementById('summary-tax');
-    const totalEl = document.getElementById('summary-total');
-    if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-    if (taxEl) taxEl.textContent = `$${tax.toFixed(2)}`;
-    if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`;
-
-    // Update cart badge
-    const cartCount = document.querySelector('.cart-count');
-    const totalQty = Object.keys(prices).reduce((acc, item) => {
-      const el = document.getElementById(`cart-item-${item}`);
-      return el ? acc + getQty(item) : acc;
-    }, 0);
-    if (cartCount) cartCount.textContent = totalQty;
-  }
-
-  // Qty buttons
-  document.querySelectorAll('.cart-qty-minus').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.dataset.item;
-      const input = document.getElementById(`cart-qty-${item}`);
-      if (input && +input.value > 1) { input.value = +input.value - 1; updateTotals(); }
-    });
-  });
-  document.querySelectorAll('.cart-qty-plus').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.dataset.item;
-      const input = document.getElementById(`cart-qty-${item}`);
-      if (input && +input.value < 10) { input.value = +input.value + 1; updateTotals(); }
-    });
-  });
-  document.querySelectorAll('.cart-qty-input').forEach(input => {
-    input.addEventListener('change', updateTotals);
-  });
-
-  // Remove items
-  document.querySelectorAll('.cart-item-remove').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.dataset.item;
-      const row = document.getElementById(`cart-item-${item}`);
-      if (row) {
-        row.style.transition = 'opacity 0.3s ease, max-height 0.4s ease';
-        row.style.opacity = '0';
-        row.style.overflow = 'hidden';
-        setTimeout(() => {
-          row.style.maxHeight = '0';
-          row.style.margin = '0';
-          row.style.padding = '0';
-          delete prices[item];
-          setTimeout(updateTotals, 350);
-        }, 200);
+    window.cart.forEach(item => {
+      const p = productsData[item.id];
+      if (p) {
+        const priceNum = parseInt(p.price.replace(/[^0-9]/g, '')) || 0;
+        subtotal += priceNum * item.qty;
       }
     });
-  });
 
-  // Coupon code
-  const couponInput = document.getElementById('coupon-code');
-  const applyCouponBtn = document.getElementById('apply-coupon');
-  let couponApplied = false;
+    const tax = Math.round(subtotal * TAX_RATE);
+    const total = subtotal + tax;
 
-  applyCouponBtn?.addEventListener('click', () => {
-    const code = couponInput?.value.trim().toUpperCase();
-    if (code === 'GLAMFREE' && !couponApplied) {
-      const discountRow = document.getElementById('coupon-discount-row');
-      const discountEl = document.getElementById('summary-discount');
-      const subtotalEl = document.getElementById('summary-subtotal');
-      const subtotal = parseFloat(subtotalEl?.textContent.replace('$','') || '0');
-      const discount = subtotal * 0.1;
-      if (discountRow) discountRow.style.display = 'flex';
-      if (discountEl) discountEl.textContent = `-$${discount.toFixed(2)}`;
-      couponApplied = true;
-      applyCouponBtn.textContent = '✓ Applied';
-      applyCouponBtn.disabled = true;
-      applyCouponBtn.style.opacity = '0.6';
-    } else if (couponApplied) {
-      alert('Coupon already applied!');
-    } else {
-      couponInput.style.borderColor = '#b91c1c';
-      setTimeout(() => { if (couponInput) couponInput.style.borderColor = ''; }, 2000);
-    }
-  });
+    document.getElementById('summary-subtotal').textContent = `KES ${subtotal.toLocaleString()}`;
+    document.getElementById('summary-tax').textContent = `KES ${tax.toLocaleString()}`;
+    document.getElementById('summary-total').textContent = `KES ${total.toLocaleString()}`;
+  }
 
-  updateTotals();
+  // Initial render
+  setTimeout(renderCart, 100); // Small delay to ensure productsData is mapped
 });

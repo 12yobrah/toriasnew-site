@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account | TORIAS GLAM HAVEN</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .account-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      margin: 60px 0;
+    }
+    .account-sidebar {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(201,168,76,0.1);
+      border-radius: 12px;
+      padding: 30px;
+      height: fit-content;
+    }
+    .user-brief {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .user-avatar {
+      width: 80px;
+      height: 80px;
+      background: var(--clr-gold);
+      color: #000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-family: var(--font-serif);
+      margin: 0 auto 15px;
+    }
+    .account-nav {
+      list-style: none;
+    }
+    .account-nav-link {
+      display: block;
+      padding: 12px 15px;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: 0.3s;
+      margin-bottom: 5px;
+    }
+    .account-nav-link:hover, .account-nav-link.active {
+      background: rgba(201,168,76,0.1);
+      color: var(--clr-gold);
+    }
+    .account-content-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 40px;
+    }
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .status-badge {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .status-pending { background: rgba(255, 193, 7, 0.1); color: #ffc107; }
+    .status-delivered { background: rgba(40, 167, 69, 0.1); color: #28a745; }
+    
+    @media (max-width: 992px) {
+      .account-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="dark-luxe">
+  <div id="promo-banner"><span>✦ Free Delivery on orders over KES 10,000 ✦</span></div>
+
+  <header class="site-header scrolled">
+    <div class="header-inner container">
+      <a href="index.html" class="logo">
+        <div class="logo-text">
+          <div class="logo-top"><span class="logo-main">Torias</span></div>
+          <span class="logo-sub">GLAM HAVEN</span>
+        </div>
+      </a>
+      <div class="header-actions">
+        <a href="index.html" class="btn btn-outline btn-sm">Sign Out</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="account-grid">
+      <aside class="account-sidebar">
+        <div class="user-brief">
+          <div class="user-avatar" id="user-initials">T</div>
+          <h3 id="user-display-name">Loading...</h3>
+          <p id="user-display-email" style="font-size: 0.75rem; color: rgba(255,255,255,0.4);">...</p>
+        </div>
+        <nav>
+          <ul class="account-nav">
+            <li><a href="#orders" class="account-nav-link active">Order History</a></li>
+            <li><a href="#profile" class="account-nav-link">Account Details</a></li>
+            <li><a href="#address" class="account-nav-link">Shipping Address</a></li>
+            <li><a href="#" id="logout-btn" class="account-nav-link" style="color: #ff4d4d;">Logout</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <div class="account-main">
+        <div class="account-content-card animate-up" id="orders-section">
+          <h2 style="font-family: var(--font-serif); margin-bottom: 30px;">Your Orders</h2>
+          <div id="orders-list">
+            <p style="color: rgba(255,255,255,0.4);">You haven't placed any orders yet.</p>
+          </div>
+          <div style="margin-top: 40px;">
+            <a href="shop.html" class="btn btn-gold">Explore Collection</a>
+          </div>
+        </div>
+
+        <div class="account-content-card animate-up" id="profile-section" style="display:none;">
+           <h2 style="font-family: var(--font-serif); margin-bottom: 30px;">Account Details</h2>
+           <form id="profile-form" style="display: flex; flex-direction: column; gap: 20px;">
+              <div class="form-group">
+                <label style="display: block; font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-bottom: 8px;">FULL NAME</label>
+                <input type="text" id="profile-name" class="auth-input" style="width: 100%;" placeholder="Enter your full name">
+              </div>
+              <div class="form-group">
+                <label style="display: block; font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-bottom: 8px;">PHONE NUMBER</label>
+                <input type="text" id="profile-phone" class="auth-input" style="width: 100%;" placeholder="+254...">
+              </div>
+              <button type="submit" class="btn btn-gold">Save Changes</button>
+           </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/account.js"></script>
+</body>
+</html>

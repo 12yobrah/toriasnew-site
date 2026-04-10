@@ -2,6 +2,10 @@
 // TORIAS GLAM HAVEN HAVEN – MAIN JAVASCRIPT
 // ============================================================
 
+const SUPABASE_URL = 'https://xfuhxmrqykkmfqcpshhs.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_tA-hIr0xRAkpb_Rt0l_Odg_nonm1k6v';
+const supabaseClient = (typeof supabase !== 'undefined') ? supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // ── PROMO BANNER ───────────────────────────────────────────
@@ -97,12 +101,33 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-link').forEach(link => {
     const href = link.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
+  // ── AUTH HUD ───────────────────────────────────────────────
+  const headerActions = document.querySelector('.header-actions');
+  const userIconMarkup = `
+    <a href="entry.html" class="icon-btn auth-btn" id="header-auth-btn" aria-label="Account">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </a>
+  `;
+
+  if (headerActions && !document.getElementById('header-auth-btn')) {
+    // Insert before the hamburger
+    const hamburger = document.getElementById('hamburger');
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = userIconMarkup;
+    headerActions.insertBefore(tempDiv.firstElementChild, hamburger);
+  }
+
+  async function checkAuthState() {
+    if (!supabaseClient) return;
+    const { data: { user } } = await supabaseClient.auth.getUser();
+    const authBtn = document.getElementById('header-auth-btn');
+    if (user && authBtn) {
+      authBtn.href = 'account.html';
+      authBtn.classList.add('logged-in');
+      authBtn.style.color = 'var(--clr-gold)';
     }
-  });
+  }
+  checkAuthState();
 
   // ── SCROLL ANIMATIONS ──────────────────────────────────────
   const animatedEls = document.querySelectorAll('.animate-up');
@@ -218,22 +243,68 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cartCount) cartCount.textContent = cartQty;
   }
 
+  // ── CART STATE & SYNC ─────────────────────────────────────────
+  window.cart = JSON.parse(localStorage.getItem('tgh_cart') || '[]');
+
+  function updateCartBadge() {
+    const totalQty = window.cart.reduce((acc, item) => acc + item.qty, 0);
+    if (cartCount) cartCount.textContent = totalQty;
+  }
+  updateCartBadge();
+
+  window.addToCart = async (productId, qty = 1) => {
+    const existing = window.cart.find(item => item.id === productId);
+    if (existing) existing.qty += qty;
+    else window.cart.push({ id: productId, qty });
+
+    localStorage.setItem('tgh_cart', JSON.stringify(window.cart));
+    updateCartBadge();
+    showCartToast();
+
+    // Cloud sync if logged in
+    const { data: { user } } = await supabaseClient.auth.getUser();
+    if (user) {
+      await supabaseClient.from('cart_items').upsert({
+        user_id: user.id,
+        product_id: productId,
+        quantity: existing ? existing.qty : qty
+      }, { onConflict: 'user_id, product_id' });
+    }
+  };
+
+  // Sync cloud cart to local on startup if logged in
+  async function syncFromCloud() {
+    if (!supabaseClient) return;
+    const { data: { user } } = await supabaseClient.auth.getUser();
+    if (!user) return;
+
+    const { data: cloudItems } = await supabaseClient
+      .from('cart_items')
+      .select('*');
+    
+    if (cloudItems && cloudItems.length > 0) {
+      // Simple merge: cloud takes precedence for this demo
+      window.cart = cloudItems.map(ci => ({ id: ci.product_id, qty: ci.quantity }));
+      localStorage.setItem('tgh_cart', JSON.stringify(window.cart));
+      updateCartBadge();
+    }
+  }
+  syncFromCloud();
+
   // ── ATTACH PRODUCT EVENTS (For dynamic content) ───────────────
   window.attachProductEvents = () => {
     // Add to Cart
     document.querySelectorAll('.btn-add-cart').forEach(btn => {
-      // Remove old listener if any
-      const newBtn = btn.cloneNode(true);
-      btn.parentNode.replaceChild(newBtn, btn);
-      
-      newBtn.addEventListener('click', () => {
-        showCartToast();
-        const originalText = newBtn.textContent;
-        newBtn.textContent = '✓ Added!';
-        newBtn.classList.add('added');
+      btn.addEventListener('click', () => {
+        const pId = btn.dataset.product || modal?.dataset.activeProduct;
+        if (pId) window.addToCart(parseInt(pId));
+        
+        const originalText = btn.textContent;
+        btn.textContent = '✓ Added!';
+        btn.classList.add('added');
         setTimeout(() => {
-          newBtn.textContent = originalText;
-          newBtn.classList.remove('added');
+          btn.textContent = originalText;
+          btn.classList.remove('added');
         }, 1800);
       });
     });

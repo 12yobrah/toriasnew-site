@@ -35,17 +35,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!valid) return;
 
-    // Simulate submission
-    submitBtn.textContent = 'Sending…';
-    submitBtn.disabled = true;
+    // Save to Supabase
+    const SUPABASE_URL = 'https://xfuhxmrqykkmfqcpshhs.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_tA-hIr0xRAkpb_Rt0l_Odg_nonm1k6v';
+    const supabaseClient = (typeof supabase !== 'undefined') ? supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
-    setTimeout(() => {
-      form.querySelectorAll('input, select, textarea').forEach(el => { el.value = ''; el.style.borderColor = ''; });
-      success?.removeAttribute('hidden');
-      submitBtn.textContent = 'Send Message';
-      submitBtn.disabled = false;
-      success?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 1500);
+    if (supabaseClient) {
+      const { error } = await supabaseClient
+        .from('contact_submissions')
+        .insert([{ name: firstName, email, subject, message }]);
+      
+      if (error) console.error("Error saving message:", error.message);
+    }
+
+    // Success response
+    form.querySelectorAll('input, select, textarea').forEach(el => { el.value = ''; el.style.borderColor = ''; });
+    success?.removeAttribute('hidden');
+    submitBtn.textContent = 'Send Message';
+    submitBtn.disabled = false;
+    success?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
 
   // Real-time border reset on typing
