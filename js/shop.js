@@ -64,6 +64,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if(resultsCount) resultsCount.innerHTML = `Showing <strong>${products.length}</strong> products`;
       
+      // Update Sidebar Counts
+      const totalCountEl = document.querySelector('label[for="cat-all"] .filter-count');
+      if (totalCountEl) totalCountEl.textContent = allProducts.length;
+
+      const catCounts = {};
+      allProducts.forEach(p => {
+        let cat = p.category.toLowerCase();
+        if (cat.includes('necklace')) cat = 'necklaces';
+        if (cat.includes('earring')) cat = 'earrings';
+        if (cat.includes('set')) cat = 'sets';
+        if (cat.includes('bracelet')) cat = 'bracelets';
+        catCounts[cat] = (catCounts[cat] || 0) + 1;
+      });
+
+      Object.entries(catCounts).forEach(([cat, count]) => {
+        const countEl = document.querySelector(`label[for="cat-filter-${cat}"] .filter-count`);
+        if (countEl) countEl.textContent = count;
+      });
+
       // Attach event listeners for buttons generated
       if(window.attachProductEvents) { window.attachProductEvents(); }
     }    const materialChecks = document.querySelectorAll('input[name="material"]');

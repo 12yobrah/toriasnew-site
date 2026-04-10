@@ -161,11 +161,21 @@
 
       if (data && data.length > 0) {
         window.productsData = {}; // Clear fallback data
-        data.forEach(item => {
-          // Ensure ID is a number/string as expected by shop.js
-          window.productsData[item.id] = item;
+        data.forEach((item, index) => {
+          // Fallback ID if missing, to ensure it shows up regardless
+          const pId = item.id || `supa_${index}`;
+          window.productsData[pId] = {
+            ...item,
+            id: pId,
+            category: item.category || 'Jewelry',
+            price: item.price || 'KES 0',
+            stars: item.stars || '★★★★★',
+            ratingCount: item.ratingCount || '(0)',
+            img: item.img || 'https://via.placeholder.com/300',
+            name: item.name || 'New Collection Item'
+          };
         });
-        console.log("Supabase inventory loaded successfully.");
+        console.log("Supabase inventory loaded successfully with " + data.length + " products.");
       }
       
       // Trigger UI updates
