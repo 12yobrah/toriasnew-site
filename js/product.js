@@ -13,19 +13,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!prod) return;
 
     // Update Text Content
-    const title = document.querySelector('.product-title');
-    const category = document.querySelector('.breadcrumb .active') || document.querySelector('.product-category');
+    const title = document.querySelector('.product-details h1');
+    const category = document.querySelector('.product-category');
     const price = document.querySelector('.product-price');
     const oldPrice = document.querySelector('.product-price-old');
-    const discount = document.querySelector('.save-badge');
+    const discount = document.querySelector('.discount-badge');
+    const breadcrumbActive = document.querySelector('.breadcrumb .active');
     
     if (title) title.textContent = prod.name;
     if (price) price.textContent = prod.price;
     if (category) category.textContent = prod.category;
+    if (breadcrumbActive) breadcrumbActive.textContent = prod.name;
     
-    // Breadcrumb path update
-    const bCrumbCat = document.querySelector('.category-crumb');
-    if (bCrumbCat) bCrumbCat.textContent = prod.category;
+    // Hide old price and badge if we don't have discount data for these dynamic items
+    if (oldPrice) oldPrice.style.display = 'none';
+    if (discount) discount.style.display = 'none';
 
     // Update Image
     const mainImg = document.getElementById('main-img');
