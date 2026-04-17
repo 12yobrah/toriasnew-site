@@ -12,7 +12,7 @@
       "oldPrice": "",
       "stars": "★★★★★",
       "ratingCount": "(12)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.18.jpeg",
+      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.18.jpeg",
       "link": "product.html?id=206",
       "desc": "Elevate your elegance with this golden oval pearl jewelry set."
     },
@@ -24,7 +24,7 @@
       "oldPrice": "",
       "stars": "★★★★★",
       "ratingCount": "(8)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.17-1.jpeg",
+      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.17-1.jpeg",
       "link": "product.html?id=207",
       "desc": "Bold meets elegant in this gold and mother-of-pearl jewelry set."
     },
@@ -36,7 +36,7 @@
       "oldPrice": "",
       "stars": "★★★★★",
       "ratingCount": "(24)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.16-1.jpeg",
+      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.16-1.jpeg",
       "link": "product.html?id=208",
       "desc": "Make a bold statement with this contemporary gold link hoop earring."
     },
@@ -48,7 +48,7 @@
       "oldPrice": "",
       "stars": "★★★★☆",
       "ratingCount": "(19)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.17.jpeg",
+      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.17.jpeg",
       "link": "product.html?id=209",
       "desc": "Elegant black and gold jewelry set featuring a matching necklace and stud earrings."
     },
@@ -60,7 +60,7 @@
       "oldPrice": "",
       "stars": "★★★★★",
       "ratingCount": "(32)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.16.jpeg",
+      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.16.jpeg",
       "link": "product.html?id=210",
       "desc": "Statement vintage-style gold hoop earrings with a bold, round design."
     },
@@ -72,7 +72,7 @@
       "oldPrice": "",
       "stars": "★★★★☆",
       "ratingCount": "(15)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-19.31.15.jpeg",
+      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.15.jpeg",
       "link": "product.html?id=211",
       "desc": "Bold gold burst earrings with freshwater pearl centers."
     },
@@ -84,7 +84,7 @@
       "oldPrice": "",
       "stars": "★★★★★",
       "ratingCount": "(45)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-22.57.33-2.jpeg",
+      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-22.57.33-2.jpeg",
       "link": "product.html?id=212",
       "desc": "A sleek, minimalist 18K gold plated pendant necklace."
     },
@@ -96,7 +96,7 @@
       "oldPrice": "",
       "stars": "★★★★★",
       "ratingCount": "(29)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-22.57.33-1.jpeg",
+      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-22.57.33-1.jpeg",
       "link": "product.html?id=213",
       "desc": "A striking gold chain necklace featuring a vibrant AAA ruby-red gemstone."
     },
@@ -108,7 +108,7 @@
       "oldPrice": "",
       "stars": "★★★★★",
       "ratingCount": "(11)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-22.57.32.jpeg",
+      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-22.57.32.jpeg",
       "link": "product.html?id=214",
       "desc": "Add a pop of color and elegance to your everyday style."
     },
@@ -120,7 +120,7 @@
       "oldPrice": "",
       "stars": "★★★★★",
       "ratingCount": "(38)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2025/07/WhatsApp-Image-2025-06-09-at-22.57.33.jpeg",
+      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-22.57.33.jpeg",
       "link": "product.html?id=215",
       "desc": "Bring timeless elegance to life with our Emerald Pendant Necklace."
     }
