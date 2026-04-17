@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Update Text Content
     const title = document.querySelector('.product-details-title');
-    const category = document.querySelector('.product-category');
+    const categoryLabel = document.querySelector('.product-category');
     const price = document.querySelector('.product-price');
     const oldPrice = document.querySelector('.product-price-old');
     const discount = document.querySelector('.discount-badge');
@@ -25,11 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (title) title.textContent = prod.name;
     if (price) price.textContent = prod.price;
-    if (category) category.textContent = prod.category;
-    if (breadcrumbCat) breadcrumbCat.textContent = prod.category;
+    if (categoryLabel) categoryLabel.textContent = prod.category;
+    if (breadcrumbCat) {
+      breadcrumbCat.textContent = prod.category;
+      breadcrumbCat.href = `shop.html?cat=${prod.category.toLowerCase()}`;
+    }
     if (breadcrumbName) breadcrumbName.textContent = prod.name;
 
-    // Hide old price and badge if we don't have discount data for these dynamic items
+    // Hide old price and badge if we don't have discount data
     if (oldPrice) oldPrice.style.display = 'none';
     if (discount) discount.style.display = 'none';
 
@@ -48,19 +51,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const galleryThumbs = document.getElementById('gallery-thumbs');
     if (galleryThumbs) galleryThumbs.style.display = 'none';
 
-    // Render Related Products
-    renderRelated();
+    // Render Smart Related Products
+    renderRelated(prod.category);
   }
 
-  function renderRelated() {
+  function renderRelated(currentCategory) {
     const relatedGrid = document.querySelector('.related-products .products-grid');
     if (!relatedGrid || !window.productsData) return;
     relatedGrid.innerHTML = '';
 
-    // Recommend 4 products from same category or just random
-    const items = Object.values(window.productsData)
-      .filter(p => p.id !== pId)
+    // Filter by same category, exclude current, and limit to 4
+    let items = Object.values(window.productsData)
+      .filter(p => p.id !== pId && p.category === currentCategory)
       .slice(0, 4);
+
+    // If we don't have enough in the same category, fill with others
+    if (items.length < 4) {
+      const others = Object.values(window.productsData)
+        .filter(p => p.id !== pId && p.category !== currentCategory)
+        .slice(0, 4 - items.length);
+      items = [...items, ...others];
+    }
 
     items.forEach(product => {
       const art = document.createElement('article');
