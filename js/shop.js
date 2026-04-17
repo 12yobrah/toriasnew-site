@@ -17,14 +17,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof productsData === 'undefined') return;
 
     // Convert products object to array, and parse prices to pure floats
+    let maxFoundPrice = 1000;
     const allProducts = Object.entries(productsData).map(([id, product]) => {
       let rawPrice = product.price.replace('KES', '').replace('$', '').replace(',', '').trim();
+      const pPrice = parseFloat(rawPrice) || 0;
+      if (pPrice > maxFoundPrice) maxFoundPrice = pPrice;
       return { 
         id, 
         ...product,
-        parsedPrice: parseFloat(rawPrice)
+        parsedPrice: pPrice
       };
     });
+
+    // Dynamically set price range filter max
+    if (priceRange) {
+      const roundedMax = Math.ceil((maxFoundPrice + 500) / 500) * 500;
+      priceRange.max = roundedMax;
+      priceRange.value = roundedMax;
+      priceRangeValue.textContent = 'KES ' + roundedMax.toLocaleString();
+    }
 
     function renderProducts(products) {
       productsGrid.innerHTML = '';
@@ -215,7 +226,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Initial Render
-    if (priceRange) { priceRange.max = "2000"; priceRange.value = "2000"; priceRangeValue.textContent = "KES 2,000"; }
     filterProducts();
   };
   
