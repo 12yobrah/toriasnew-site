@@ -18,13 +18,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const price = document.querySelector('.product-price');
     const oldPrice = document.querySelector('.product-price-old');
     const discount = document.querySelector('.discount-badge');
-    const breadcrumbActive = document.querySelector('.breadcrumb .active');
     
+    // Update breadcrumbs specifically by position
+    const breadcrumbCat = document.querySelector('.breadcrumb-list li:nth-child(3) a');
+    const breadcrumbName = document.querySelector('.breadcrumb-list li:nth-child(4) span');
+
     if (title) title.textContent = prod.name;
     if (price) price.textContent = prod.price;
     if (category) category.textContent = prod.category;
-    if (breadcrumbActive) breadcrumbActive.textContent = prod.name;
-    
+    if (breadcrumbCat) breadcrumbCat.textContent = prod.category;
+    if (breadcrumbName) breadcrumbName.textContent = prod.name;
+
     // Hide old price and badge if we don't have discount data for these dynamic items
     if (oldPrice) oldPrice.style.display = 'none';
     if (discount) discount.style.display = 'none';
