@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderRelated(currentCategory) {
-    const relatedGrid = document.querySelector('.related-products .products-grid');
+    const relatedGrid = document.querySelector('.related-section .products-grid');
     if (!relatedGrid || !window.productsData) return;
     relatedGrid.innerHTML = '';
 
