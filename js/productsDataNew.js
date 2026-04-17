@@ -1,227 +1,135 @@
 // ============================================================
-// TORIAS GLAM HAVEN | PRODUCT DATA (Inline + WooCommerce Sync)
+// TORIAS GLAM HAVEN | PRODUCT DATA (Verified API Version)
 // ============================================================
 (function () {
-  // 1. FALLBACK DATA (Used if Sync fails or before it finishes)
   const inlineData = [
     {
-      "id": "206",
-      "name": "Golden Oval Pearl Set",
+      "id": "213",
+      "name": "Golden Oval Pearl Necklace & Earring Set",
       "category": "Jewelry Sets",
       "price": "KES 1,250",
-      "oldPrice": "",
-      "stars": "★★★★★",
-      "ratingCount": "(12)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.18.jpeg",
-      "link": "product.html?id=206",
+      "img": "https://i0.wp.com/toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.18.jpeg?fit=1200%2C1600&ssl=1",
+      "link": "product.html?id=213",
       "desc": "Elevate your elegance with this golden oval pearl jewelry set."
     },
     {
-      "id": "207",
-      "name": "Gold & Pearl Geometric Set",
+      "id": "19",
+      "name": "Gold & Mother of Pearl Geometric Jewelry Set",
       "category": "Jewelry Sets",
       "price": "KES 1,250",
-      "oldPrice": "",
-      "stars": "★★★★★",
-      "ratingCount": "(8)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.17-1.jpeg",
-      "link": "product.html?id=207",
+      "img": "https://i0.wp.com/toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.17-1.jpeg?fit=1200%2C1600&ssl=1",
+      "link": "product.html?id=19",
       "desc": "Bold meets elegant in this gold and mother-of-pearl jewelry set."
     },
     {
-      "id": "208",
-      "name": "Bold Gold Link Hoop",
+      "id": "18",
+      "name": "Bold Gold Link Hoop Earring",
       "category": "Earrings",
       "price": "KES 1,250",
-      "oldPrice": "",
-      "stars": "★★★★★",
-      "ratingCount": "(24)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.16-1.jpeg",
-      "link": "product.html?id=208",
+      "img": "https://i0.wp.com/toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.16-1.jpeg?fit=1200%2C1600&ssl=1",
+      "link": "product.html?id=18",
       "desc": "Make a bold statement with this contemporary gold link hoop earring."
     },
     {
-      "id": "209",
-      "name": "Minimalist Black & Gold Set",
+      "id": "17",
+      "name": "Minimalist Black & Gold Jewelry Set",
       "category": "Jewelry Sets",
       "price": "KES 1,250",
-      "oldPrice": "",
-      "stars": "★★★★☆",
-      "ratingCount": "(19)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.17.jpeg",
-      "link": "product.html?id=209",
+      "img": "https://i0.wp.com/toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.17.jpeg?fit=1200%2C1600&ssl=1",
+      "link": "product.html?id=17",
       "desc": "Elegant black and gold jewelry set featuring a matching necklace and stud earrings."
     },
     {
-      "id": "210",
-      "name": "Vintage Bold Gold Hoop",
+      "id": "16",
+      "name": "Vintage Bold Gold Hoop Earrings",
       "category": "Earrings",
       "price": "KES 1,500",
-      "oldPrice": "",
-      "stars": "★★★★★",
-      "ratingCount": "(32)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.16.jpeg",
-      "link": "product.html?id=210",
+      "img": "https://i0.wp.com/toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.16.jpeg?fit=1200%2C1600&ssl=1",
+      "link": "product.html?id=16",
       "desc": "Statement vintage-style gold hoop earrings with a bold, round design."
     },
     {
-      "id": "211",
-      "name": "Radiant Pearl Burst",
+      "id": "15",
+      "name": "Radiant Pearl Burst Statement Earrings",
       "category": "Earrings",
       "price": "KES 1,500",
-      "oldPrice": "",
-      "stars": "★★★★☆",
-      "ratingCount": "(15)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.15.jpeg",
-      "link": "product.html?id=211",
+      "img": "https://i0.wp.com/toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.15.jpeg?fit=1198%2C1600&ssl=1",
+      "link": "product.html?id=15",
       "desc": "Bold gold burst earrings with freshwater pearl centers."
     },
     {
-      "id": "212",
+      "id": "23",
       "name": "The Golden Halo",
       "category": "Necklace",
       "price": "KES 1,250",
-      "oldPrice": "",
-      "stars": "★★★★★",
-      "ratingCount": "(45)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-22.57.33-2.jpeg",
-      "link": "product.html?id=212",
+      "img": "https://i0.wp.com/toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-22.57.33-2.jpeg?fit=986%2C1280&ssl=1",
+      "link": "product.html?id=23",
       "desc": "A sleek, minimalist 18K gold plated pendant necklace."
     },
     {
-      "id": "213",
-      "name": "Red Ruby Pendant",
-      "category": "Necklace",
-      "price": "KES 1,250",
-      "oldPrice": "",
-      "stars": "★★★★★",
-      "ratingCount": "(29)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-22.57.33-1.jpeg",
-      "link": "product.html?id=213",
-      "desc": "A striking gold chain necklace featuring a vibrant AAA ruby-red gemstone."
-    },
-    {
-      "id": "214",
+      "id": "22",
       "name": "Purple Pendant Necklace",
       "category": "Necklace",
       "price": "KES 1,500",
-      "oldPrice": "",
-      "stars": "★★★★★",
-      "ratingCount": "(11)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-22.57.32.jpeg",
-      "link": "product.html?id=214",
+      "img": "https://i0.wp.com/toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-22.57.32.jpeg?fit=1080%2C1229&ssl=1",
+      "link": "product.html?id=22",
       "desc": "Add a pop of color and elegance to your everyday style."
     },
     {
-      "id": "215",
+      "id": "21",
       "name": "Emerald Pendant Necklace",
       "category": "Necklace",
       "price": "KES 1,500",
-      "oldPrice": "",
-      "stars": "★★★★★",
-      "ratingCount": "(38)",
-      "img": "https://www.toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-22.57.33.jpeg",
-      "link": "product.html?id=215",
+      "img": "https://i0.wp.com/toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-22.57.33.jpeg?fit=953%2C1280&ssl=1",
+      "link": "product.html?id=21",
       "desc": "Bring timeless elegance to life with our Emerald Pendant Necklace."
+    },
+    {
+      "id": "25",
+      "name": "Product (New/Test)",
+      "category": "Jewelry Sets",
+      "price": "KES 1,500",
+      "img": "https://i0.wp.com/toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/JPEG_20260416_014541_8600875885701985823-scaled-1.jpg?fit=1152%2C2560&ssl=1",
+      "link": "product.html?id=25",
+      "desc": "New Arrivals."
     }
   ];
 
-  // Initialize global inventory
   const productsObj = {};
   inlineData.forEach(item => { productsObj[item.id] = item; });
   window.productsData = productsObj;
 
-  // 2. CONFIGURATION
   const CONFIG = {
     URL: 'https://www.toriasglamhaven.co.ke/backend',
     CK: 'ck_ed18fde86cbb15c89e341705e60f7ca766d3bf37',
-    CS: 'cs_dcf83c581c169dbc6b27ee09f8189cc14cd2b6a8',
-    perPage: 100
+    CS: 'cs_dcf83c581c169dbc6b27ee09f8189cc14cd2b6a8'
   };
 
-  // 3. HELPERS
-  function fixImagePath(path) {
-    if (!path) return 'https://via.placeholder.com/600x700?text=No+Image';
-    if (path.includes('toriasglamhaven.co.ke') && !path.includes('/backend/')) {
-      return path.replace('toriasglamhaven.co.ke/', 'toriasglamhaven.co.ke/backend/');
-    }
-    return path;
-  }
-
-  function tgh_rating_to_stars(rating) {
-    const full = Math.floor(rating);
-    const empty = 5 - full;
-    return '★'.repeat(full) + '☆'.repeat(empty);
-  }
-
-  function stripHtml(html) {
-    const tmp = document.createElement("DIV");
-    tmp.innerHTML = html;
-    return tmp.textContent || tmp.innerText || "";
-  }
-
-  // 4. SYNC LOGIC
-  async function fetchWooCommerceProducts() {
-    const auth = btoa(`${CONFIG.CK}:${CONFIG.CS}`);
-    const endpoint = `${CONFIG.URL}/wp-json/wc/v3/products?per_page=${CONFIG.perPage}&status=publish`;
-    
-    console.log("✦ Torias Sync: Connecting to WordPress...");
-
+  async function sync() {
     try {
-      let response = await fetch(endpoint, {
+      const auth = btoa(`${CONFIG.CK}:${CONFIG.CS}`);
+      const r = await fetch(`${CONFIG.URL}/wp-json/wc/v3/products?per_page=100&status=publish`, {
         headers: { 'Authorization': `Basic ${auth}` }
       });
-
-      if (!response.ok) {
-        console.warn("✦ Torias Sync: Pretty URL failed. Trying Plain URL fallback...");
-        const plainEndpoint = `${CONFIG.URL}/index.php?rest_route=/wc/v3/products&per_page=${CONFIG.perPage}&status=publish`;
-        response = await fetch(plainEndpoint, {
-          headers: { 'Authorization': `Basic ${auth}` }
+      if (r.ok) {
+        const data = await r.json();
+        data.forEach(item => {
+          window.productsData[String(item.id)] = {
+            id: String(item.id),
+            name: item.name,
+            category: item.categories.length > 0 ? item.categories[0].name : 'Jewelry',
+            price: `KES ${item.price}`,
+            img: item.images.length > 0 ? item.images[0].src : 'https://via.placeholder.com/600',
+            link: `product.html?id=${item.id}`,
+            desc: item.name
+          };
         });
+        console.log("✦ Torias Sync: Success! Products loaded from WordPress.");
       }
-
-      if (response && response.ok) {
-        const data = await response.json();
-        if (data && data.length > 0) {
-          data.forEach(item => {
-            const pId = String(item.id);
-            window.productsData[pId] = {
-              id: pId,
-              name: item.name,
-              category: item.categories.length > 0 ? item.categories[0].name : 'Uncategorized',
-              price: `KES ${item.price}`,
-              oldPrice: item.on_sale && item.regular_price !== item.price ? `KES ${item.regular_price}` : '',
-              stars: tgh_rating_to_stars(parseFloat(item.average_rating || 5)),
-              ratingCount: `(${item.rating_count || 0})`,
-              img: item.images.length > 0 ? fixImagePath(item.images[0].src) : 'https://via.placeholder.com/600x700?text=No+Image',
-              link: `product.html?id=${pId}`,
-              desc: item.short_description ? stripHtml(item.short_description) : stripHtml(item.description)
-            };
-          });
-          console.log("✦ Torias Sync: Success! Loaded " + data.length + " products from Live WordPress App.");
-        }
-      } else {
-        throw new Error("API returned status " + (response ? response.status : "Unknown"));
-      }
-    } catch (err) {
-      console.error("✦ Torias Sync Error:", err);
-    } finally {
-      // Always trigger re-render
-      document.dispatchEvent(new CustomEvent('inventoryReady'));
-      if (typeof window.initShopFilters === 'function') {
-        window.initShopFilters();
-      }
-    }
+    } catch (e) { console.warn("✦ Sync failed, using fallback images."); }
+    document.dispatchEvent(new CustomEvent('inventoryReady'));
+    if (typeof window.initShopFilters === 'function') window.initShopFilters();
   }
 
-  // 5. INITIALIZE
-  document.dispatchEvent(new CustomEvent('inventoryReady'));
-  
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', fetchWooCommerceProducts);
-  } else {
-    fetchWooCommerceProducts();
-  }
+  sync();
 })();
-/ /   S y n c   F i x   v 2  
- 
