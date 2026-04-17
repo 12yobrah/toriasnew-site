@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!prod) return;
 
     // Update Text Content
-    const title = document.querySelector('.product-details h1');
+    const title = document.querySelector('.product-details-title');
     const category = document.querySelector('.product-category');
     const price = document.querySelector('.product-price');
     const oldPrice = document.querySelector('.product-price-old');
@@ -33,9 +33,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (oldPrice) oldPrice.style.display = 'none';
     if (discount) discount.style.display = 'none';
 
-    // Update Image
+    // Update Image & Fade In
     const mainImg = document.getElementById('main-img');
-    if (mainImg) mainImg.src = prod.img;
+    if (mainImg) {
+      if (mainImg.src !== prod.img) {
+        mainImg.src = prod.img;
+        mainImg.onload = () => { mainImg.style.opacity = '1'; };
+      } else {
+        mainImg.style.opacity = '1';
+      }
+    }
 
     // Hide Thumbs (since user only has one image per product)
     const galleryThumbs = document.getElementById('gallery-thumbs');
