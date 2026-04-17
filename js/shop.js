@@ -62,10 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="product-info">
             <p class="product-category">${product.category}</p>
             <h3 class="product-name"><a href="product.html?id=${product.id}">${product.name}</a></h3>
-            <div class="product-rating">
-              <span class="stars">${product.stars}</span>
-              <span class="rating-count">${product.ratingCount}</span>
-            </div>
+
             <div class="product-price-row"><span class="product-price">${product.price}</span></div>
             <button class="btn btn-gold btn-add-cart full-width" data-product="${product.id}">Add to Cart</button>
           </div>

@@ -1,27 +1,45 @@
 // ============================================================
-// PRODUCT PAGE – GALLERY & INTERACTIONS
+// PRODUCT PAGE – DYNAMIC LOAD & INTERACTIONS
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── GALLERY ──────────────────────────────────────────────────
-  const mainImg = document.getElementById('main-img');
-  const thumbs = document.querySelectorAll('.gallery-thumb');
+  const params = new URLSearchParams(window.location.search);
+  const pId = params.get('id');
 
-  thumbs.forEach(thumb => {
-    thumb.addEventListener('click', () => {
-      thumbs.forEach(t => t.classList.remove('active'));
-      thumb.classList.add('active');
-      if (mainImg) {
-        mainImg.style.transition = 'opacity 0.18s ease';
-        mainImg.style.opacity = '0';
-        setTimeout(() => {
-          mainImg.src = thumb.dataset.img;
-          mainImg.onload = () => { mainImg.style.opacity = '1'; };
-          mainImg.onerror = () => { mainImg.style.opacity = '1'; }; // always restore
-        }, 180);
-      }
-    });
-  });
+  // 1. DYNAMIC LOAD UI
+  function updateUI() {
+    if (!pId || !window.productsData) return;
+    const prod = window.productsData[pId];
+    if (!prod) return;
+
+    // Update Text Content
+    const title = document.querySelector('.product-title');
+    const category = document.querySelector('.breadcrumb .active') || document.querySelector('.product-category');
+    const price = document.querySelector('.product-price');
+    const oldPrice = document.querySelector('.product-price-old');
+    const discount = document.querySelector('.save-badge');
+    
+    if (title) title.textContent = prod.name;
+    if (price) price.textContent = prod.price;
+    if (category) category.textContent = prod.category;
+    
+    // Breadcrumb path update
+    const bCrumbCat = document.querySelector('.category-crumb');
+    if (bCrumbCat) bCrumbCat.textContent = prod.category;
+
+    // Update Image
+    const mainImg = document.getElementById('main-img');
+    if (mainImg) mainImg.src = prod.img;
+
+    // Hide Thumbs (since user only has one image per product)
+    const galleryThumbs = document.getElementById('gallery-thumbs');
+    if (galleryThumbs) galleryThumbs.style.display = 'none';
+  }
+
+  // Initial attempt
+  updateUI();
+  // Wait for sync success
+  document.addEventListener('inventoryReady', updateUI);
 
   // ── QUANTITY ─────────────────────────────────────────────────
   const qtyInput = document.getElementById('product-qty');
@@ -35,27 +53,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── MAIN ADD TO CART ─────────────────────────────────────────
   const cartToast = document.getElementById('cart-toast');
   const cartCount = document.querySelector('.cart-count');
-  let qty = 2;
+  let qtyVal = 0;
 
   document.getElementById('main-add-cart')?.addEventListener('click', () => {
     const btn = document.getElementById('main-add-cart');
     cartToast?.classList.add('show');
     setTimeout(() => cartToast?.classList.remove('show'), 3000);
-    qty++;
-    if (cartCount) cartCount.textContent = qty;
+    qtyVal++;
+    if (cartCount) cartCount.textContent = qtyVal;
+    
     const original = btn.textContent;
     btn.textContent = '✓ Added to Cart!';
     btn.style.background = 'linear-gradient(135deg, #708269, #58705a)';
     setTimeout(() => { btn.textContent = original; btn.style.background = ''; }, 2000);
-  });
-
-  document.querySelectorAll('.btn-add-cart').forEach(btn => {
-    btn.addEventListener('click', () => {
-      cartToast?.classList.add('show');
-      setTimeout(() => cartToast?.classList.remove('show'), 3000);
-      qty++;
-      if (cartCount) cartCount.textContent = qty;
-    });
   });
 
   // ── WISHLIST ─────────────────────────────────────────────────
