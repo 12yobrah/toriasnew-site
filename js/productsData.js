@@ -223,3 +223,5 @@
     fetchWooCommerceProducts();
   }
 })();
+/ /   S y n c   F i x   v 2  
+ 
