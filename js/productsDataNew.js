@@ -8,7 +8,7 @@
       "name": "Golden Oval Pearl Necklace & Earring Set",
       "category": "Jewelry Sets",
       "price": "KES 1,250",
-      "img": "https://i0.wp.com/toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.18.jpeg?fit=1200%2C1600&ssl=1",
+      "img": "https://toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.18.jpeg",
       "link": "product.html?id=213",
       "desc": "Elevate your elegance with this golden oval pearl jewelry set."
     },
@@ -17,7 +17,7 @@
       "name": "Gold & Mother of Pearl Geometric Jewelry Set",
       "category": "Jewelry Sets",
       "price": "KES 1,250",
-      "img": "https://i0.wp.com/toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.17-1.jpeg?fit=1200%2C1600&ssl=1",
+      "img": "https://toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.17-1.jpeg",
       "link": "product.html?id=19",
       "desc": "Bold meets elegant in this gold and mother-of-pearl jewelry set."
     },
@@ -26,7 +26,7 @@
       "name": "Bold Gold Link Hoop Earring",
       "category": "Earrings",
       "price": "KES 1,250",
-      "img": "https://i0.wp.com/toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.16-1.jpeg?fit=1200%2C1600&ssl=1",
+      "img": "https://toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.16-1.jpeg",
       "link": "product.html?id=18",
       "desc": "Make a bold statement with this contemporary gold link hoop earring."
     },
@@ -35,7 +35,7 @@
       "name": "Minimalist Black & Gold Jewelry Set",
       "category": "Jewelry Sets",
       "price": "KES 1,250",
-      "img": "https://i0.wp.com/toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.17.jpeg?fit=1200%2C1600&ssl=1",
+      "img": "https://toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.17.jpeg",
       "link": "product.html?id=17",
       "desc": "Elegant black and gold jewelry set featuring a matching necklace and stud earrings."
     },
@@ -44,7 +44,7 @@
       "name": "Vintage Bold Gold Hoop Earrings",
       "category": "Earrings",
       "price": "KES 1,500",
-      "img": "https://i0.wp.com/toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.16.jpeg?fit=1200%2C1600&ssl=1",
+      "img": "https://toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.16.jpeg",
       "link": "product.html?id=16",
       "desc": "Statement vintage-style gold hoop earrings with a bold, round design."
     },
@@ -53,7 +53,7 @@
       "name": "Radiant Pearl Burst Statement Earrings",
       "category": "Earrings",
       "price": "KES 1,500",
-      "img": "https://i0.wp.com/toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.15.jpeg?fit=1198%2C1600&ssl=1",
+      "img": "https://toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-19.31.15.jpeg",
       "link": "product.html?id=15",
       "desc": "Bold gold burst earrings with freshwater pearl centers."
     },
@@ -62,7 +62,7 @@
       "name": "The Golden Halo",
       "category": "Necklace",
       "price": "KES 1,250",
-      "img": "https://i0.wp.com/toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-22.57.33-2.jpeg?fit=986%2C1280&ssl=1",
+      "img": "https://toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-22.57.33-2.jpeg",
       "link": "product.html?id=23",
       "desc": "A sleek, minimalist 18K gold plated pendant necklace."
     },
@@ -71,7 +71,7 @@
       "name": "Purple Pendant Necklace",
       "category": "Necklace",
       "price": "KES 1,500",
-      "img": "https://i0.wp.com/toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-22.57.32.jpeg?fit=1080%2C1229&ssl=1",
+      "img": "https://toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-22.57.32.jpeg",
       "link": "product.html?id=22",
       "desc": "Add a pop of color and elegance to your everyday style."
     },
@@ -80,7 +80,7 @@
       "name": "Emerald Pendant Necklace",
       "category": "Necklace",
       "price": "KES 1,500",
-      "img": "https://i0.wp.com/toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-22.57.33.jpeg?fit=953%2C1280&ssl=1",
+      "img": "https://toriasglamhaven.co.ke/backend/wp-content/uploads/2026/04/WhatsApp-Image-2025-06-09-at-22.57.33.jpeg",
       "link": "product.html?id=21",
       "desc": "Bring timeless elegance to life with our Emerald Pendant Necklace."
     },
