@@ -47,6 +47,42 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hide Thumbs (since user only has one image per product)
     const galleryThumbs = document.getElementById('gallery-thumbs');
     if (galleryThumbs) galleryThumbs.style.display = 'none';
+
+    // Render Related Products
+    renderRelated();
+  }
+
+  function renderRelated() {
+    const relatedGrid = document.querySelector('.related-products .products-grid');
+    if (!relatedGrid || !window.productsData) return;
+    relatedGrid.innerHTML = '';
+
+    // Recommend 4 products from same category or just random
+    const items = Object.values(window.productsData)
+      .filter(p => p.id !== pId)
+      .slice(0, 4);
+
+    items.forEach(product => {
+      const art = document.createElement('article');
+      art.className = 'product-card';
+      art.innerHTML = `
+        <div class="product-img-wrap">
+          <img src="${product.img}" alt="${product.name}" loading="lazy" />
+          <div class="product-overlay">
+            <button class="overlay-btn" onclick="window.location.href='product.html?id=${product.id}'">Quick View</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <p class="product-category">${product.category}</p>
+          <h3 class="product-name"><a href="product.html?id=${product.id}">${product.name}</a></h3>
+          <div class="product-price-row">
+            <span class="product-price">${product.price}</span>
+          </div>
+          <button class="btn btn-gold btn-add-cart full-width" data-product="${product.id}">Add to Cart</button>
+        </div>
+      `;
+      relatedGrid.appendChild(art);
+    });
   }
 
   // Initial attempt
