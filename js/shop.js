@@ -172,15 +172,21 @@ document.addEventListener('DOMContentLoaded', () => {
     filterProducts();
   };
 
-  // ── FIX: AUTO-TRIGGER RENDER ──
-  // Listen for the 'inventoryReady' event from productsDataNew.js
+  // ── FIX: AUTO-TRIGGER RENDER (Aggressive) ──
   document.addEventListener('inventoryReady', () => {
-    console.log("✦ Shop: Inventory data received, initializing filters...");
+    console.log("✦ Shop: Inventory event received.");
     window.initShopFilters();
   });
 
-  // If products are already loaded (e.g. fast cache), init now
-  if (window.productsData && Object.keys(window.productsData).length > 0) {
-    window.initShopFilters();
-  }
+  // Regular check every 800ms to catch data if events were missed
+  const shopInitInterval = setInterval(() => {
+    if (window.productsData && Object.keys(window.productsData).length > 0) {
+      console.log("✦ Shop: Polling found data, initializing...");
+      window.initShopFilters();
+      clearInterval(shopInitInterval); // Stop polling once success
+    }
+  }, 800);
+
+  // Stop polling after 10 seconds anyway to save battery
+  setTimeout(() => clearInterval(shopInitInterval), 10000);
 });

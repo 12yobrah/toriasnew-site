@@ -447,9 +447,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Listen for sync completion to update home page
   document.addEventListener('inventoryReady', () => {
-    console.log("✦ Home Sync: New products received, updating grid...");
+    console.log("✦ Home Sync: Data received.");
     renderHomeProducts();
   });
 
-});
+  // Polling fallback
+  const homeInitInterval = setInterval(() => {
+    if (window.productsData && Object.values(window.productsData).length > 0) {
+      console.log("✦ Home: Polling found data, rendering...");
+      renderHomeProducts();
+      clearInterval(homeInitInterval);
+    }
+  }, 800);
 
+  setTimeout(() => clearInterval(homeInitInterval), 10000);
+
+});
