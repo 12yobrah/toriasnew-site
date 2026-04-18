@@ -7,7 +7,7 @@
   window.productsData = productsObj;
 
   const CONFIG = {
-    URL: 'https://www.toriasglamhaven.co.ke/backend',
+    URL: 'https://backend.toriasglamhaven.co.ke',
     CK: 'ck_ed18fde86cbb15c89e341705e60f7ca766d3bf37',
     CS: 'cs_dcf83c581c169dbc6b27ee09f8189cc14cd2b6a8'
   };
