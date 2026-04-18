@@ -6,9 +6,9 @@
 :root {
   /* TORIAS GLAM HAVEN – Black, White & Gold Palette */
   --clr-white:     #FFFFFF;
-  --clr-black:     #0A0A0A;
-  --clr-dark:      #111111;   /* Dark Surface */
-  --clr-dark-2:    #1A1A1A;   /* Slightly lighter dark surface */
+  --clr-black:     #000000;
+  --clr-dark:      #080808;   /* Dark Surface */
+  --clr-dark-2:    #121212;   /* Slightly lighter dark surface */
 
   /* Brand Palette (Dark Surfaces – old "blush" mapped to dark equivalents) */
   --clr-blush:          #161616;
@@ -17,11 +17,11 @@
   --clr-nude:           #121212;
   --clr-champagne:      #1E1E1E;
 
-  /* Accent Colors – Gold */
-  --clr-gold:           #C9A84C;
-  --clr-gold-light:     #E2C97E;
-  --clr-gold-pale:      rgba(201,168,76,0.15);
-  --clr-jewelry-gold:   #C9A84C;
+  /* Accent Colors – Gold (Champagne Gold to match logo) */
+  --clr-gold:           #DAB258;
+  --clr-gold-light:     #E8D092;
+  --clr-gold-pale:      rgba(218,178,88,0.15);
+  --clr-jewelry-gold:   #DAB258;
 
   /* Text Colors – WHITE on dark background */
   --clr-text:           #FFFFFF;              /* Pure White – headings */
@@ -34,9 +34,9 @@
   --clr-gray-400:       rgba(255,255,255,0.15);
   --clr-gray-600:       rgba(255,255,255,0.30);
 
-  /* Gradients */
-  --gradient-gold: linear-gradient(135deg, #C9A84C 0%, #8B6E2F 100%);
-  --gradient-blush: linear-gradient(135deg, #1A1A1A 0%, #0A0A0A 100%);
+  /* Gradients (Updated for logo match) */
+  --gradient-gold: linear-gradient(135deg, #DAB258 0%, #9F7928 100%);
+  --gradient-blush: linear-gradient(135deg, #121212 0%, #000000 100%);
   --gradient-hero: linear-gradient(rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
 
   /* Typography */
