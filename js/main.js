@@ -397,69 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ── HOME PAGE PRODUCT SYNC ──
-  const homeGrid = document.getElementById('featured-products-grid');
-
-  function renderHomeProducts() {
-    if (!homeGrid || !window.productsData) return;
-    
-    // Clear the loading state
-    homeGrid.innerHTML = '';
-    
-    // Get the first 4 products
-    const products = Object.values(window.productsData).slice(0, 4);
-    
-    if (products.length === 0) {
-      homeGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: rgba(255,255,255,0.4); padding: 3rem 0;">Loading curated collection...</p>';
-      return;
-    }
-
-    products.forEach(p => {
-      const art = document.createElement('article');
-      art.className = 'product-card animate-up is-visible';
-      art.innerHTML = `
-        <div class="product-img-wrap">
-          <img src="${p.img}" alt="${p.name}" loading="lazy" />
-          <button class="wishlist-toggle" data-product="${p.id}" aria-label="Add to Wishlist">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-          <div class="product-overlay">
-            <button class="overlay-btn quick-view-btn" data-product="${p.id}">Quick View</button>
-          </div>
-        </div>
-        <div class="product-info">
-          <p class="product-category">${p.category}</p>
-          <h3 class="product-name"><a href="product.html?id=${p.id}">${p.name}</a></h3>
-          <div class="product-price-row">
-            <span class="product-price">${p.price}</span>
-          </div>
-          <button class="btn btn-gold btn-add-cart full-width" data-product="${p.id}">Add to Cart</button>
-        </div>
-      `;
-      homeGrid.appendChild(art);
-    });
-
-    // Attach events for buttons
-    if (window.attachProductEvents) window.attachProductEvents();
-  }
-
-  // Initial attempt
-  setTimeout(renderHomeProducts, 500);
-
-  // Listen for sync completion to update home page
-  document.addEventListener('inventoryReady', () => {
-    console.log("✦ Home Sync: Data received.");
-    renderHomeProducts();
-  });
-
-  // Polling fallback
-  const homeInitInterval = setInterval(() => {
-    if (window.productsData && Object.values(window.productsData).length > 0) {
-      console.log("✦ Home: Polling found data, rendering...");
-      renderHomeProducts();
-      clearInterval(homeInitInterval);
-    }
-  }, 800);
-
-  setTimeout(() => clearInterval(homeInitInterval), 10000);
+  // NOTE: Home page product rendering is handled by home.js
+  // main.js only handles universal features (cart, search, modals, etc.)
 
 });
