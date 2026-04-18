@@ -31,12 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Dynamically set price range filter max
     if (priceRange) {
-      const roundedMax = Math.ceil((maxFoundPrice + 1000) / 1000) * 1000;
-      priceRange.max = roundedMax;
+      // Use a safe high default if no prices are found yet
+      const safeMax = maxFoundPrice > 0 ? Math.ceil((maxFoundPrice + 5000) / 5000) * 5000 : 100000;
+      priceRange.max = safeMax;
       priceRange.min = 0;
-      priceRange.value = roundedMax;
+      priceRange.value = safeMax; // START AT MAX
       if (priceRangeValue) {
-        priceRangeValue.textContent = 'KES ' + roundedMax.toLocaleString();
+        priceRangeValue.textContent = 'KES ' + safeMax.toLocaleString();
       }
     }
 

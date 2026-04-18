@@ -443,7 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Initial attempt
-  renderHomeProducts();
+  setTimeout(renderHomeProducts, 500);
 
   // Listen for sync completion to update home page
   document.addEventListener('inventoryReady', () => {
