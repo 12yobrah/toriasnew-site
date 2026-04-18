@@ -260,6 +260,30 @@
   letter-spacing: 0.01em;
 }
 
+@media (max-width: 768px) {
+  .hero-container {
+    padding-top: 100px;
+    padding-bottom: 80px;
+    min-height: 80vh;
+  }
+  .hero-title {
+    font-size: clamp(2.5rem, 10vw, 3.5rem);
+  }
+  .hero-subline {
+    font-size: 0.95rem;
+    padding: 0 15px;
+  }
+  .hero-actions .btn {
+    min-width: 160px;
+    padding: 14px 30px;
+    font-size: 0.75rem;
+  }
+  .hero-stats {
+    gap: var(--sp-md);
+    flex-wrap: wrap;
+  }
+}
+
 .hero-desc {
   display: none;
 }

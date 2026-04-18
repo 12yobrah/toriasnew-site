@@ -14,18 +14,34 @@
 
   async function sync() {
     console.log("✦ Torias Sync: Starting fetch from WordPress...");
+    
+    // TRY NEW SUBDOMAIN FIRST
+    let success = await conductFetch(CONFIG.URL);
+    
+    // FAILOVER: If subdomain fails (SSL propagation issues), try root domain
+    if (!success) {
+      console.warn("✦ Torias Sync: Subdomain failed. Trying root domain failover...");
+      const failoverUrl = 'https://www.toriasglamhaven.co.ke/backend';
+      await conductFetch(failoverUrl);
+    }
+
+    // Notify all other scripts that data is ready
+    document.dispatchEvent(new CustomEvent('inventoryReady'));
+    if (typeof window.initShopFilters === 'function') window.initShopFilters();
+  }
+
+  async function conductFetch(apiUrl) {
     try {
       const auth = btoa(`${CONFIG.CK}:${CONFIG.CS}`);
-      const r = await fetch(`${CONFIG.URL}/wp-json/wc/v3/products?per_page=100&status=publish`, {
+      const r = await fetch(`${apiUrl}/wp-json/wc/v3/products?per_page=100&status=publish`, {
         headers: { 'Authorization': `Basic ${auth}` }
       });
       
       if (r.ok) {
         const data = await r.json();
-        console.log(`✦ Torias Sync: Found ${data.length} products on WordPress.`);
+        console.log(`✦ Torias Sync: Found ${data.length} products on ${apiUrl}.`);
         
         data.forEach(item => {
-          // Clean image URLs (remove Jetpack/Photon if present)
           let imgUrl = item.images.length > 0 ? item.images[0].src : 'https://via.placeholder.com/600';
           imgUrl = imgUrl.replace(/i\d\.wp\.com\//, '').split('?')[0];
 
@@ -41,16 +57,13 @@
         });
         
         console.log("✦ Torias Sync: Success! Products synchronized.");
-      } else {
-        console.error("✦ Torias Sync: API Error!", r.status, r.statusText);
+        return true;
       }
+      return false;
     } catch (e) { 
-      console.error("✦ Torias Sync: Fatal connection error!", e.message); 
+      console.error(`✦ Torias Sync: Error fetching from ${apiUrl}!`, e.message); 
+      return false;
     }
-    
-    // Notify all other scripts that data is ready
-    document.dispatchEvent(new CustomEvent('inventoryReady'));
-    if (typeof window.initShopFilters === 'function') window.initShopFilters();
   }
 
   // Execute sync immediately
