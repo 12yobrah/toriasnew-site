@@ -144,7 +144,7 @@
 
   // ── WORDPRESS CONFIG ───────────────────────────────────────────
   const CONFIG = {
-    URL: 'https://backend.toriasglamhaven.co.ke',
+    URL: window.location.origin, // Use current domain proxy
     CK: 'ck_ed18fde86cbb15c89e341705e60f7ca766d3bf37',
     CS: 'cs_dcf83c581c169dbc6b27ee09f8189cc14cd2b6a8'
   };
