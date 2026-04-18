@@ -67,7 +67,7 @@
   /* Layout */
   --container-max: 1320px;
   --container-pad: clamp(24px, 6vw, 100px);
-  --header-h: 90px;
+  --header-h: 120px;
   --radius-sm:  40px;   /* pill for buttons */
   --radius-md:  20px;
   --radius-lg:  30px;
