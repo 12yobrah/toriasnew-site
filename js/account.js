@@ -1,10 +1,7 @@
 // ============================================================
 // TORIAS GLAM HAVEN | ACCOUNT DASHBOARD LOGIC
+// Reuses supabaseClient from main.js (loaded first)
 // ============================================================
-
-const SUPABASE_URL = 'https://xfuhxmrqykkmfqcpshhs.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_tA-hIr0xRAkpb_Rt0l_Odg_nonm1k6v';
-const supabaseClient = (typeof supabase !== 'undefined') ? supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
 // ── Panel Navigation ──
 function switchPanel(panelName) {
