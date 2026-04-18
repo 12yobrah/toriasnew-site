@@ -128,23 +128,37 @@
     }
   ];
 
-  // ── INITIALIZE WITH EMBEDDED DATA IMMEDIATELY ──────────────────
+  // ── INITIALIZE DATA ──────────────────────────────────────────
   window.productsData = {};
-  EMBEDDED_PRODUCTS.forEach(item => {
-    window.productsData[item.id] = { ...item };
-  });
-  console.log(`✦ Torias Sync: ${EMBEDDED_PRODUCTS.length} products loaded instantly.`);
-
-  // Fire inventory ready immediately so pages render right away
-  // Use setTimeout(0) to ensure DOM listeners are attached first
-  setTimeout(() => {
+  
+  // 1. First, load the absolute latest data from the Dashboard (json)
+  // 2. Fallback to embedded data if the fetch fails
+  async function loadDashboardData() {
+    try {
+      const resp = await fetch('data/products.json?v=' + Date.now());
+      if (resp.ok) {
+        const data = await resp.json();
+        const items = data.products || data;
+        items.forEach(item => {
+          window.productsData[String(item.id)] = { ...item };
+        });
+        console.log(`✦ Torias Dashboard: ${items.length} products synced.`);
+      }
+    } catch (e) {
+      console.warn("✦ Torias Sync: Dashboard fetch failed. Using embedded fallbacks.");
+      EMBEDDED_PRODUCTS.forEach(item => {
+        window.productsData[item.id] = { ...item };
+      });
+    }
     document.dispatchEvent(new CustomEvent('inventoryReady'));
     if (typeof window.initShopFilters === 'function') window.initShopFilters();
-  }, 0);
+  }
+
+  loadDashboardData();
 
   // ── WORDPRESS CONFIG ───────────────────────────────────────────
   const CONFIG = {
-    URL: window.location.origin, // Use current domain proxy
+    URL: 'https://backend.toriasglamhaven.co.ke',
     CK: 'ck_ed18fde86cbb15c89e341705e60f7ca766d3bf37',
     CS: 'cs_dcf83c581c169dbc6b27ee09f8189cc14cd2b6a8'
   };

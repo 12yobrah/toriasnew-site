@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: 12yobrah/toriasnew-site
   branch: main
 
 # This allows the client to see the live site images in the dashboard
