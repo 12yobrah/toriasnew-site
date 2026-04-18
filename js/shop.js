@@ -31,10 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Dynamically set price range filter max
     if (priceRange) {
-      const roundedMax = Math.ceil((maxFoundPrice + 500) / 500) * 500;
+      const roundedMax = Math.ceil((maxFoundPrice + 1000) / 1000) * 1000;
       priceRange.max = roundedMax;
+      priceRange.min = 0;
       priceRange.value = roundedMax;
-      priceRangeValue.textContent = 'KES ' + roundedMax.toLocaleString();
+      if (priceRangeValue) {
+        priceRangeValue.textContent = 'KES ' + roundedMax.toLocaleString();
+      }
     }
 
     // ─── URL PARAMETER CHECK (NEW) ───
@@ -169,7 +172,14 @@ document.addEventListener('DOMContentLoaded', () => {
     filterProducts();
   };
 
-  // If products are already loaded, init now
+  // ── FIX: AUTO-TRIGGER RENDER ──
+  // Listen for the 'inventoryReady' event from productsDataNew.js
+  document.addEventListener('inventoryReady', () => {
+    console.log("✦ Shop: Inventory data received, initializing filters...");
+    window.initShopFilters();
+  });
+
+  // If products are already loaded (e.g. fast cache), init now
   if (window.productsData && Object.keys(window.productsData).length > 0) {
     window.initShopFilters();
   }
