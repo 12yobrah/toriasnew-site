@@ -4,149 +4,680 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Account | TORIAS GLAM HAVEN</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="Manage your Torias Glam Haven account — view orders, wishlist, profile settings, and shipping addresses." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
-    .account-grid {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 40px;
-      margin: 60px 0;
+    /* ── Account Page Layout ── */
+    .account-hero {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1510 50%, #0a0a0a 100%);
+      padding: 100px 0 50px;
+      text-align: center;
+      border-bottom: 1px solid rgba(218,178,88,0.1);
     }
+    .account-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: #fff;
+      font-weight: 300;
+      margin-bottom: 5px;
+    }
+    .account-hero p {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.85rem;
+    }
+
+    .account-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 40px;
+      padding: 40px 0 80px;
+    }
+
+    /* ── Sidebar ── */
     .account-sidebar {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(201,168,76,0.1);
-      border-radius: 12px;
-      padding: 30px;
+      position: sticky;
+      top: 110px;
       height: fit-content;
     }
-    .user-brief {
+    .user-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(218,178,88,0.1);
+      border-radius: 16px;
+      padding: 30px 20px;
       text-align: center;
-      margin-bottom: 30px;
-      padding-bottom: 30px;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      margin-bottom: 20px;
     }
     .user-avatar {
-      width: 80px;
-      height: 80px;
-      background: var(--clr-gold);
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, #DAB258, #9F7928);
       color: #000;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
+      font-size: 1.6rem;
       font-family: var(--font-serif);
-      margin: 0 auto 15px;
+      font-weight: 600;
+      margin: 0 auto 12px;
+      box-shadow: 0 4px 20px rgba(218,178,88,0.2);
     }
+    .user-name {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .user-email {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.35);
+      word-break: break-all;
+    }
+    .user-member-since {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 4px 14px;
+      background: rgba(218,178,88,0.08);
+      border: 1px solid rgba(218,178,88,0.15);
+      border-radius: 20px;
+      font-size: 0.6rem;
+      color: #DAB258;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
     .account-nav {
       list-style: none;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(218,178,88,0.08);
+      border-radius: 12px;
+      overflow: hidden;
     }
     .account-nav-link {
-      display: block;
-      padding: 12px 15px;
-      color: rgba(255,255,255,0.6);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      color: rgba(255,255,255,0.5);
       text-decoration: none;
-      border-radius: 6px;
-      transition: 0.3s;
-      margin-bottom: 5px;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
     }
-    .account-nav-link:hover, .account-nav-link.active {
-      background: rgba(201,168,76,0.1);
-      color: var(--clr-gold);
+    .account-nav-link:hover {
+      background: rgba(218,178,88,0.05);
+      color: rgba(255,255,255,0.8);
     }
-    .account-content-card {
+    .account-nav-link.active {
+      background: rgba(218,178,88,0.08);
+      color: #DAB258;
+      border-left-color: #DAB258;
+    }
+    .account-nav-link svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+    .nav-separator {
+      height: 1px;
+      background: rgba(255,255,255,0.04);
+    }
+    .account-nav-link.logout-link {
+      color: #ff5c5c;
+    }
+    .account-nav-link.logout-link:hover {
+      background: rgba(255,92,92,0.05);
+    }
+
+    /* ── Content Area ── */
+    .account-panel {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+    .account-panel.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .panel-header h2 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #fff;
+    }
+    .panel-header .panel-count {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .content-card {
       background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 12px;
-      padding: 40px;
+      border: 1px solid rgba(218,178,88,0.08);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 20px;
     }
+
+    /* ── Orders ── */
     .order-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .order-item:last-child { border-bottom: none; }
+    .order-id {
+      font-weight: 600;
+      color: #fff;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+    .order-date {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.35);
+    }
+    .order-total {
+      color: #DAB258;
+      font-weight: 600;
+      margin-bottom: 6px;
+      text-align: right;
     }
     .status-badge {
-      padding: 4px 12px;
+      padding: 4px 14px;
       border-radius: 20px;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
+      font-weight: 600;
     }
-    .status-pending { background: rgba(255, 193, 7, 0.1); color: #ffc107; }
-    .status-delivered { background: rgba(40, 167, 69, 0.1); color: #28a745; }
-    
+    .status-pending { background: rgba(255,193,7,0.1); color: #ffc107; }
+    .status-processing { background: rgba(33,150,243,0.1); color: #2196f3; }
+    .status-delivered { background: rgba(76,175,80,0.1); color: #4caf50; }
+    .status-cancelled { background: rgba(244,67,54,0.1); color: #f44336; }
+
+    .empty-state {
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .empty-state svg {
+      width: 60px;
+      height: 60px;
+      color: rgba(218,178,88,0.3);
+      margin-bottom: 20px;
+    }
+    .empty-state h3 {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 8px;
+      font-weight: 400;
+    }
+    .empty-state p {
+      color: rgba(255,255,255,0.35);
+      font-size: 0.85rem;
+      margin-bottom: 25px;
+    }
+
+    /* ── Wishlist ── */
+    .wishlist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .wishlist-item {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .wishlist-item:hover {
+      border-color: rgba(218,178,88,0.2);
+      transform: translateY(-2px);
+    }
+    .wishlist-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .wishlist-item-info {
+      padding: 14px;
+    }
+    .wishlist-item-info h4 {
+      font-family: var(--font-serif);
+      font-size: 0.9rem;
+      color: #fff;
+      margin-bottom: 4px;
+      font-weight: 400;
+    }
+    .wishlist-item-info .price {
+      color: #DAB258;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .wishlist-item-actions {
+      display: flex;
+      gap: 8px;
+      padding: 0 14px 14px;
+    }
+    .wishlist-item-actions .btn {
+      flex: 1;
+      font-size: 0.7rem;
+      padding: 8px 12px;
+    }
+    .btn-remove {
+      background: none;
+      border: 1px solid rgba(255,92,92,0.3);
+      color: #ff5c5c;
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn-remove:hover {
+      background: rgba(255,92,92,0.1);
+    }
+
+    /* ── Profile Form ── */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+    .form-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      font-weight: 500;
+    }
+    .form-input {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 12px 16px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: #DAB258;
+      background: rgba(218,178,88,0.04);
+    }
+    .form-input:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .form-save-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 25px;
+    }
+
+    /* ── Address Cards ── */
+    .address-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 15px;
+      position: relative;
+    }
+    .address-card.default {
+      border-color: rgba(218,178,88,0.3);
+    }
+    .address-default-tag {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(218,178,88,0.1);
+      color: #DAB258;
+      font-size: 0.6rem;
+      padding: 3px 10px;
+      border-radius: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .address-card h4 {
+      color: #fff;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+    .address-card p {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+
+    /* ── Toast Notification ── */
+    .account-toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #1a1a1a;
+      border: 1px solid rgba(218,178,88,0.3);
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      z-index: 9999;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+    .account-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* ── Responsive ── */
     @media (max-width: 992px) {
-      .account-grid { grid-template-columns: 1fr; }
+      .account-layout {
+        grid-template-columns: 1fr;
+      }
+      .account-sidebar {
+        position: static;
+      }
+      .account-nav {
+        display: flex;
+        overflow-x: auto;
+        gap: 0;
+      }
+      .account-nav li {
+        flex-shrink: 0;
+      }
+      .account-nav-link {
+        padding: 12px 16px;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        white-space: nowrap;
+      }
+      .account-nav-link.active {
+        border-left-color: transparent;
+        border-bottom-color: #DAB258;
+      }
+      .nav-separator { display: none; }
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body class="dark-luxe">
-  <div id="promo-banner"><span>✦ Free Delivery on orders over KES 10,000 ✦</span></div>
 
-  <header class="site-header scrolled">
+  <!-- PROMO BANNER -->
+  <div id="promo-banner"><span>✦ Free Delivery on orders over KES 10,000 ✦</span><button id="promo-close" aria-label="Close">✕</button></div>
+
+  <!-- HEADER -->
+  <header class="site-header scrolled" id="site-header">
     <div class="header-inner container">
-      <a href="index.html" class="logo">
-        <div class="logo-text">
-          <div class="logo-top"><span class="logo-main">Torias</span></div>
-          <span class="logo-sub">GLAM HAVEN</span>
+      <a href="index.html" class="logo" aria-label="TORIAS GLAM HAVEN Home">
+        <img src="img/logo-tgh.png" alt="Torias Glam Haven" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="logo-fallback" style="display:none; align-items:center; gap:12px;">
+          <div style="width:50px;height:50px;border:1.5px solid #DAB258;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:14px;color:#DAB258;letter-spacing:2px;">TGH</span>
+          </div>
+          <div style="display:flex;flex-direction:column;">
+            <span style="font-family:'Great Vibes',cursive;font-size:26px;color:#fff;line-height:1;">Torias Glam Haven</span>
+            <span style="font-family:'Jost',sans-serif;font-size:7px;color:#DAB258;letter-spacing:4px;text-transform:uppercase;margin-top:2px;">Elegance and style</span>
+          </div>
         </div>
       </a>
+      <nav class="main-nav" id="main-nav" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-dropdown">
+            <a href="shop.html" class="nav-link">Shop <span class="dropdown-arrow">▾</span></a>
+            <ul class="dropdown-menu">
+              <li><a href="shop.html?cat=bracelets">Bracelets</a></li>
+              <li><a href="shop.html?cat=necklaces">Necklaces</a></li>
+              <li><a href="shop.html?cat=earrings">Earrings</a></li>
+              <li><a href="shop.html?cat=sets">Jewelry Sets</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
       <div class="header-actions">
-        <a href="index.html" class="btn btn-outline btn-sm">Sign Out</a>
+        <button class="icon-btn search-btn" id="search-btn" aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+        <a href="account.html#wishlist" class="icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="icon-badge wishlist-count">0</span></a>
+        <a href="cart.html" class="icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="icon-badge cart-count">0</span></a>
+        <a href="account.html" class="icon-btn" id="header-auth-btn" aria-label="Account" style="color: var(--clr-gold);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
       </div>
     </div>
   </header>
 
+  <!-- HERO -->
+  <section class="account-hero">
+    <div class="container">
+      <h1 id="hero-greeting">My Account</h1>
+      <p id="hero-subtitle">Manage your orders, wishlist, and profile</p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
   <main class="container">
-    <div class="account-grid">
+    <div class="account-layout">
+
+      <!-- SIDEBAR -->
       <aside class="account-sidebar">
-        <div class="user-brief">
+        <div class="user-card">
           <div class="user-avatar" id="user-initials">T</div>
-          <h3 id="user-display-name">Loading...</h3>
-          <p id="user-display-email" style="font-size: 0.75rem; color: rgba(255,255,255,0.4);">...</p>
+          <h3 class="user-name" id="user-display-name">Loading...</h3>
+          <p class="user-email" id="user-display-email">...</p>
+          <span class="user-member-since" id="user-member-since">Member since 2024</span>
         </div>
         <nav>
           <ul class="account-nav">
-            <li><a href="#orders" class="account-nav-link active">Order History</a></li>
-            <li><a href="#profile" class="account-nav-link">Account Details</a></li>
-            <li><a href="#address" class="account-nav-link">Shipping Address</a></li>
-            <li><a href="#" id="logout-btn" class="account-nav-link" style="color: #ff4d4d;">Logout</a></li>
+            <li><a href="#dashboard" class="account-nav-link active" data-panel="dashboard">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+              Dashboard
+            </a></li>
+            <li><a href="#orders" class="account-nav-link" data-panel="orders">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              Orders
+            </a></li>
+            <li><a href="#wishlist" class="account-nav-link" data-panel="wishlist">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              Wishlist
+            </a></li>
+            <li class="nav-separator"></li>
+            <li><a href="#profile" class="account-nav-link" data-panel="profile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Profile
+            </a></li>
+            <li><a href="#addresses" class="account-nav-link" data-panel="addresses">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Addresses
+            </a></li>
+            <li class="nav-separator"></li>
+            <li><a href="#" class="account-nav-link logout-link" id="logout-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              Sign Out
+            </a></li>
           </ul>
         </nav>
       </aside>
 
+      <!-- PANELS -->
       <div class="account-main">
-        <div class="account-content-card animate-up" id="orders-section">
-          <h2 style="font-family: var(--font-serif); margin-bottom: 30px;">Your Orders</h2>
-          <div id="orders-list">
-            <p style="color: rgba(255,255,255,0.4);">You haven't placed any orders yet.</p>
+
+        <!-- ─ DASHBOARD ─ -->
+        <div class="account-panel active" id="panel-dashboard">
+          <div class="panel-header">
+            <h2>Dashboard</h2>
           </div>
-          <div style="margin-top: 40px;">
-            <a href="shop.html" class="btn btn-gold">Explore Collection</a>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap:15px; margin-bottom:30px;">
+            <div class="content-card" style="text-align:center; cursor:pointer;" onclick="switchPanel('orders')">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DAB258" stroke-width="1"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+              <h3 style="font-family:var(--font-serif);font-size:2rem;color:#DAB258;margin:10px 0 5px;" id="dash-order-count">0</h3>
+              <p style="font-size:0.75rem;color:rgba(255,255,255,0.4);">Total Orders</p>
+            </div>
+            <div class="content-card" style="text-align:center; cursor:pointer;" onclick="switchPanel('wishlist')">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DAB258" stroke-width="1"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              <h3 style="font-family:var(--font-serif);font-size:2rem;color:#DAB258;margin:10px 0 5px;" id="dash-wishlist-count">0</h3>
+              <p style="font-size:0.75rem;color:rgba(255,255,255,0.4);">Wishlist Items</p>
+            </div>
+            <div class="content-card" style="text-align:center; cursor:pointer;" onclick="switchPanel('profile')">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DAB258" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <h3 style="font-family:var(--font-serif);font-size:1rem;color:#fff;margin:10px 0 5px;" id="dash-profile-name">—</h3>
+              <p style="font-size:0.75rem;color:rgba(255,255,255,0.4);">Your Profile</p>
+            </div>
+          </div>
+          <div class="content-card">
+            <h3 style="font-family:var(--font-serif);font-size:1.1rem;color:#fff;margin-bottom:15px;">Recent Orders</h3>
+            <div id="dash-recent-orders">
+              <p style="color:rgba(255,255,255,0.35);font-size:0.85rem;">No orders yet. Start exploring our collection!</p>
+            </div>
+            <div style="margin-top:20px;">
+              <a href="shop.html" class="btn btn-gold" style="font-size:0.8rem;">Browse Collection</a>
+            </div>
           </div>
         </div>
 
-        <div class="account-content-card animate-up" id="profile-section" style="display:none;">
-           <h2 style="font-family: var(--font-serif); margin-bottom: 30px;">Account Details</h2>
-           <form id="profile-form" style="display: flex; flex-direction: column; gap: 20px;">
-              <div class="form-group">
-                <label style="display: block; font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-bottom: 8px;">FULL NAME</label>
-                <input type="text" id="profile-name" class="auth-input" style="width: 100%;" placeholder="Enter your full name">
-              </div>
-              <div class="form-group">
-                <label style="display: block; font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-bottom: 8px;">PHONE NUMBER</label>
-                <input type="text" id="profile-phone" class="auth-input" style="width: 100%;" placeholder="+254...">
-              </div>
-              <button type="submit" class="btn btn-gold">Save Changes</button>
-           </form>
+        <!-- ─ ORDERS ─ -->
+        <div class="account-panel" id="panel-orders">
+          <div class="panel-header">
+            <h2>My Orders</h2>
+            <span class="panel-count" id="orders-count"></span>
+          </div>
+          <div class="content-card" id="orders-list">
+            <div class="empty-state">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              <h3>No orders yet</h3>
+              <p>When you place an order, it will appear here for tracking.</p>
+              <a href="shop.html" class="btn btn-gold">Start Shopping</a>
+            </div>
+          </div>
         </div>
+
+        <!-- ─ WISHLIST ─ -->
+        <div class="account-panel" id="panel-wishlist">
+          <div class="panel-header">
+            <h2>My Wishlist</h2>
+            <span class="panel-count" id="wishlist-panel-count"></span>
+          </div>
+          <div id="wishlist-content">
+            <div class="empty-state">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              <h3>Your wishlist is empty</h3>
+              <p>Browse our collection and click the heart icon to save items you love.</p>
+              <a href="shop.html" class="btn btn-gold">Explore Jewelry</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─ PROFILE ─ -->
+        <div class="account-panel" id="panel-profile">
+          <div class="panel-header">
+            <h2>Account Details</h2>
+          </div>
+          <div class="content-card">
+            <form id="profile-form">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Full Name</label>
+                  <input type="text" class="form-input" id="profile-name" placeholder="Enter your full name" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Phone Number</label>
+                  <input type="tel" class="form-input" id="profile-phone" placeholder="+254..." />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Email Address</label>
+                  <input type="email" class="form-input" id="profile-email" disabled />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Date of Birth</label>
+                  <input type="date" class="form-input" id="profile-dob" />
+                </div>
+              </div>
+              <div class="form-save-row">
+                <button type="submit" class="btn btn-gold">Save Changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- ─ ADDRESSES ─ -->
+        <div class="account-panel" id="panel-addresses">
+          <div class="panel-header">
+            <h2>Shipping Addresses</h2>
+          </div>
+          <div id="addresses-list">
+            <div class="content-card">
+              <form id="address-form">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" id="addr-name" placeholder="Recipient name" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Phone</label>
+                    <input type="tel" class="form-input" id="addr-phone" placeholder="+254..." />
+                  </div>
+                  <div class="form-group full-width">
+                    <label class="form-label">Street Address</label>
+                    <input type="text" class="form-input" id="addr-street" placeholder="Street address, apartment, suite" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">City / Town</label>
+                    <input type="text" class="form-input" id="addr-city" placeholder="Nairobi" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">County / Region</label>
+                    <input type="text" class="form-input" id="addr-county" placeholder="Nairobi County" />
+                  </div>
+                </div>
+                <div class="form-save-row">
+                  <button type="submit" class="btn btn-gold">Save Address</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- TOAST -->
+  <div class="account-toast" id="account-toast"></div>
+
+  <!-- SCRIPTS -->
+  <script src="js/productsDataNew.js"></script>
+  <script src="js/main.js"></script>
   <script src="js/account.js"></script>
 </body>
 </html>

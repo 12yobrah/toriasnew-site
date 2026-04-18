@@ -889,6 +889,50 @@ strong { font-weight: 600; }
   color: #0A0A0A;
 }
 
+/* ── Persistent Wishlist Heart ── */
+.wishlist-toggle {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 5;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+.product-card:hover .wishlist-toggle,
+.wishlist-toggle.active {
+  opacity: 1;
+}
+.wishlist-toggle:hover {
+  background: rgba(218,178,88,0.2);
+  border-color: #DAB258;
+  transform: scale(1.1);
+}
+.wishlist-toggle.active {
+  background: rgba(218,178,88,0.15);
+  border-color: #DAB258;
+}
+.wishlist-toggle svg {
+  width: 16px;
+  height: 16px;
+  color: #fff;
+  transition: 0.3s;
+}
+.wishlist-toggle.active svg {
+  fill: #DAB258;
+  stroke: #DAB258;
+  color: #DAB258;
+}
+
 .product-info { padding: var(--sp-md); }
 .product-category {
   font-size: var(--fs-xs);
