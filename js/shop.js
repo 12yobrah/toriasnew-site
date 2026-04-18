@@ -37,6 +37,22 @@ document.addEventListener('DOMContentLoaded', () => {
       priceRangeValue.textContent = 'KES ' + roundedMax.toLocaleString();
     }
 
+    // ─── URL PARAMETER CHECK (NEW) ───
+    const params = new URLSearchParams(window.location.search);
+    const catParam = params.get('cat')?.toLowerCase();
+    if (catParam) {
+      categoryChecks.forEach(check => {
+        const val = check.value.toLowerCase();
+        // Match earrings, necklaces, jewelry sets, etc.
+        if (val === catParam || val.includes(catParam) || catParam.includes(val)) {
+          check.checked = true;
+          // Uncheck 'All' if it's checked
+          const allCheck = document.getElementById('cat-all');
+          if (allCheck) allCheck.checked = false;
+        }
+      });
+    }
+
     function renderProducts(products) {
       productsGrid.innerHTML = '';
       
@@ -93,141 +109,68 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Attach event listeners for buttons generated
       if(window.attachProductEvents) { window.attachProductEvents(); }
-    }    const materialChecks = document.querySelectorAll('input[name="material"]');
-    const searchInput = document.getElementById('search-input');
+    }
+
+    const materialChecks = document.querySelectorAll('input[name="material"]');
 
     function filterProducts() {
-      // Categories
-      const activeCategories = Array.from(categoryChecks)
-        .filter(cb => cb.checked)
-        .map(cb => cb.value.toLowerCase());
+      let filtered = [...allProducts];
 
-      // Materials
-      const activeMaterials = Array.from(materialChecks)
-        .filter(cb => cb.checked)
-        .map(cb => cb.value.toLowerCase());
+      // Categories
+      const selectedCats = Array.from(categoryChecks)
+        .filter(c => c.checked && c.value !== 'all')
+        .map(c => c.value);
+
+      if (selectedCats.length > 0) {
+        filtered = filtered.filter(p => {
+          const pCat = p.category.toLowerCase();
+          return selectedCats.some(s => pCat.includes(s.toLowerCase().replace('filter-', '')));
+        });
+      }
+
+      // Material
+      const selectedMats = Array.from(materialChecks).filter(c => c.checked).map(c => c.value);
+      if (selectedMats.length > 0) {
+        filtered = filtered.filter(p => selectedMats.some(m => p.desc.toLowerCase().includes(m)));
+      }
 
       // Price
-      const maxPrice = parseFloat(priceRange.value);
-      
-      // Sort
-      const sortValue = sortSelect ? sortSelect.value : 'featured';
-
-      // Search Query
-      const searchQuery = searchInput ? searchInput.value.toLowerCase().trim() : '';
-
-      let filtered = allProducts.filter(p => {
-        // 1. Filter by price
-        if (p.parsedPrice > maxPrice) return false;
-        
-        // 2. Filter by Search Query (Name & Description)
-        if (searchQuery) {
-          const textMatch = p.name.toLowerCase().includes(searchQuery) || 
-                            p.desc.toLowerCase().includes(searchQuery);
-          if (!textMatch) return false;
-        }
-
-        // 3. Filter by Category
-        if (!activeCategories.includes('all') && activeCategories.length > 0) {
-          let catMatch = false;
-          let pCat = p.category.toLowerCase(); // e.g. "necklace" or "jewelry sets"
-          
-          if (activeCategories.includes('sets') && pCat.includes('set')) catMatch = true;
-          if (activeCategories.includes('earrings') && pCat.includes('earring')) catMatch = true;
-          if (activeCategories.includes('necklaces') && pCat.includes('necklace')) catMatch = true;
-          if (activeCategories.includes('bracelets') && pCat.includes('bracelet')) catMatch = true;
-          
-          if (!catMatch) return false;
-        }
-
-        // 4. Filter by Material
-        if (activeMaterials.length > 0) {
-          const searchableText = (p.name + " " + p.desc).toLowerCase();
-          const hasMaterial = activeMaterials.some(mat => searchableText.includes(mat));
-          if (!hasMaterial) return false;
-        }
-
-        return true;
-      });
-
-      // Sorting
-      if (sortValue === 'price-low') {
-        filtered.sort((a, b) => a.parsedPrice - b.parsedPrice);
-      } else if (sortValue === 'price-high') {
-        filtered.sort((a, b) => b.parsedPrice - a.parsedPrice);
-      } else if (sortValue === 'rating') {
-        filtered.sort((a, b) => (b.stars.match(/★/g)||[]).length - (a.stars.match(/★/g)||[]).length);
-      } else if (sortValue === 'popular') {
-        filtered.sort((a, b) => parseInt(b.ratingCount.replace(/\D/g,'')) - parseInt(a.ratingCount.replace(/\D/g,'')));
+      if (priceRange) {
+        filtered = filtered.filter(p => p.parsedPrice <= parseFloat(priceRange.value));
       }
+
+      // Sort
+      const sortBy = sortSelect?.value || 'featured';
+      if (sortBy === 'price-low') filtered.sort((a, b) => a.parsedPrice - b.parsedPrice);
+      if (sortBy === 'price-high') filtered.sort((a, b) => b.parsedPrice - a.parsedPrice);
+      if (sortBy === 'newest') filtered.sort((a, b) => b.id - a.id);
 
       renderProducts(filtered);
     }
 
     // Event Listeners
-    if (priceRange) {
-      priceRange.addEventListener('input', () => {
-        priceRangeValue.textContent = 'KES ' + parseInt(priceRange.value).toLocaleString();
-        filterProducts();
-      });
-    }
-    
-    if (sortSelect) {
-      sortSelect.addEventListener('change', filterProducts);
-    }
-
-    if (searchInput) {
-      searchInput.addEventListener('input', filterProducts);
-    }
-
-    // Clear filters
-    document.getElementById('clear-filters')?.addEventListener('click', () => {
-      categoryChecks.forEach(cb => cb.checked = (cb.value === 'all'));
-      materialChecks.forEach(cb => cb.checked = false);
-      if (searchInput) searchInput.value = '';
-      if (priceRange) { priceRange.value = 2000; priceRangeValue.textContent = 'KES 2,000'; }
-      if (sortSelect) sortSelect.value = 'featured';
+    categoryChecks.forEach(c => c.addEventListener('change', () => {
+      if (c.id === 'cat-all' && c.checked) {
+        categoryChecks.forEach(oc => { if(oc !== c) oc.checked = false; });
+      } else if (c.checked) {
+        const allCheck = document.getElementById('cat-all');
+        if (allCheck) allCheck.checked = false;
+      }
+      filterProducts();
+    }));
+    materialChecks.forEach(c => c.addEventListener('change', filterProducts));
+    priceRange?.addEventListener('input', () => {
+      priceRangeValue.textContent = 'KES ' + parseFloat(priceRange.value).toLocaleString();
       filterProducts();
     });
+    sortSelect?.addEventListener('change', filterProducts);
 
-    materialChecks.forEach(cb => cb.addEventListener('change', filterProducts));
-
-    categoryChecks.forEach(cb => {
-      cb.addEventListener('change', (e) => {
-        if (e.target.value === 'all' && e.target.checked) {
-          categoryChecks.forEach(c => { if(c.value !== 'all') c.checked = false; });
-        } else if (e.target.value !== 'all' && e.target.checked) {
-          const allCb = Array.from(categoryChecks).find(c => c.value === 'all');
-          if (allCb) allCb.checked = false;
-        }
-        if (Array.from(categoryChecks).filter(c => c.checked).length === 0) {
-          const allCb = Array.from(categoryChecks).find(c => c.value === 'all');
-          if (allCb) allCb.checked = true;
-        }
-        filterProducts();
-      });
-    });
-
-    // View toggle
-    const gridView = document.getElementById('grid-view');
-    const listView = document.getElementById('list-view');
-
-    gridView?.addEventListener('click', () => {
-      gridView.classList.add('active'); listView.classList.remove('active');
-      productsGrid.style.gridTemplateColumns = '';
-    });
-
-    listView?.addEventListener('click', () => {
-      listView.classList.add('active'); gridView.classList.remove('active');
-      productsGrid.style.gridTemplateColumns = '1fr';
-    });
-
-    // Initial Render
+    // Initial render
     filterProducts();
   };
-  
-  // Call init if productsData loaded, else trust main.js to call it
-  if(typeof productsData !== 'undefined') {
+
+  // If products are already loaded, init now
+  if (window.productsData && Object.keys(window.productsData).length > 0) {
     window.initShopFilters();
   }
 });
