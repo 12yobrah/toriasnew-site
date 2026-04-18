@@ -47,7 +47,16 @@
   <header class="site-header" id="site-header">
     <div class="header-inner container">
       <a href="index.html" class="logo" aria-label="TORIAS GLAM HAVEN Home">
-        <img src="img/logo-tgh.png" alt="Torias Glam Haven" class="logo-img" />
+        <img src="img/logo-tgh.png" alt="Torias Glam Haven" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="logo-fallback" style="display:none; align-items:center; gap:12px;">
+          <div style="width:50px;height:50px;border:1.5px solid #DAB258;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:14px;color:#DAB258;letter-spacing:2px;">TGH</span>
+          </div>
+          <div style="display:flex;flex-direction:column;">
+            <span style="font-family:'Great Vibes',cursive;font-size:26px;color:#fff;line-height:1;">Torias Glam Haven</span>
+            <span style="font-family:'Jost',sans-serif;font-size:7px;color:#DAB258;letter-spacing:4px;text-transform:uppercase;margin-top:2px;">Elegance and style</span>
+          </div>
+        </div>
       </a>
 
       <nav class="main-nav" id="main-nav" aria-label="Primary navigation">
