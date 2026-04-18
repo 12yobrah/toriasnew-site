@@ -67,7 +67,7 @@
   /* Layout */
   --container-max: 1320px;
   --container-pad: clamp(24px, 6vw, 100px);
-  --header-h: 120px;
+  --header-h: 90px;
   --radius-sm:  40px;   /* pill for buttons */
   --radius-md:  20px;
   --radius-lg:  30px;
@@ -502,6 +502,11 @@ strong { font-weight: 600; }
   align-items: center;
   text-decoration: none;
   flex-shrink: 0;
+}
+.logo-img {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
 }
 .logo-text {
   display: flex;
