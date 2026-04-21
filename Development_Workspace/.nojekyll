@@ -1,2 +1,0 @@
-# Disable Jekyll to allow directories starting with underscores or dots
-# and ensure fast deployment of the /admin folder.

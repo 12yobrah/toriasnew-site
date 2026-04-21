@@ -12,19 +12,5 @@
         { "key": "Content-Security-Policy", "value": "upgrade-insecure-requests" }
       ]
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/wp-content/:path*",
-      "destination": "https://backend.toriasglamhaven.co.ke/wp-content/:path*"
-    },
-    {
-      "source": "/wp-includes/:path*",
-      "destination": "https://backend.toriasglamhaven.co.ke/wp-includes/:path*"
-    },
-    {
-      "source": "/wp-json/:path*",
-      "destination": "https://backend.toriasglamhaven.co.ke/wp-json/:path*"
-    }
   ]
 }
