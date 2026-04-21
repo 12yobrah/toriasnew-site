@@ -25,6 +25,18 @@
     {
       "source": "/wp-json/:path*",
       "destination": "https://backend.toriasglamhaven.co.ke/wp-json/:path*"
+    },
+    {
+      "source": "/backend/:path*",
+      "destination": "https://backend.toriasglamhaven.co.ke/:path*"
+    },
+    {
+      "source": "/wp-admin/:path*",
+      "destination": "https://backend.toriasglamhaven.co.ke/wp-admin/:path*"
+    },
+    {
+      "source": "/wp-login.php",
+      "destination": "https://backend.toriasglamhaven.co.ke/wp-login.php"
     }
   ]
 }
