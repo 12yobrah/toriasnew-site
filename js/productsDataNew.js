@@ -156,4 +156,76 @@
 
   loadDashboardData();
 
+  // ── WORDPRESS CONFIG ───────────────────────────────────────────
+  const CONFIG = {
+    URL: '', // Use Vercel relative path to avoid CORS and trigger vercel.json rewrite
+    CK: 'ck_ed18fde86cbb15c89e341705e60f7ca766d3bf37',
+    CS: 'cs_dcf83c581c169dbc6b27ee09f8189cc14cd2b6a8'
+  };
+
+  // ── WORDPRESS LIVE SYNC (background upgrade) ──────────────────
+  async function conductFetch(apiUrl) {
+    try {
+      const auth = btoa(`${CONFIG.CK}:${CONFIG.CS}`);
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 8000);
+
+      // Using relative URL leverages vercel.json rewrites, bypassing Truehost CORS limits
+      const r = await fetch(`${apiUrl}/wp-json/wc/v3/products?per_page=100&status=publish`, {
+        headers: { 'Authorization': `Basic ${auth}` },
+        signal: controller.signal
+      });
+      clearTimeout(timeout);
+
+      if (r.ok) {
+        const data = await r.json();
+        console.log(`✦ Torias Sync: Found ${data.length} live products on WooCommerce.`);
+
+        // Replace embedded data with live WordPress data
+        Object.keys(window.productsData).forEach(k => delete window.productsData[k]);
+
+        data.forEach(item => {
+          let imgUrl = item.images.length > 0 ? item.images[0].src : 'https://placehold.co/600x600?text=No+Image';
+
+          window.productsData[String(item.id)] = {
+            id: String(item.id),
+            name: item.name,
+            category: item.categories.length > 0 ? item.categories[0].name : 'Jewelry',
+            price: `KES ${Number(item.price).toLocaleString()}`,
+            oldPrice: item.regular_price && item.sale_price ? `KES ${Number(item.regular_price).toLocaleString()}` : '',
+            stars: '★★★★★',
+            ratingCount: `(${item.rating_count || 0})`,
+            img: imgUrl,
+            link: `product.html?id=${item.id}`,
+            desc: item.short_description ? item.short_description.replace(/<[^>]*>/g, '') : item.name
+          };
+        });
+
+        console.log("✦ Torias Sync: Live WordPress data now active!");
+        return true;
+      }
+      console.warn(`✦ Torias Sync: WooCommerce returned HTTP ${r.status}`);
+      return false;
+    } catch (e) {
+      console.warn(`✦ Torias Sync: WooCommerce unreachable (${e.message}). Using embedded data.`);
+      return false;
+    }
+  }
+
+  // ── BACKGROUND SYNC (non-blocking) ────────────────────────────
+  async function backgroundSync() {
+    let success = await conductFetch(CONFIG.URL);
+    if (!success) {
+      // Fallback directly to HTTP backend if Vercel proxy fails
+      success = await conductFetch('https://backend.toriasglamhaven.co.ke');
+    }
+
+    if (success) {
+      document.dispatchEvent(new CustomEvent('inventoryReady'));
+      if (typeof window.initShopFilters === 'function') window.initShopFilters();
+    }
+  }
+
+  // Run WordPress sync in background — overwrites fallback data seamlessly
+  backgroundSync();
 })();
