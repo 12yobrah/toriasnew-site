@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bulk Migration Tool | Torias Glam Haven</title>
+  <style>
+    body { font-family: sans-serif; background: #111; color: #fff; padding: 40px; text-align: center; }
+    button { background: #DAB258; border: none; padding: 15px 30px; font-size: 18px; cursor: pointer; border-radius: 4px; font-weight: bold; margin-top: 20px;}
+    button:hover { background: #C59D47; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    #log { text-align: left; background: #222; padding: 20px; border-radius: 4px; height: 300px; overflow-y: auto; font-family: monospace; margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;}
+    p { max-width: 600px; margin: 0 auto; line-height: 1.6; color: #ccc;}
+  </style>
+
+  <!-- Supabase JS & Product Data -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/productsDataNew.js"></script>
+</head>
+<body>
+
+  <h1>Supabase Bulk Migration Tool</h1>
+  <p>This tool will automatically read your original 10 fallback products, grab their local images, upload them to your Supabase <code>product-images</code> bucket, and insert the rows into your database.<br><br><b>Important:</b> Please make sure you are running this page using a Local Web Server (like VS Code Live Server) so it can access the image files.</p>
+  
+  <button id="migrate-btn">Start Migration Process</button>
+
+  <div id="log">Awaiting start...</div>
+
+  <script src="js/migration.js"></script>
+</body>
+</html>

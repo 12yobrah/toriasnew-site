@@ -104,33 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (href === currentPagePath) link.classList.add('active');
   });
 
-  // ── AUTH HUD ───────────────────────────────────────────────
-  const headerActions = document.querySelector('.header-actions');
-  const userIconMarkup = `
-    <a href="account.html" class="icon-btn auth-btn" id="header-auth-btn" aria-label="Account">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-    </a>
-  `;
 
-  if (headerActions && !document.getElementById('header-auth-btn')) {
-    // Insert before the hamburger
-    const hamburger = document.getElementById('hamburger');
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = userIconMarkup;
-    headerActions.insertBefore(tempDiv.firstElementChild, hamburger);
-  }
-
-  async function checkAuthState() {
-    if (!supabaseClient) return;
-    const { data: { user } } = await supabaseClient.auth.getUser();
-    const authBtn = document.getElementById('header-auth-btn');
-    if (user && authBtn) {
-      authBtn.href = 'account.html';
-      authBtn.classList.add('logged-in');
-      authBtn.style.color = 'var(--clr-gold)';
-    }
-  }
-  checkAuthState();
 
   // ── SCROLL ANIMATIONS ──────────────────────────────────────
   const animatedEls = document.querySelectorAll('.animate-up');

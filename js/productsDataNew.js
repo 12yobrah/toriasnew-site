@@ -156,76 +156,68 @@
 
   loadDashboardData();
 
-  // ── WORDPRESS CONFIG ───────────────────────────────────────────
-  const CONFIG = {
-    URL: '', // Use Vercel relative path to avoid CORS and trigger vercel.json rewrite
-    CK: 'ck_ed18fde86cbb15c89e341705e60f7ca766d3bf37',
-    CS: 'cs_dcf83c581c169dbc6b27ee09f8189cc14cd2b6a8'
-  };
+  // ── SUPABASE CONFIG ────────────────────────────────────────────
+  const SUPABASE_URL = 'https://xfuhxmrqykkmfqcpshhs.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_tA-hIr0xRAkpb_Rt0l_Odg_nonm1k6v';
 
-  // ── WORDPRESS LIVE SYNC (background upgrade) ──────────────────
-  async function conductFetch(apiUrl) {
+  // ── SUPABASE LIVE SYNC (background upgrade) ──────────────────
+  async function backgroundSync() {
     try {
-      const auth = btoa(`${CONFIG.CK}:${CONFIG.CS}`);
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 8000);
 
-      // Using relative URL leverages vercel.json rewrites, bypassing Truehost CORS limits
-      const r = await fetch(`${apiUrl}/wp-json/wc/v3/products?per_page=100&status=publish`, {
-        headers: { 'Authorization': `Basic ${auth}` },
+      const r = await fetch(`${SUPABASE_URL}/rest/v1/products?select=*&order=created_at.desc`, {
+        headers: { 
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}` 
+        },
         signal: controller.signal
       });
       clearTimeout(timeout);
 
       if (r.ok) {
         const data = await r.json();
-        console.log(`✦ Torias Sync: Found ${data.length} live products on WooCommerce.`);
+        console.log(`✦ Torias Sync: Found ${data.length} live products on Supabase.`);
 
-        // Replace embedded data with live WordPress data
+        // Replace embedded data with live Supabase data
         Object.keys(window.productsData).forEach(k => delete window.productsData[k]);
 
         data.forEach(item => {
-          let imgUrl = item.images.length > 0 ? item.images[0].src : 'https://placehold.co/600x600?text=No+Image';
+          
+          // Smart fallback: If the database item doesn't have an image, search the original embedded products by name
+          let displayImg = item.img;
+          if (!displayImg) {
+             const matchedLegacy = EMBEDDED_PRODUCTS.find(p => p.name.trim().toLowerCase() === item.name.trim().toLowerCase());
+             displayImg = matchedLegacy ? matchedLegacy.img : 'https://placehold.co/600x600?text=No+Image';
+          }
 
           window.productsData[String(item.id)] = {
             id: String(item.id),
             name: item.name,
-            category: item.categories.length > 0 ? item.categories[0].name : 'Jewelry',
-            price: `KES ${Number(item.price).toLocaleString()}`,
-            oldPrice: item.regular_price && item.sale_price ? `KES ${Number(item.regular_price).toLocaleString()}` : '',
+            category: item.category || 'Jewelry',
+            price: item.price,
+            oldPrice: item.oldPrice || '',
             stars: '★★★★★',
-            ratingCount: `(${item.rating_count || 0})`,
-            img: imgUrl,
+            ratingCount: '(12)', 
+            img: displayImg,
             link: `product.html?id=${item.id}`,
-            desc: item.short_description ? item.short_description.replace(/<[^>]*>/g, '') : item.name
+            desc: item.desc || item.name
           };
         });
 
-        console.log("✦ Torias Sync: Live WordPress data now active!");
+        console.log("✦ Torias Sync: Live Supabase data now active!");
+        document.dispatchEvent(new CustomEvent('inventoryReady'));
+        if (typeof window.initShopFilters === 'function') window.initShopFilters();
         return true;
       }
-      console.warn(`✦ Torias Sync: WooCommerce returned HTTP ${r.status}`);
+      console.warn(`✦ Torias Sync: Supabase returned HTTP ${r.status}`);
       return false;
     } catch (e) {
-      console.warn(`✦ Torias Sync: WooCommerce unreachable (${e.message}). Using embedded data.`);
+      console.warn(`✦ Torias Sync: Supabase unreachable (${e.message}). Using embedded data.`);
       return false;
     }
   }
 
-  // ── BACKGROUND SYNC (non-blocking) ────────────────────────────
-  async function backgroundSync() {
-    let success = await conductFetch(CONFIG.URL);
-    if (!success) {
-      // Fallback directly to HTTP backend if Vercel proxy fails
-      success = await conductFetch('https://backend.toriasglamhaven.co.ke');
-    }
-
-    if (success) {
-      document.dispatchEvent(new CustomEvent('inventoryReady'));
-      if (typeof window.initShopFilters === 'function') window.initShopFilters();
-    }
-  }
-
-  // Run WordPress sync in background — overwrites fallback data seamlessly
+  // Run Supabase sync in background — overwrites fallback data seamlessly
   backgroundSync();
 })();

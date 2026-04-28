@@ -15,10 +15,13 @@
     'cart.html':     'cart',
     'checkout.html': 'cart',
     'checkout-mpesa.html': 'cart',
-    'account.html':  'wishlist',
+    'account.html':  'account',
     'about.html':    null,
     'contact.html':  null,
     'faqs.html':     null,
+    'shipping-policy.html': null,
+    'returns-exchanges.html': null,
+    'privacy-policy.html': null,
   };
 
   const activeTab = TAB_MAP[page];
@@ -45,20 +48,15 @@
     });
   }
 
-  // Sync cart & wishlist badge counts from localStorage
+  // Sync cart badge count from localStorage
   function syncBadges() {
     try {
       const cart = JSON.parse(localStorage.getItem('tgh_cart') || '[]');
-      const wishlist = JSON.parse(localStorage.getItem('tgh_wishlist') || '[]');
       const cartCount = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
 
       document.querySelectorAll('.cart-count-tab').forEach(el => {
         el.textContent = cartCount;
         el.style.display = cartCount > 0 ? 'flex' : 'none';
-      });
-      document.querySelectorAll('.wishlist-count-tab').forEach(el => {
-        el.textContent = wishlist.length;
-        el.style.display = wishlist.length > 0 ? 'flex' : 'none';
       });
     } catch (_) { /* silent */ }
   }
@@ -68,6 +66,6 @@
   // Re-sync on storage changes (e.g. when another tab updates the cart)
   window.addEventListener('storage', syncBadges);
 
-  // Also re-sync periodically for same-page cart/wishlist updates
+  // Also re-sync periodically for same-page cart updates
   setInterval(syncBadges, 2000);
 })();

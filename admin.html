@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | Torias Glam Haven</title>
+
+  <!-- Fonts (Matches Storefront) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="css/admin.css" />
+
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <!-- ADMIN NOTIFICATION TOAST -->
+  <div id="toast" class="toast" hidden>Notification MSG</div>
+
+  <!-- AUTHENTICATION VIEW -->
+  <div id="auth-view" class="view-container active">
+    <div class="auth-box">
+      <div class="brand-logo">
+        <div class="logo-ring">TGH</div>
+        <h1>Torias Glam Haven</h1>
+        <span>Admin Portal</span>
+      </div>
+      <form id="admin-login-form">
+        <div class="input-group">
+          <label for="admin-email">Email Address</label>
+          <input type="email" id="admin-email" required placeholder="admin@torias.com" />
+        </div>
+        <div class="input-group">
+          <label for="admin-password">Password</label>
+          <input type="password" id="admin-password" required placeholder="••••••••" />
+        </div>
+        <button type="submit" class="btn-gold" id="login-btn">Secure Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- DASHBOARD VIEW -->
+  <div id="dashboard-view" class="view-container" hidden>
+    
+    <!-- Sidebar / Nav -->
+    <aside class="sidebar">
+      <div class="brand-logo-small">
+        <div class="logo-ring-sm">TGH</div>
+        <h2>Torias Glam Haven</h2>
+      </div>
+      <nav class="nav-menu">
+        <a href="#" class="active" id="nav-inventory">Inventory</a>
+        <a href="#" id="nav-add">Add Product</a>
+        <a href="index.html" target="_blank" class="nav-external">View Live Store ↗</a>
+      </nav>
+      <button class="logout-btn" id="logout-btn">Log Out</button>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="dashboard-content">
+
+      <!-- HEADER -->
+      <header class="dash-header">
+        <h2 id="dash-title">Manage Inventory</h2>
+        <div class="user-info">Logged in as: <span id="admin-user-email"></span></div>
+      </header>
+
+      <!-- INVENTORY SECTION -->
+      <section id="section-inventory" class="dashboard-section active">
+        <div class="table-card">
+          <div class="table-header">
+            <h3>Live Products</h3>
+            <button class="btn-outline-gold btn-sm" id="refresh-btn">Refresh</button>
+          </div>
+          <div class="table-responsive">
+            <table class="inventory-table">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Product Name</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="inventory-tbody">
+                <!-- Data loaded dynamically -->
+                <tr><td colspan="5" class="text-center">Loading inventory...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ADD PRODUCT SECTION -->
+      <section id="section-add" class="dashboard-section" hidden>
+        <div class="form-card">
+          <h3>Create New Product</h3>
+          <p class="form-subtitle">Add a new item to the live storefront. Changes sync instantly.</p>
+          
+          <form id="add-product-form">
+            <!-- Row 1 -->
+            <div class="form-row">
+              <div class="input-group">
+                <label for="p-name">Product Name *</label>
+                <input type="text" id="p-name" required placeholder="e.g. 18K Gold Emerald Ring" />
+              </div>
+              <div class="input-group">
+                <label for="p-cat">Category *</label>
+                <select id="p-cat" required>
+                  <option value="">Select Category</option>
+                  <option value="Necklaces">Necklaces</option>
+                  <option value="Earrings">Earrings</option>
+                  <option value="Bracelets">Bracelets</option>
+                  <option value="Jewelry Sets">Jewelry Sets</option>
+                  <option value="Rings">Rings</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="form-row">
+              <div class="input-group">
+                <label for="p-price">Current Price *</label>
+                <input type="text" id="p-price" required placeholder="e.g. KES 1,250" />
+              </div>
+              <div class="input-group">
+                <label for="p-old-price">Old Price (Optional, for sales)</label>
+                <input type="text" id="p-old-price" placeholder="e.g. KES 1,500" />
+              </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="input-group w-full">
+              <label for="p-desc">Short Description *</label>
+              <textarea id="p-desc" required rows="3" placeholder="A timeless, hypoallergenic piece..."></textarea>
+            </div>
+
+            <!-- Row 4 (Image Upload) -->
+            <div class="input-group w-full">
+              <label>Product Image *</label>
+              <div class="file-upload-box" id="file-upload-box">
+                <input type="file" id="p-image" accept="image/*" required hidden />
+                <button type="button" id="trigger-file-btn" class="btn-outline-gold btn-sm">Choose Image</button>
+                <span id="file-name-display" class="file-name">No file selected</span>
+              </div>
+              <div class="img-preview" id="img-preview" hidden>
+                <img id="preview-src" src="" alt="Preview" />
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-gold" id="submit-product-btn">Publish Product</button>
+              <button type="button" class="btn-ghost" id="cancel-add-btn">Cancel</button>
+            </div>
+          </form>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
