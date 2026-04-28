@@ -1786,4 +1786,128 @@ section.hero .animate-fade,
   animation: none;
 }
 
+/* ── MOBILE BOTTOM TAB BAR ─────────────────────────────────── */
+.mobile-tab-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9998;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    height: 64px;
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-top: 1px solid rgba(201, 168, 76, 0.18);
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.5);
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .tab-bar-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.40);
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-tap-highlight-color: transparent;
+    padding: 6px 0;
+  }
+
+  .tab-bar-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 36px;
+    height: 2px;
+    background: var(--gradient-gold);
+    border-radius: 0 0 2px 2px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .tab-bar-item.active {
+    color: #C9A84C;
+  }
+
+  .tab-bar-item.active::before {
+    transform: translateX(-50%) scaleX(1);
+  }
+
+  .tab-bar-item:active {
+    transform: scale(0.92);
+  }
+
+  .tab-bar-icon {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .tab-bar-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.5;
+    transition: all 0.3s ease;
+  }
+
+  .tab-bar-item.active .tab-bar-icon svg {
+    stroke-width: 2;
+    filter: drop-shadow(0 0 4px rgba(201, 168, 76, 0.3));
+  }
+
+  .tab-bar-badge {
+    position: absolute;
+    top: -4px;
+    right: -8px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    background: var(--gradient-gold);
+    border-radius: 999px;
+    font-size: 9px;
+    font-weight: 700;
+    color: #0A0A0A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    font-family: var(--font-sans);
+  }
+
+  .tab-bar-label {
+    font-family: var(--font-sans);
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  /* Reposition WhatsApp widget above the tab bar */
+  .whatsapp-widget {
+    bottom: calc(72px + env(safe-area-inset-bottom, 0)) !important;
+  }
+
+  /* Add bottom padding to body so footer content isn't hidden */
+  body {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0));
+  }
+}
 
